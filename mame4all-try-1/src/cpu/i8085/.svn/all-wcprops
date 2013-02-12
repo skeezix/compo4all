@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/cpu/i8085
+END
+i8085.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/cpu/i8085/i8085.h
+END
+i8085daa.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/cpu/i8085/i8085daa.h
+END
+i8085cpu.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/cpu/i8085/i8085cpu.h
+END
+i8085.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/cpu/i8085/i8085.cpp
+END

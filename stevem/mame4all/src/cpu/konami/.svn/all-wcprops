@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/cpu/konami
+END
+konami.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/483/mame4all/src/cpu/konami/konami.cpp
+END
+konami.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/cpu/konami/konami.h
+END
+konamops.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/483/mame4all/src/cpu/konami/konamops.cpp
+END
+konamtbl.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/483/mame4all/src/cpu/konami/konamtbl.cpp
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/483/mame4all/src/cpu/sc61860
+END
+readpc.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/483/mame4all/src/cpu/sc61860/readpc.cpp
+END
+sc61860.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/483/mame4all/src/cpu/sc61860/sc61860.h
+END
+ops.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/cpu/sc61860/ops.cpp
+END
+table.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/483/mame4all/src/cpu/sc61860/table.cpp
+END
+sc.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/cpu/sc61860/sc.h
+END
+sc61860.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/483/mame4all/src/cpu/sc61860/sc61860.cpp
+END

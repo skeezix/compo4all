@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/483/mame4all/src/cpu/z80
+END
+z80.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/cpu/z80/z80.cpp
+END
+z80.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/cpu/z80/z80.h
+END
+z80ops.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/cpu/z80/z80ops.h
+END

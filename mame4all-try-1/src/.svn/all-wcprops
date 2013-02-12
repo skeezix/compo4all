@@ -1,0 +1,407 @@
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/499/mame4all/src
+END
+artwork.h
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/artwork.h
+END
+input.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/input.cpp
+END
+palette.h
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/palette.h
+END
+unzip.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/unzip.cpp
+END
+osdepend.h
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/osdepend.h
+END
+audit.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/audit.cpp
+END
+memory.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/memory.cpp
+END
+sprite.h
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/483/mame4all/src/sprite.h
+END
+tilemap_draw.h
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/483/mame4all/src/tilemap_draw.h
+END
+ui_text.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/483/mame4all/src/ui_text.cpp
+END
+png.h
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/483/mame4all/src/png.h
+END
+artwork.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/483/mame4all/src/artwork.cpp
+END
+cpuintrf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/cpuintrf.cpp
+END
+hiscore.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/483/mame4all/src/hiscore.cpp
+END
+network.h
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/network.h
+END
+tilemap.h
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/tilemap.h
+END
+info.h
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/483/mame4all/src/info.h
+END
+memory_read.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/memory_read.h
+END
+audit.h
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/483/mame4all/src/audit.h
+END
+memory.h
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/483/mame4all/src/memory.h
+END
+rules.mak
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/rules.mak
+END
+profiler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/profiler.cpp
+END
+mame.h
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/483/mame4all/src/mame.h
+END
+gfxobj.h
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/483/mame4all/src/gfxobj.h
+END
+inptport.h
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/inptport.h
+END
+network.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/483/mame4all/src/network.cpp
+END
+info.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/483/mame4all/src/info.cpp
+END
+tilemap.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/483/mame4all/src/tilemap.cpp
+END
+cpuintrf.h
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/cpuintrf.h
+END
+hiscore.h
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/hiscore.h
+END
+drawgfx.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/483/mame4all/src/drawgfx.cpp
+END
+neomame.mak
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/483/mame4all/src/neomame.mak
+END
+legacy.h
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/483/mame4all/src/legacy.h
+END
+tiny.mak
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/483/mame4all/src/tiny.mak
+END
+usrintrf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/usrintrf.cpp
+END
+sound.mak
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/sound.mak
+END
+datafile.h
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/datafile.h
+END
+core.mak
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/483/mame4all/src/core.mak
+END
+mame.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/488/mame4all/src/mame.cpp
+END
+gfxobj.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/gfxobj.cpp
+END
+inptport.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/494/mame4all/src/inptport.cpp
+END
+state.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/state.cpp
+END
+timer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/timer.cpp
+END
+cheat.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/cheat.cpp
+END
+version.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/483/mame4all/src/version.cpp
+END
+profiler.h
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/profiler.h
+END
+memory_write.h
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/483/mame4all/src/memory_write.h
+END
+common.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/common.cpp
+END
+sndintrf.h
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/sndintrf.h
+END
+palette.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/483/mame4all/src/palette.cpp
+END
+driver.h
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/483/mame4all/src/driver.h
+END
+input.h
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/483/mame4all/src/input.h
+END
+mame.mak
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/499/mame4all/src/mame.mak
+END
+sprite.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/sprite.cpp
+END
+drawgfx.h
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/drawgfx.h
+END
+datafile.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/datafile.cpp
+END
+unzip.h
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/483/mame4all/src/unzip.h
+END
+usrintrf.h
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/usrintrf.h
+END
+png.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/483/mame4all/src/png.cpp
+END
+timer.h
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/483/mame4all/src/timer.h
+END
+state.h
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/483/mame4all/src/state.h
+END
+ui_text.h
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/ui_text.h
+END
+sndintrf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/sndintrf.cpp
+END
+cheat.h
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/483/mame4all/src/cheat.h
+END
+driver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/driver.cpp
+END
+romcmp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/romcmp.cpp
+END
+common.h
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/483/mame4all/src/common.h
+END

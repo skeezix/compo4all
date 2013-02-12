@@ -1,0 +1,2387 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/499/mame4all/src/vidhrdw
+END
+arcadecl.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/arcadecl.cpp
+END
+tigeroad.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tigeroad.cpp
+END
+pbaction.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/pbaction.cpp
+END
+mcr68.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mcr68.cpp
+END
+karnov.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/karnov.cpp
+END
+namcos1.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/namcos1.cpp
+END
+mrdo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mrdo.cpp
+END
+gundealr.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gundealr.cpp
+END
+batman.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/batman.cpp
+END
+crimfght.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/crimfght.cpp
+END
+tms34061.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tms34061.h
+END
+mario.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mario.cpp
+END
+xmen.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/xmen.cpp
+END
+qwakprot.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/qwakprot.cpp
+END
+surpratk.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/surpratk.cpp
+END
+offtwall.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/offtwall.cpp
+END
+mpatrol.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mpatrol.cpp
+END
+marvins.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/marvins.cpp
+END
+cclimber.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cclimber.cpp
+END
+lasso.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/lasso.cpp
+END
+superpac.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/superpac.cpp
+END
+ajax.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/ajax.cpp
+END
+m107.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/m107.cpp
+END
+pcktgal.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/pcktgal.cpp
+END
+supbtime.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/supbtime.cpp
+END
+tutankhm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tutankhm.cpp
+END
+fastlane.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/fastlane.cpp
+END
+kyugo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/kyugo.cpp
+END
+irobot.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/irobot.cpp
+END
+skykid.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/skykid.cpp
+END
+leprechn.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/leprechn.cpp
+END
+bloodbro.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/bloodbro.cpp
+END
+raiden.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/raiden.cpp
+END
+blktiger.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/blktiger.cpp
+END
+dynduke.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/dynduke.cpp
+END
+spacefb.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/spacefb.cpp
+END
+warpwarp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/warpwarp.cpp
+END
+hydra.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/hydra.cpp
+END
+minivadr.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/minivadr.cpp
+END
+gng.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gng.cpp
+END
+geebee.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/geebee.cpp
+END
+marineb.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/marineb.cpp
+END
+hyperspt.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/hyperspt.cpp
+END
+galivan.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/galivan.cpp
+END
+argus.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/argus.cpp
+END
+bublbobl.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/bublbobl.cpp
+END
+skyfox.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/skyfox.cpp
+END
+vulgus.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/vulgus.cpp
+END
+parodius.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/parodius.cpp
+END
+turbo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/turbo.cpp
+END
+nemesis.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/nemesis.cpp
+END
+magix.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/magix.cpp
+END
+bosco.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/bosco.cpp
+END
+bionicc.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/bionicc.cpp
+END
+pengo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/pengo.cpp
+END
+atarifb.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/atarifb.cpp
+END
+polyplay.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/polyplay.cpp
+END
+exedexes.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/exedexes.cpp
+END
+renegade.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/renegade.cpp
+END
+subs.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/subs.cpp
+END
+lastduel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/lastduel.cpp
+END
+psikyo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/psikyo.cpp
+END
+ddragon.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/ddragon.cpp
+END
+sega.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/sega.cpp
+END
+pingpong.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/pingpong.cpp
+END
+crtc6845.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/crtc6845.cpp
+END
+hcastle.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/hcastle.cpp
+END
+solomon.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/solomon.cpp
+END
+cloak.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cloak.cpp
+END
+ginganin.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/ginganin.cpp
+END
+battlnts.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/battlnts.cpp
+END
+atarisy1.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/atarisy1.cpp
+END
+cchasm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cchasm.cpp
+END
+sbasketb.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/sbasketb.cpp
+END
+milliped.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/milliped.cpp
+END
+leland.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/leland.cpp
+END
+klax.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/klax.cpp
+END
+btime.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/btime.cpp
+END
+bogeyman.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/bogeyman.cpp
+END
+pacland.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/pacland.cpp
+END
+mexico86.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mexico86.cpp
+END
+cninja.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cninja.cpp
+END
+chqflag.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/chqflag.cpp
+END
+suprloco.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/suprloco.cpp
+END
+cps2.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/499/mame4all/src/vidhrdw/cps2.cpp
+END
+snk68.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/snk68.cpp
+END
+system1.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/system1.h
+END
+rallyx.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/rallyx.cpp
+END
+lsasquad.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/lsasquad.cpp
+END
+timeplt.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/timeplt.cpp
+END
+toaplan1.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/toaplan1.cpp
+END
+superqix.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/superqix.cpp
+END
+blockout.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/blockout.cpp
+END
+wc90b.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/wc90b.cpp
+END
+ladybug.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/ladybug.cpp
+END
+crtc6845.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/crtc6845.h
+END
+rastan.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/rastan.cpp
+END
+sbrkout.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/sbrkout.cpp
+END
+splash.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/splash.cpp
+END
+trackfld.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/trackfld.cpp
+END
+gaplus.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gaplus.cpp
+END
+seta.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/seta.cpp
+END
+amidar.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/amidar.cpp
+END
+thepit.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/thepit.cpp
+END
+thunderx.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/thunderx.cpp
+END
+namcos2.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/namcos2.cpp
+END
+mainevt.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mainevt.cpp
+END
+pooyan.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/pooyan.cpp
+END
+munchmo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/munchmo.cpp
+END
+relief.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/relief.cpp
+END
+pandoras.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/pandoras.cpp
+END
+taito_f2.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/taito_f2.cpp
+END
+badlands.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/badlands.cpp
+END
+dominos.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/dominos.cpp
+END
+slapfght.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/slapfght.cpp
+END
+stadhero.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/stadhero.cpp
+END
+exidy440.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/exidy440.cpp
+END
+jedi.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/jedi.cpp
+END
+snowbros.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/snowbros.cpp
+END
+zaccaria.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/zaccaria.cpp
+END
+baraduke.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/baraduke.cpp
+END
+alpha68k.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/alpha68k.cpp
+END
+champbas.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/champbas.cpp
+END
+shaolins.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/shaolins.cpp
+END
+polepos.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/polepos.cpp
+END
+naughtyb.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/naughtyb.cpp
+END
+actfancr.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/actfancr.cpp
+END
+taito_b.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/taito_b.cpp
+END
+blstroid.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/blstroid.cpp
+END
+avgdvg.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/avgdvg.h
+END
+bagman.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/bagman.cpp
+END
+gladiatr.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gladiatr.cpp
+END
+capbowl.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/capbowl.cpp
+END
+konamiic.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/konamiic.cpp
+END
+frogger.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/frogger.cpp
+END
+tail2nos.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tail2nos.cpp
+END
+nitedrvr.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/nitedrvr.cpp
+END
+commando.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/commando.cpp
+END
+funkyjet.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/funkyjet.cpp
+END
+momoko.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/momoko.cpp
+END
+dkong.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/dkong.cpp
+END
+exterm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/exterm.cpp
+END
+pinbo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/pinbo.cpp
+END
+m92.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/vidhrdw/m92.cpp
+END
+wiz.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/vidhrdw/wiz.cpp
+END
+aeroboto.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/aeroboto.cpp
+END
+bking2.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/bking2.cpp
+END
+cave.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cave.cpp
+END
+avalnche.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/avalnche.cpp
+END
+dday.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/dday.cpp
+END
+wc90.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/wc90.cpp
+END
+lkage.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/lkage.cpp
+END
+kncljoe.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/kncljoe.cpp
+END
+mnight.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mnight.cpp
+END
+bladestl.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/bladestl.cpp
+END
+seicross.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/seicross.cpp
+END
+toobin.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/toobin.cpp
+END
+wmstunit.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/wmstunit.cpp
+END
+mikie.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mikie.cpp
+END
+konamiic.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/konamiic.h
+END
+crbaloon.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/crbaloon.cpp
+END
+redalert.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/redalert.cpp
+END
+lwings.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/lwings.cpp
+END
+m62.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/vidhrdw/m62.cpp
+END
+astrocde.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/astrocde.cpp
+END
+rollerg.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/rollerg.cpp
+END
+sidepckt.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/sidepckt.cpp
+END
+gberet.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gberet.cpp
+END
+citycon.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/citycon.cpp
+END
+stfight.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/stfight.cpp
+END
+galaga.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/galaga.cpp
+END
+exctsccr.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/exctsccr.cpp
+END
+ssozumo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/ssozumo.cpp
+END
+starfire.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/starfire.cpp
+END
+gradius3.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gradius3.cpp
+END
+gotya.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gotya.cpp
+END
+shootout.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/shootout.cpp
+END
+copsnrob.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/copsnrob.cpp
+END
+matmania.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/matmania.cpp
+END
+vicdual.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/vicdual.cpp
+END
+toypop.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/toypop.cpp
+END
+mrjong.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mrjong.cpp
+END
+m79amb.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/m79amb.cpp
+END
+arabian.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/arabian.cpp
+END
+atarisy2.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/atarisy2.cpp
+END
+popeye.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/popeye.cpp
+END
+lazercmd.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/lazercmd.cpp
+END
+phoenix.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/phoenix.cpp
+END
+aliens.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/aliens.cpp
+END
+cinemat.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cinemat.cpp
+END
+toaplan2.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/toaplan2.cpp
+END
+sharkatt.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/sharkatt.cpp
+END
+gauntlet.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gauntlet.cpp
+END
+pkunwar.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/pkunwar.cpp
+END
+circus.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/circus.cpp
+END
+sf1.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/vidhrdw/sf1.cpp
+END
+srumbler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/srumbler.cpp
+END
+system16.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/system16.cpp
+END
+bottom9.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/bottom9.cpp
+END
+docastle.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/docastle.cpp
+END
+tnzs.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tnzs.cpp
+END
+cloud9.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cloud9.cpp
+END
+rpunch.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/rpunch.cpp
+END
+yard.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/yard.cpp
+END
+vastar.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/vastar.cpp
+END
+taitoic.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/taitoic.h
+END
+flstory.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/flstory.cpp
+END
+megazone.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/megazone.cpp
+END
+system1.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/system1.cpp
+END
+rampart.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/rampart.cpp
+END
+funkybee.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/funkybee.cpp
+END
+gottlieb.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gottlieb.cpp
+END
+prehisle.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/prehisle.cpp
+END
+simpsons.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/simpsons.cpp
+END
+phozon.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/phozon.cpp
+END
+speedbal.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/speedbal.cpp
+END
+arkanoid.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/arkanoid.cpp
+END
+twin16.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/twin16.cpp
+END
+xybots.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/xybots.cpp
+END
+retofinv.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/retofinv.cpp
+END
+balsente.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/balsente.cpp
+END
+labyrunr.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/labyrunr.cpp
+END
+kangaroo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/kangaroo.cpp
+END
+qix.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/vidhrdw/qix.cpp
+END
+xexex.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/xexex.cpp
+END
+kchamp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/kchamp.cpp
+END
+digdug.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/digdug.cpp
+END
+missile.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/missile.cpp
+END
+ddrible.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/ddrible.cpp
+END
+macross.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/macross.cpp
+END
+cbuster.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cbuster.cpp
+END
+spiders.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/spiders.cpp
+END
+88games.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/88games.cpp
+END
+firetrap.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/firetrap.cpp
+END
+taitosj.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/taitosj.cpp
+END
+vigilant.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/vigilant.cpp
+END
+blockhl.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/blockhl.cpp
+END
+llander.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/llander.cpp
+END
+tmnt.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tmnt.cpp
+END
+cyberbal.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cyberbal.cpp
+END
+dcon.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/dcon.cpp
+END
+tsamurai.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tsamurai.cpp
+END
+aerofgt.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/aerofgt.cpp
+END
+rocnrope.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/rocnrope.cpp
+END
+meteor.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/meteor.cpp
+END
+snk.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/vidhrdw/snk.cpp
+END
+battlera.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/battlera.cpp
+END
+tp84.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tp84.cpp
+END
+mcr3.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mcr3.cpp
+END
+punchout.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/punchout.cpp
+END
+route16.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/route16.cpp
+END
+powerins.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/powerins.cpp
+END
+lazercmd.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/lazercmd.h
+END
+toki.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/toki.cpp
+END
+senjyo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/senjyo.cpp
+END
+tankbatt.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tankbatt.cpp
+END
+warlord.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/warlord.cpp
+END
+atetris.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/atetris.cpp
+END
+troangel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/troangel.cpp
+END
+sonson.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/sonson.cpp
+END
+generic.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/generic.h
+END
+exidy.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/exidy.cpp
+END
+hexa.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/hexa.cpp
+END
+aztarac.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/aztarac.cpp
+END
+contra.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/contra.cpp
+END
+twincobr.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/twincobr.cpp
+END
+megasys1.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/megasys1.cpp
+END
+skychut.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/skychut.cpp
+END
+superman.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/superman.cpp
+END
+taitoic.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/taitoic.cpp
+END
+foodf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/foodf.cpp
+END
+grobda.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/grobda.cpp
+END
+1942.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/1942.cpp
+END
+ninjakd2.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/ninjakd2.cpp
+END
+skydiver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/skydiver.cpp
+END
+cabal.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cabal.cpp
+END
+m72.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/vidhrdw/m72.cpp
+END
+appoooh.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/appoooh.cpp
+END
+vendetta.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/vendetta.cpp
+END
+zerozone.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/zerozone.cpp
+END
+avgdvg.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/avgdvg.cpp
+END
+ambush.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/ambush.cpp
+END
+brkthru.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/brkthru.cpp
+END
+williams.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/williams.cpp
+END
+thunderj.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/thunderj.cpp
+END
+ultraman.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/ultraman.cpp
+END
+galaxian.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/galaxian.cpp
+END
+gunsmoke.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gunsmoke.cpp
+END
+gaelco.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gaelco.cpp
+END
+blueprnt.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/blueprnt.cpp
+END
+combatsc.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/combatsc.cpp
+END
+deniam.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/deniam.cpp
+END
+astrof.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/astrof.cpp
+END
+fastfred.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/fastfred.cpp
+END
+xain.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/xain.cpp
+END
+mystston.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mystston.cpp
+END
+gsword.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gsword.cpp
+END
+cheekyms.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cheekyms.cpp
+END
+exerion.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/exerion.cpp
+END
+spy.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/vidhrdw/spy.cpp
+END
+galpanic.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/galpanic.cpp
+END
+finalizr.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/finalizr.cpp
+END
+shuuz.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/shuuz.cpp
+END
+flkatck.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/flkatck.cpp
+END
+jackal.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/jackal.cpp
+END
+psychic5.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/psychic5.cpp
+END
+shisen.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/shisen.cpp
+END
+rockola.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/rockola.cpp
+END
+goindol.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/goindol.cpp
+END
+taito_l.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/taito_l.cpp
+END
+bjtwin.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/bjtwin.cpp
+END
+gbusters.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gbusters.cpp
+END
+bsktball.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/bsktball.cpp
+END
+armedf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/armedf.cpp
+END
+victory.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/victory.cpp
+END
+pipedrm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/pipedrm.cpp
+END
+mitchell.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mitchell.cpp
+END
+tms34061.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tms34061.cpp
+END
+ironhors.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/ironhors.cpp
+END
+skullxbo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/skullxbo.cpp
+END
+blockade.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/blockade.cpp
+END
+ohmygod.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/ohmygod.cpp
+END
+sidearms.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/sidearms.cpp
+END
+terracre.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/terracre.cpp
+END
+bombjack.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/bombjack.cpp
+END
+neogeo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/neogeo.cpp
+END
+generic.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/generic.cpp
+END
+ttmahjng.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/ttmahjng.cpp
+END
+stactics.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/stactics.cpp
+END
+cop01.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cop01.cpp
+END
+vindictr.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/vindictr.cpp
+END
+jailbrek.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/jailbrek.cpp
+END
+zodiack.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/zodiack.cpp
+END
+darkseal.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/darkseal.cpp
+END
+canyon.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/canyon.cpp
+END
+gaiden.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gaiden.cpp
+END
+zaxxon.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/zaxxon.cpp
+END
+battlane.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/battlane.cpp
+END
+bankp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/bankp.cpp
+END
+wecleman.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/wecleman.cpp
+END
+mole.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mole.cpp
+END
+wmsyunit.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/wmsyunit.cpp
+END
+higemaru.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/higemaru.cpp
+END
+segar.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/segar.cpp
+END
+vector.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/vector.cpp
+END
+liberatr.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/liberatr.cpp
+END
+berzerk.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/berzerk.cpp
+END
+tehkanwc.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tehkanwc.cpp
+END
+tecmo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tecmo.cpp
+END
+yiear.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/yiear.cpp
+END
+cosmic.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cosmic.cpp
+END
+exprraid.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/exprraid.cpp
+END
+tecmo16.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tecmo16.cpp
+END
+tagteam.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tagteam.cpp
+END
+cischeat.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cischeat.cpp
+END
+mcr12.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mcr12.cpp
+END
+gameplan.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gameplan.cpp
+END
+8080bw.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/8080bw.cpp
+END
+airbustr.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/airbustr.cpp
+END
+centiped.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/centiped.cpp
+END
+gyruss.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/gyruss.cpp
+END
+cbasebal.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cbasebal.cpp
+END
+wiping.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/wiping.cpp
+END
+namcos86.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/namcos86.cpp
+END
+suna8.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/suna8.cpp
+END
+vaportra.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/vaportra.cpp
+END
+meadows.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/meadows.cpp
+END
+dotrikun.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/dotrikun.cpp
+END
+1943.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/1943.cpp
+END
+ccastles.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/ccastles.cpp
+END
+ddragon3.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/ddragon3.cpp
+END
+sprint2.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/sprint2.cpp
+END
+xevious.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/xevious.cpp
+END
+nova2001.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/nova2001.cpp
+END
+cps1.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/cps1.cpp
+END
+starcrus.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/starcrus.cpp
+END
+travrusa.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/travrusa.cpp
+END
+vector.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/vector.h
+END
+jack.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/jack.cpp
+END
+tumblep.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/tumblep.cpp
+END
+dec0.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/dec0.cpp
+END
+starwars.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/starwars.h
+END
+espial.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/espial.cpp
+END
+mermaid.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mermaid.cpp
+END
+kaneko16.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/kaneko16.cpp
+END
+kingobox.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/kingobox.cpp
+END
+madmotor.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/madmotor.cpp
+END
+eprom.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/eprom.cpp
+END
+hanaawas.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/hanaawas.cpp
+END
+dec8.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/vidhrdw/dec8.cpp
+END
+mappy.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/mappy.cpp
+END
+sauro.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/vidhrdw/sauro.cpp
+END
+jrpacman.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/jrpacman.cpp
+END
+circusc.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/vidhrdw/circusc.cpp
+END
+shangha3.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/shangha3.cpp
+END
+medlanes.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/vidhrdw/medlanes.h
+END
+rockrage.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/vidhrdw/rockrage.cpp
+END

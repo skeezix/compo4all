@@ -1,0 +1,185 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/499/mame4all/src/pandora
+END
+memcmp.S
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/484/mame4all/src/pandora/memcmp.S
+END
+input.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/492/mame4all/src/pandora/input.cpp
+END
+dirty.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/484/mame4all/src/pandora/dirty.h
+END
+osd_cpu.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/484/mame4all/src/pandora/osd_cpu.h
+END
+config.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/484/mame4all/src/pandora/config.cpp
+END
+strncmp.S
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/484/mame4all/src/pandora/strncmp.S
+END
+video.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/490/mame4all/src/pandora/video.cpp
+END
+fileio.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/484/mame4all/src/pandora/fileio.cpp
+END
+memset.S
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/484/mame4all/src/pandora/memset.S
+END
+memcpy.S
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/484/mame4all/src/pandora/memcpy.S
+END
+pandora.mak
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/499/mame4all/src/pandora/pandora.mak
+END
+usbjoy_mame.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/488/mame4all/src/pandora/usbjoy_mame.cpp
+END
+usbjoy.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/484/mame4all/src/pandora/usbjoy.cpp
+END
+blanker.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/484/mame4all/src/pandora/blanker.c
+END
+usbjoy_mame.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/484/mame4all/src/pandora/usbjoy_mame.h
+END
+pnd_frontend.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/496/mame4all/src/pandora/pnd_frontend.cpp
+END
+pnd_frontend_list.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/499/mame4all/src/pandora/pnd_frontend_list.h
+END
+usbjoy.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/484/mame4all/src/pandora/usbjoy.h
+END
+pandora.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/497/mame4all/src/pandora/pandora.cpp
+END
+osinline.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/484/mame4all/src/pandora/osinline.h
+END
+minimal.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/498/mame4all/src/pandora/minimal.cpp
+END
+strlen.S
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/484/mame4all/src/pandora/strlen.S
+END
+sound.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/484/mame4all/src/pandora/sound.cpp
+END
+strcmp.S
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/484/mame4all/src/pandora/strcmp.S
+END
+port_wrapper.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/484/mame4all/src/pandora/port_wrapper.h
+END
+usbjoy.gpl.txt
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/484/mame4all/src/pandora/usbjoy.gpl.txt
+END
+blit.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/484/mame4all/src/pandora/blit.cpp
+END
+allegro.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/492/mame4all/src/pandora/allegro.h
+END
+minimal.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/492/mame4all/src/pandora/minimal.h
+END
+fronthlp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/484/mame4all/src/pandora/fronthlp.cpp
+END
