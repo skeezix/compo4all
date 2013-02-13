@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/483/mame4all/src/wiz
+END
+wiz.mak
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/483/mame4all/src/wiz/wiz.mak
+END
+uppermem.h
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/483/mame4all/src/wiz/uppermem.h
+END
+input.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/wiz/input.cpp
+END
+wiz_lib.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/wiz/wiz_lib.cpp
+END
+wiz_frontend_menu.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/483/mame4all/src/wiz/wiz_frontend_menu.h
+END
+osd_cpu.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/wiz/osd_cpu.h
+END
+pollux_set.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/wiz/pollux_set.h
+END
+warm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/wiz/warm.cpp
+END
+video.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/wiz/video.cpp
+END
+fileio.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/483/mame4all/src/wiz/fileio.cpp
+END
+wiz_frontend_list.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/483/mame4all/src/wiz/wiz_frontend_list.h
+END
+wiz_frontend.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/wiz/wiz_frontend.cpp
+END
+memcpy.S
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/wiz/memcpy.S
+END
+sys_cacheflush.S
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/wiz/sys_cacheflush.S
+END
+strlen.S
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/wiz/strlen.S
+END
+strcmp.S
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/wiz/strcmp.S
+END
+uppermem.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/wiz/uppermem.cpp
+END
+allegro.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/wiz/allegro.h
+END
+memcmp.S
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/wiz/memcmp.S
+END
+pollux_set.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/wiz/pollux_set.cpp
+END
+dirty.h
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/483/mame4all/src/wiz/dirty.h
+END
+wiz_lib.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/wiz/wiz_lib.h
+END
+config.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/483/mame4all/src/wiz/config.cpp
+END
+strncmp.S
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/wiz/strncmp.S
+END
+sys_cacheflush.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/wiz/sys_cacheflush.h
+END
+wiz.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/483/mame4all/src/wiz/wiz.cpp
+END
+polluxregs.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/wiz/polluxregs.h
+END
+memset.S
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/wiz/memset.S
+END
+warm.h
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/wiz/warm.h
+END
+osinline.h
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/483/mame4all/src/wiz/osinline.h
+END
+wiz_frontend_splash.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/483/mame4all/src/wiz/wiz_frontend_splash.h
+END
+sound.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/wiz/sound.cpp
+END
+port_wrapper.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/wiz/port_wrapper.h
+END
+blit.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/wiz/blit.cpp
+END
+fronthlp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/wiz/fronthlp.cpp
+END

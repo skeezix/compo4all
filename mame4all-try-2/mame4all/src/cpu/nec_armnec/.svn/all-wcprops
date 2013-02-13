@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/483/mame4all/src/cpu/nec_armnec
+END
+armV30.s
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/483/mame4all/src/cpu/nec_armnec/armV30.s
+END
+armnecintrf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/483/mame4all/src/cpu/nec_armnec/armnecintrf.cpp
+END
+armnec.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/483/mame4all/src/cpu/nec_armnec/armnec.h
+END
+armV33.s
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/483/mame4all/src/cpu/nec_armnec/armV33.s
+END
+armnecintrf.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/483/mame4all/src/cpu/nec_armnec/armnecintrf.h
+END

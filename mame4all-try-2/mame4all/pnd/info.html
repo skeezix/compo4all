@@ -1,0 +1,274 @@
+<html>
+	<head>
+		<title>MAME4ALL</title>
+		<style>
+			body {
+				font-family: Arial, Helvetica, sans-serif;
+				color: #ffffff;
+			}
+			a {
+				color: #ddeeff;
+			}
+			hr {
+				border: 0px;
+				background-color: #ffffff;
+				width: 80%;
+				color: #ffffff;
+				height: 4px;
+			}
+			table {
+				border-collapse: collapse;
+			}
+			td,th {
+				border-color: #ffffff;
+				border: 1px solid;
+				margin: 0px;
+				padding: 2px;
+				padding-right: 16px;
+				text-align: left;
+			}
+			th {
+				white-space: nowrap;
+			}
+		</style>
+	</head>
+	<body background="bg.jpg">
+		<center>
+		<p>
+		<img src="logo_wide.png" width="420" height="80" alt="MAME4ALL"/>
+		</p>
+		<b>MULTIPLE ARCADE MACHINE EMULATOR</b>
+		<p>
+		<b><font size="+1" color="#ff2222">
+		This is BETA software.
+		<br/>
+		The following is subject to change.
+		</font></b>
+		</p>
+		</center>
+		
+		<h2>Setup</h2>
+		<ol>
+			<li>Run the program once to create the required directories in <i>appdata</i></li>
+			<li>Copy your ROM files (zipped) to <b><i>/media/</i>YOUR_SD_CARD<i>/pandora/appdata/mame4all/roms/</i></b></li>
+			<li>Optional: copy samples (zipped) to <b><i>/media/</i>YOUR_SD_CARD<i>/pandora/appdata/mame4all/samples/</i></b></li>
+			<li>Optional: copy artwork (zipped) to <b><i>/media/</i>YOUR_SD_CARD<i>/pandora/appdata/mame4all/artwork/</i></b></li>
+		</ol>
+		
+		<hr/>
+		
+		<h2>Controls</h2>
+		<p>
+		The MAME4ALL menu controls are described at the bottom of the menu screen.
+		</p><p>
+		Game controls follow the standard MAME configuration, with a few notable exceptions in
+		order to better match the Pandora's control layout. All controls can be reconfigured
+		in the MAME menu, either globally or per game. The most important default controls are:
+		</p>
+		<table>
+			<tr><th align="left">D-Pad</th><td>Movement/Joystick</td></tr>
+			<tr><th align="left">B,X,A,Y,L,R</th><td>Buttons 1 thru 6</td></tr>
+			<tr><th align="left">Keypad ".", Shift, Q, A</th><td>Buttons 1 thru 4 for use in rotated mode</td></tr>
+			<tr><th align="left">Select (or 5)</th><td>Insert coin (player 1)</td></tr>
+			<tr><th align="left">Start (or 1)</th><td>Start (player 1)</td></tr>
+			<tr><th align="left">6,7,8</th><td>Insert coin (players 2 thru 4)</td></tr>
+			<tr><th align="left">2,3,4</th><td>Start (players 2 thru 4)</td></tr>			
+			<tr><th align="left">P</th><td>Pause</td></tr>
+			<tr><th align="left">Tab (Fn+Space) or Pandora button</th><td>MAME configuration menu</td></tr>
+			<tr><th align="left">Escape (Fn+Q)</th><td>Quit game and return to main menu</td></tr>
+		</table>
+		
+		<hr/>
+		
+		<h2>Settings</h2>
+		After selecting a game, a menu is displayed in which you may alter the following settings:
+		<h3>Video Aspect</h3>
+		<table>
+			<tr><th align="left"><b>Normal</b></th><td>
+				Selects a scaling mode which attempts to create as large as possible an image,
+				closely matching the physical screen dimensions. Borders or clipping (max 10% in
+				either axis) may occur.
+				<br/>
+				<b>Tip:</b> use Shift+A/B/X/Y to pan the screen if clipping obscures important details.
+			</td></tr>
+			<tr><th align="left"><b>Scale</b></th><td>
+				Scale the image to fill the screen, but maintaining the game's
+				original (pixel) aspect ratio.
+			</td></tr>
+			<tr><th align="left"><b>Stretch</b></th><td>
+				Scale the image to fill the screen comletely, ignoring the game's
+				original aspect ratio.
+			</td></tr>
+			<tr><th align="left"><b>4:3</b></th><td>
+				Scale the image to fill the screen, but force a 4:3 aspect ratio (or
+				3:4 for vertically oriented games).
+			</td></tr>
+			<tr><th align="left"><b>Fit</b></th><td>
+				Select the largest integer scale which will fit completely within the
+				physical screen dimensions. No borders or clipping will occur, but may
+				result in a very small image for some games.
+			</td></tr>
+		</table>
+		
+		<h3>Video Rotation</h3>
+		<table>
+			<tr><th align="left"><b>OFF</b></th><td>
+				Graphics are displayed upright when screen is viewed horizontally.
+			</td></tr>
+			<tr><th align="left"><b>ON</b></th><td>
+				Graphics are rotated 90 degrees to the right, allowing vertically-oriented
+				games to be played with the entire console rotated. The D-Pad controls are
+				automatically remapped to match the rotated console.
+			</td></tr>
+		</table>
+
+		<h3>Video Filter</h3>
+		<table>
+			<tr><th align="left"><b>Auto</b></th><td>
+				Automatically apply a smoothing video filter if the selected Video Aspect mode
+				results in a non-integer scaling factor.
+			</td></tr>
+			<tr><th align="left"><b>None</b></th><td>
+				Never apply a smoothing filter, regardless of scale. May result in scaling artefacts
+				depending on the selected Video Aspect mode.
+			</td></tr>
+			<tr><th align="left"><b>Default</b></th><td>
+				Always apply the default smoothing filter. May causes loss of sharpness depending
+				on the selected Video Aspect mode.
+			</td></tr>
+		</table>
+
+		<h3>Video Sync</h3>
+		<table>
+			<tr><th align="left"><b>Normal</b></th><td>
+				Single buffering with dirty buffer.
+			</td></tr>
+			<tr><th align="left"><b>VSync</b></th><td>
+				Wait for vertical blanking when syncing video. This eliminates "tearing" of the
+				display. Double buffering is also enabled.
+			</td></tr>
+			<tr><th align="left"><b>DblBuf</b></th><td>
+				Enable double buffering to prevent the display from flickering.
+			</td></tr>
+			<tr><th align="left"><b>None</b></th><td>
+				Do not sync video (use manual frame-skip).
+			</td></tr>
+		</table>
+
+		<h3>Frame-Skip</h3>
+		<table>
+			<tr><th align="left"><b>Auto</b></th><td>
+				Automatically adjust frame skip in real time.
+			</td></tr>
+			<tr><th align="left"><b>0-11</b></th><td>
+				Manual frame-skip adjustment. For every 12 frames, skip the specified number of frames.
+			</td></tr>
+		</table>
+		
+		<h3>Sound</h3>
+		Flip through the options to select:
+		<ul>
+			<li>Frequency: 11, 15, 22, 33 or 44 KHz</li>
+			<li>Mono/Stereo</li>
+			<li>Fast mode: improved performance at the expense of sound quality.</li>
+			<li>OFF: disable sound completely.</li>
+		</ul>
+
+		<h3>CPU Clock/Audio Clock</h3>
+		<p>
+		The clock of the emulated processors can be adjusted from 50% to 200%. The nominal value
+		is 100%, at which speed the CPU is emulated accurately. The CPU clock can be safely
+		underclocked to about 80% to gain performance in almost all games. Lower values
+		should increase performance but may prevent games from running properly. The CPU can
+		also be overclocked up to 200% to avoid slowdowns in some Neo-Geo games.
+		</p>
+		
+		<h3>CPU ASM cores</h3>
+		<table>
+			<tr><th align="left"><b>Cyclone</b></th><td>
+				Use the Cyclone M68000 CPU core, which is faster than the standard C core.
+				Enabled by default as it seems to have perfect compatibility.
+			</td></tr>
+			<tr><th align="left"><b>DrZ80</b></th><td>
+				Use the DrZ80 CPU core, which is faster than the standard C core.
+				Compatibility is limited; use only if the chosen game runs properly.
+			</td></tr>
+			<tr><th align="left"><b>Cyclone+DrZ80</b></th><td>
+				Enable both ASM cores for optimum perfromance.
+			</td></tr>
+			<tr><th align="left"><b>Drz80(snd)</b></th><td>
+				Enable DrZ80 core for audio processors only.
+			</td></tr>
+			<tr><th align="left"><b>Cyclone+DrZ80(snd)</b></th><td>
+				Enable Cyclone M68000 CPU core. Enable DrZ80 core for audio processors only.
+			</td></tr>
+			<tr><th align="left"><b>None</b></th><td>
+				Disable all ASM cores. Best compatability, worst performance.
+			</td></tr>
+		</table>
+		<p>
+		<b>Note</b>: this configuration is automatically adjusted in each game
+		according to an internal compatibility list.
+		</p>
+
+		<h3>Cheats</h3>
+		<table>
+			<tr><th align="left"><b>ON</b></th><td>
+				Enable cheats, accessed in-game through the "Cheats" section of the MAME menu.
+			</td></tr>
+			<tr><th align="left"><b>OFF</b></th><td>
+				Disable cheats.
+			</td></tr>
+		</table>
+		<p>
+		<b>Note</b>: High scores are not saved if cheats are enabled!
+		</p>
+
+		<hr/>
+		
+		<h2>Links</h2>
+		<ul>
+			<li>Original README in <a href="readme.txt">English</a> and <a href="leeme.txt">Spanish</a></li>
+			<li>Original "What's New" in <a href="whatsnew.txt">English</a> and <a href="novedades.txt">Spanish</a></li>
+			<li><a href="http://www.talfi.net/gp32_franxis/">MAME4ALL project home</a></li>
+			<li><a href="http://sources.cosam.org/svn/mame4all/">Pandora port source code</a> (Subversion)</li>
+			<li><a href="http://mamedev.org/">Offical MAME web site</a></li>
+		</ul>
+		
+		<hr/>
+		
+		<h2>MAME License</h2>
+		<font size="-1">
+		<a href="http://www.mame.net/">http://www.mame.net/</a><br/>
+		<a href="http://www.mamedev.com/">http://www.mamedev.com/</a><br/>
+		<p>
+		Copyright &copy; 1997-2009, Nicola Salmoria and the MAME team. All rights reserved. 
+		</p><p>
+		Redistribution and use of this code or any derivative works are permitted provided
+		that the following conditions are met:
+		</p>
+		<ul>
+		<li>Redistributions may not be sold, nor may they be used in a commercial product or activity.</li>
+		
+		<li>Redistributions that are modified from the original source must include the complete source
+		code, including the source code for all components used by a binary built from the modified
+		sources. However, as a special exception, the source code distributed need not include 
+		anything that is normally distributed (in either source or binary form) with the major 
+		components (compiler, kernel, and so on) of the operating system on which the executable
+		runs, unless that component itself accompanies the executable.</li>
+		
+		<li>Redistributions must reproduce the above copyright notice, this list of conditions and the
+		following disclaimer in the documentation and/or other materials provided with the distribution.</li>
+		
+		<li>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
+		IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY 
+		AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR 
+		CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+		DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+		DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+		IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+		OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</li>
+		</ul>
+		</font>
+	</body>
+</html>

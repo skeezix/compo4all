@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/483/mame4all/src/cpu/m6800
+END
+6800ops.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/483/mame4all/src/cpu/m6800/6800ops.cpp
+END
+6800tbl.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/483/mame4all/src/cpu/m6800/6800tbl.cpp
+END
+m6800.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/cpu/m6800/m6800.h
+END
+m6800.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/cpu/m6800/m6800.cpp
+END

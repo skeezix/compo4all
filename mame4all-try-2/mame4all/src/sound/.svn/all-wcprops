@@ -1,0 +1,617 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/483/mame4all/src/sound
+END
+nes_apu.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/nes_apu.h
+END
+sn76477.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/sn76477.cpp
+END
+speaker.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/speaker.h
+END
+ay8910.h
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/483/mame4all/src/sound/ay8910.h
+END
+tms36xx.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/tms36xx.h
+END
+fm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/sound/fm.cpp
+END
+tiaintf.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/tiaintf.h
+END
+ym2151.h
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/483/mame4all/src/sound/ym2151.h
+END
+hc55516.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/hc55516.h
+END
+discrete.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/discrete.h
+END
+2203intf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/2203intf.cpp
+END
+msm5205.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/msm5205.cpp
+END
+samples.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/samples.h
+END
+3812intf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/3812intf.cpp
+END
+2610intf.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/2610intf.h
+END
+2612intf.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/2612intf.h
+END
+2608intf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/2608intf.cpp
+END
+disc_dev.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/disc_dev.cpp
+END
+fmopl.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/sound/fmopl.h
+END
+streams.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/streams.h
+END
+ymdeltat.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/ymdeltat.cpp
+END
+mixer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/mixer.cpp
+END
+pokey.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/pokey.cpp
+END
+k051649.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/k051649.h
+END
+k054539.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/k054539.h
+END
+ay8910.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/ay8910.cpp
+END
+dac.h
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/483/mame4all/src/sound/dac.h
+END
+ym2413.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/ym2413.cpp
+END
+fm.h
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/sound/fm.h
+END
+2610intf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/2610intf.cpp
+END
+k053260.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/k053260.cpp
+END
+2612intf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/2612intf.cpp
+END
+c140.h
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/sound/c140.h
+END
+msm5205.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/msm5205.h
+END
+fmopl.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/fmopl.cpp
+END
+qsound.h
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/483/mame4all/src/sound/qsound.h
+END
+k005289.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/k005289.cpp
+END
+k051649.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/k051649.cpp
+END
+3812intf.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/3812intf.h
+END
+2608intf.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/2608intf.h
+END
+dac.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/sound/dac.cpp
+END
+mixer.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/sound/mixer.h
+END
+disc_mth.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/disc_mth.cpp
+END
+nes_defs.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/nes_defs.h
+END
+cem3394.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/cem3394.h
+END
+sn76496.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/sn76496.cpp
+END
+wave.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/483/mame4all/src/sound/wave.cpp
+END
+astrocde.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/astrocde.cpp
+END
+vlm5030.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/vlm5030.cpp
+END
+c140.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/483/mame4all/src/sound/c140.cpp
+END
+k007232.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/k007232.cpp
+END
+qsound.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/qsound.cpp
+END
+tms5220.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/tms5220.cpp
+END
+5220intf.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/5220intf.h
+END
+2151intf.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/2151intf.h
+END
+k053260.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/k053260.h
+END
+2413intf.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/2413intf.h
+END
+ymz280b.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/ymz280b.h
+END
+rf5c68.h
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/483/mame4all/src/sound/rf5c68.h
+END
+adpcm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/adpcm.cpp
+END
+segapcm.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/segapcm.h
+END
+upd7759.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/upd7759.cpp
+END
+tiasound.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/tiasound.cpp
+END
+k005289.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/k005289.h
+END
+cem3394.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/cem3394.cpp
+END
+nes_apu.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/nes_apu.cpp
+END
+speaker.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/speaker.cpp
+END
+tms36xx.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/tms36xx.cpp
+END
+tiaintf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/tiaintf.cpp
+END
+tms5220r.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/tms5220r.cpp
+END
+ym2151.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/ym2151.cpp
+END
+disc_wav.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/disc_wav.cpp
+END
+mixer_scale.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/sound/mixer_scale.h
+END
+hc55516.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/hc55516.cpp
+END
+namco.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/sound/namco.h
+END
+discrete.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/discrete.cpp
+END
+samples.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/samples.cpp
+END
+sn76477.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/sn76477.h
+END
+sn76496.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/sn76496.h
+END
+wave.h
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/483/mame4all/src/sound/wave.h
+END
+5220intf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/5220intf.cpp
+END
+2151intf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/2151intf.cpp
+END
+astrocde.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/astrocde.h
+END
+disc_out.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/disc_out.cpp
+END
+vlm5030.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/vlm5030.h
+END
+ymz280b.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/ymz280b.cpp
+END
+2203intf.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/2203intf.h
+END
+k007232.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/k007232.h
+END
+rf5c68.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/rf5c68.cpp
+END
+streams.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/streams.cpp
+END
+segapcm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/segapcm.cpp
+END
+tms5220.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/tms5220.h
+END
+votrax.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/votrax.cpp
+END
+k054539.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/sound/k054539.cpp
+END
+disc_flt.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/disc_flt.cpp
+END
+disc_inp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/483/mame4all/src/sound/disc_inp.cpp
+END
+ymdeltat.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/ymdeltat.h
+END
+adpcm.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/sound/adpcm.h
+END
+upd7759.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/upd7759.h
+END
+tiasound.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/483/mame4all/src/sound/tiasound.h
+END
+pokey.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/483/mame4all/src/sound/pokey.h
+END
+namco.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/483/mame4all/src/sound/namco.cpp
+END

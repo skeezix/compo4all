@@ -58,7 +58,7 @@ extern int master_volume;
 #include <stdio.h>
 #include <string.h>
 
-//#define PND_DEBUG 1
+#define PND_DEBUG 1
 
 #define PND_FBDEV "/dev/fb1"
 
@@ -80,7 +80,7 @@ static int pnd_run_cmd( const char *cmd ) {
 
 int pnd_fb_set( int fb_w, int fb_h, int scr_w, int scr_h, int bpp, int buffers ) {
 	char cmd[256];
-	
+
 	if( scr_w > PHYS_SCREEN_WIDTH || scr_h > PHYS_SCREEN_HEIGHT ) {
 		fprintf( stderr, "Requested screen dimensions (%dx%d) exceed physical maximum (%dx%d)\n",
 			scr_w, scr_h, PHYS_SCREEN_WIDTH, PHYS_SCREEN_HEIGHT );
@@ -488,6 +488,8 @@ void pnd_init(int ticks_per_second, int bpp, int rate, int bits, int stereo, int
 	pnd_video_color8(0,0,0,0);
 	pnd_video_color8(255,255,255,255);
 	pnd_video_setpalette();
+
+	printf ( "init done\n" );
 }
 
 #if defined(__cplusplus)
@@ -556,7 +558,7 @@ void pnd_set_video_mode(int bpp,int width,int height)
 		pnd_deinit();
 		exit(-1);
 	}
-	fb_ptr[1] = (char*)(fb_ptr[0]) + fb_mmap_size/2;
+	fb_ptr[1] = (unsigned short*) fb_ptr[0] + fb_mmap_size/2;
 
 	pnd_screen15=(unsigned short *)fb_ptr[0];
 	pnd_screen8=(unsigned char *)pnd_screen15;

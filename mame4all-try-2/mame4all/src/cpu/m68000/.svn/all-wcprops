@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/483/mame4all/src/cpu/m68000
+END
+m68000.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/483/mame4all/src/cpu/m68000/m68000.h
+END
+m68kconf.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/483/mame4all/src/cpu/m68000/m68kconf.h
+END
+m68kcpu.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/cpu/m68000/m68kcpu.h
+END
+m68kmame.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/483/mame4all/src/cpu/m68000/m68kmame.cpp
+END
+m68kopdm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/483/mame4all/src/cpu/m68000/m68kopdm.cpp
+END
+m68kops.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/483/mame4all/src/cpu/m68000/m68kops.cpp
+END
+m68kopac.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/483/mame4all/src/cpu/m68000/m68kopac.cpp
+END
+m68k.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/483/mame4all/src/cpu/m68000/m68k.h
+END
+m68kmame.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/483/mame4all/src/cpu/m68000/m68kmame.h
+END
+m68kopnz.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/483/mame4all/src/cpu/m68000/m68kopnz.cpp
+END
+m68kops.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/483/mame4all/src/cpu/m68000/m68kops.h
+END
+m68kcpu.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/483/mame4all/src/cpu/m68000/m68kcpu.cpp
+END
