@@ -3,6 +3,8 @@
 import SocketServer
 import logging
 import urlparse
+import os         # makedirs
+import datetime   # datetime.now()
 
 # command line args
 #
@@ -84,13 +86,60 @@ from SimpleHTTPServer import SimpleHTTPRequestHandler
 class RequestHandler(SimpleHTTPRequestHandler):
     
     def do_PUT ( self ):
-        logging.debug ( "PUT: *************************************\n" )
-        logging.debug ( "vars: %s" % ( vars ( self ) ) )
+        #logging.debug ( "vars: %s" % ( vars ( self ) ) )
 
-        # Extract and print the contents of the POST
         length = int ( self.headers['Content-Length'] )
 
-        raw_data = self.rfile.read(length)
+        paths = self.path.split ( "/", 6 )
+        req = dict()
+        # nil = paths [ 0 ]
+        # basepage and ver == paths [ 1 ]
+        req [ 'gamename' ] = paths [ 2 ]
+        req [ 'platform' ] = paths [ 3 ]
+        req [ 'emuname' ] = paths [ 4 ]
+        req [ 'prid' ] = paths [ 5 ]
+        # etc == paths [ 6 ]
+
+        basepage, basepage_ver = paths [ 1 ].split ( '_', 2 )
+        req [ 'basepage' ] = basepage
+        req [ 'ver' ] = basepage_ver
+
+        logging.debug ( "request looks like %s" % ( req ) )
+
+        if basepage == 'setprofile':
+
+            logging.warning ( "VALIDATE INPUTS HERE" )
+
+            self.send_response ( 406 ) # not acceptible
+            return
+
+        elif basepage == 'tally':
+
+            logging.warning ( "VALIDATE INPUTS HERE" )
+
+            if req [ 'gamename' ] not in ( 'mspacman', 'sf2', 'dkong' ):
+                self.send_response ( 406 ) # not acceptible
+                return
+
+            raw_data = self.rfile.read ( length )
+
+            now = datetime.datetime.now()
+
+            writepath = "runtime/hidb/" + req [ 'gamename' ] + "/" + str(now.year) + "." + str('%02d'%now.month) + "/"
+            try:
+                os.makedirs ( writepath )
+            except:
+                pass
+
+            f = open ( writepath + "raw.hi", "w" )
+            f.write ( raw_data )
+            f.close()
+
+            self.send_response ( 200 ) # okay
+
+        else:
+            self.send_response ( 406 ) # not acceptible
+            return
 
         """
         post_data = urlparse.parse_qs ( self.rfile.read(length).decode('utf-8') )
@@ -98,9 +147,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
             logging.debug ( "%s=%s" % (key, value) )
         """
 
-        logging.debug ( "received %s" % ( raw_data ) )
-
-        self.send_response ( 200 )
+        #logging.debug ( "received %s" % ( raw_data ) )
 
     def translate_path ( self, path ):
         """translate path given routes"""

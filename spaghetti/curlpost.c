@@ -2,30 +2,8 @@
 // yanked from
 // http://curl.haxx.se/libcurl/c/httpput.html
 
-#define SPAG_DEBUG 1
-#define SPAG_MAIN 1
+//#define SPAG_DEBUG 1
 
-/***************************************************************************
- *                                  _   _ ____  _
- *  Project                     ___| | | |  _ \| |
- *                             / __| | | | |_) | |
- *                            | (__| |_| |  _ <| |___
- *                             \___|\___/|_| \_\_____|
- *
- * Copyright (C) 1998 - 2012, Daniel Stenberg, <daniel@haxx.se>, et al.
- *
- * This software is licensed as described in the file COPYING, which
- * you should have received as part of this distribution. The terms
- * are also available at http://curl.haxx.se/docs/copyright.html.
- *
- * You may opt to use, copy, modify, merge, publish, distribute and/or sell
- * copies of the Software, and permit persons to whom the Software is
- * furnished to do so, under the terms of the COPYING file.
- *
- * This software is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY
- * KIND, either express or implied.
- *
- ***************************************************************************/
 #include <stdio.h>
 #include <fcntl.h>
 #include <sys/stat.h>
@@ -118,31 +96,19 @@ int spaghetti_post_file ( char *fullpath, char *url ) {
     /* Now run off and do what you've been told! */
     res = curl_easy_perform(curl);
     /* Check for errors */
-    if(res != CURLE_OK)
-      fprintf(stderr, "curl_easy_perform() failed: %s\n",
-              curl_easy_strerror(res));
+    if ( res != CURLE_OK ) {
+      fprintf ( stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res) );
+      fclose ( hd_src ); /* close the local file */
+      return ( -2 );
+    }
 
     /* always cleanup */
     curl_easy_cleanup(curl);
   }
 
-  fclose(hd_src); /* close the local file */
+  fclose ( hd_src ); /* close the local file */
 
   curl_global_cleanup();
 
-  return 0;
-}
-
-#ifdef SPAG_MAIN
-int main ( int argc, char **argv ) {
-
-  if ( argc < 3 ) {
-    fprintf ( stderr, "Not enough arguments. file-to-send and url needed.\n" );
-    exit ( -1 );
-  }
-
-  spaghetti_post_file ( argv [ 1 ], argv [ 2 ] );
-
   return ( 0 );
 }
-#endif
