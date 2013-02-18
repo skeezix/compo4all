@@ -2,6 +2,9 @@
 // yanked from
 // http://curl.haxx.se/libcurl/c/httpput.html
 
+#define SPAG_DEBUG 1
+#define SPAG_MAIN 1
+
 /***************************************************************************
  *                                  _   _ ____  _
  *  Project                     ___| | | |  _ \| |
@@ -52,45 +55,45 @@ static size_t read_callback(void *ptr, size_t size, size_t nmemb, void *stream)
 
   nread = (curl_off_t)retcode;
 
-  fprintf(stderr, "*** We read %" CURL_FORMAT_CURL_OFF_T
-          " bytes from file\n", nread);
+#ifdef SPAG_DEBUG
+  fprintf ( stderr, "*** We read %" CURL_FORMAT_CURL_OFF_T
+            " bytes from file\n", nread);
+#endif
 
   return retcode;
 }
 
-int main(int argc, char **argv)
-{
+int spaghetti_post_file ( char *fullpath, char *url ) {
+  // URL is explicit for now
+
   CURL *curl;
   CURLcode res;
   FILE * hd_src ;
   int hd ;
   struct stat file_info;
 
-  char *file;
-  char *url;
-
-  if(argc < 3)
-    return 1;
-
-  file= argv[1];
-  url = argv[2];
-
   /* get the file size of the local file */
-  hd = open(file, O_RDONLY) ;
-  fstat(hd, &file_info);
-  close(hd) ;
+  hd = open ( fullpath, O_RDONLY ) ;
+  fstat ( hd, &file_info );
+  close ( hd );
 
   /* get a FILE * of the same file, could also be made with
      fdopen() from the previous descriptor, but hey this is just
      an example! */
-  hd_src = fopen(file, "rb");
+  hd_src = fopen ( fullpath, "rb" );
 
   /* In windows, this will init the winsock stuff */
-  curl_global_init(CURL_GLOBAL_ALL);
+  curl_global_init ( CURL_GLOBAL_ALL );
 
   /* get a curl handle */
   curl = curl_easy_init();
-  if(curl) {
+
+  if ( ! curl ) {
+    fclose ( hd_src ); /* close the local file */
+    return ( -1 );
+  }
+
+  {
     /* we want to use our own read function */
     curl_easy_setopt(curl, CURLOPT_READFUNCTION, read_callback);
 
@@ -122,12 +125,24 @@ int main(int argc, char **argv)
     /* always cleanup */
     curl_easy_cleanup(curl);
   }
+
   fclose(hd_src); /* close the local file */
 
   curl_global_cleanup();
+
   return 0;
 }
 
-int spaghetti_post_file ( char *fullpath ) {
-  // URL is explicit for now
+#ifdef SPAG_MAIN
+int main ( int argc, char **argv ) {
+
+  if ( argc < 3 ) {
+    fprintf ( stderr, "Not enough arguments. file-to-send and url needed.\n" );
+    exit ( -1 );
+  }
+
+  spaghetti_post_file ( argv [ 1 ], argv [ 2 ] );
+
+  return ( 0 );
 }
+#endif
