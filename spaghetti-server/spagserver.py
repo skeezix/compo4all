@@ -6,6 +6,8 @@ import urlparse
 import os         # makedirs
 import datetime   # datetime.now()
 
+import g_mspacman
+
 # command line args
 #
 
@@ -106,16 +108,13 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
         logging.debug ( "request looks like %s" % ( req ) )
 
+        logging.warning ( "VALIDATE INPUTS HERE" )
+
         if basepage == 'setprofile':
-
-            logging.warning ( "VALIDATE INPUTS HERE" )
-
             self.send_response ( 406 ) # not acceptible
             return
 
         elif basepage == 'tally':
-
-            logging.warning ( "VALIDATE INPUTS HERE" )
 
             if req [ 'gamename' ] not in ( 'mspacman', 'sf2', 'dkong' ):
                 self.send_response ( 406 ) # not acceptible
