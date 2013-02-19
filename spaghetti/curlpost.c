@@ -33,10 +33,12 @@ static size_t read_callback(void *ptr, size_t size, size_t nmemb, void *stream)
 
   nread = (curl_off_t)retcode;
 
+  if ( nread != 0xdeadbeef ) { // shut up gcc warnings
 #ifdef SPAG_DEBUG
-  fprintf ( stderr, "*** We read %" CURL_FORMAT_CURL_OFF_T
-            " bytes from file\n", nread);
+    fprintf ( stderr, "*** We read %" CURL_FORMAT_CURL_OFF_T
+              " bytes from file\n", nread);
 #endif
+  }
 
   return retcode;
 }

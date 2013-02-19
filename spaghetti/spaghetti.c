@@ -1,5 +1,5 @@
 
-#define SPAG_MAIN 1
+//#define SPAG_MAIN 1
 
 #include <stdio.h>
 #include <strings.h> // bzero

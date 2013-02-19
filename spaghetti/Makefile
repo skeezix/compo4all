@@ -1,8 +1,10 @@
 
-all: spaghetti_post
+CFLAGS=-Wall -O3
 
-spaghetti_post:	curlpost.o spaghetti.o
-	gcc -o spaghetti_post curlpost.o spaghetti.o -lcurl
+all: sc
+
+sc:	curlpost.o spaghetti.o spaghetti_client.o spaghetti_get.o
+	gcc -o sc curlpost.o spaghetti.o spaghetti_client.o spaghetti_get.o -lcurl
 
 clean:
 	rm -f *~* spaghetti_post *.o

@@ -4,9 +4,7 @@ import SocketServer
 import logging
 import urlparse
 import os         # makedirs
-import datetime   # datetime.now()
-
-import g_mspacman
+import json
 
 # command line args
 #
@@ -75,6 +73,11 @@ routes = []
 for pair in config.items ( 'Routing' ):
     routes.append ( pair )
 
+# set up module handlers
+#
+
+import modulemap
+
 # open up webserver
 #
 logging.info ( "c4a is starting up" )
@@ -87,6 +90,80 @@ from SimpleHTTPServer import SimpleHTTPRequestHandler
 
 class RequestHandler(SimpleHTTPRequestHandler):
     
+    def is_valid_game ( self, req ):
+
+        if req [ 'gamename' ] not in ( 'mspacman', 'sf2', 'dkong' ):
+            return False
+
+        return True
+
+    def do_GET( self ):
+        #logging.debug ( "vars: %s" % ( vars ( self ) ) )
+
+        req = dict()
+
+        try:
+            paths = self.path.split ( "/", 6 )
+
+            basepage, basepage_ver = paths [ 1 ].split ( '_', 2 )
+            req [ 'basepage' ] = basepage
+            req [ 'ver' ] = basepage_ver
+            req [ 'gamename' ] = paths [ 2 ]
+        except:
+            req [ 'basepage' ] = self.path [ 1: ]
+
+        logging.debug ( "request looks like %s" % ( req ) )
+
+        logging.warning ( "VALIDATE INPUTS HERE" )
+
+        if req [ 'basepage' ] == 'banner':
+            d = dict()
+
+            d [ 'banner' ] = 'Welcome to Compo4All (ROT season 2)\nRunning March 2013\nMarch games: Ms Pacman'
+
+            bindata = json.dumps ( d )
+            self.wfile.write ( bindata )
+
+        elif req [ 'basepage' ] == 'curgamelist':
+            d = dict()
+            d [ 'gamelist' ] = [
+                'mspacman',
+                ]
+            bindata = json.dumps ( d )
+            self.wfile.write ( bindata )
+
+        elif req [ 'basepage' ] == 'scoreboard':
+
+            if not self.is_valid_game ( req ):
+                self.send_response ( 406 ) # not acceptible
+                return
+
+            if req [ 'gamename' ] in modulemap.mapper:
+                modulemap.mapper [ req [ 'gamename' ] ].get_tally ( req )
+                self.wfile.write ( req [ '_bindata' ] )
+                #self.send_response ( 200 ) # okay
+            else:
+                self.send_response ( 406 ) # not acceptible
+                logging.error ( "No module found for game %s" % ( gamename ) )
+
+        elif req [ 'basepage' ] == 'hi':
+
+            if not self.is_valid_game ( req ):
+                self.send_response ( 406 ) # not acceptible
+                return
+
+            if req [ 'gamename' ] in modulemap.mapper:
+                modulemap.mapper [ req [ 'gamename' ] ].get_hi ( req )
+                self.wfile.write ( req [ '_bindata' ] )
+                #self.send_response ( 200 ) # okay
+            else:
+                self.send_response ( 406 ) # not acceptible
+                logging.error ( "No module found for game %s" % ( gamename ) )
+
+        else:
+            self.send_response ( 406 ) # not acceptible
+            return
+
     def do_PUT ( self ):
         #logging.debug ( "vars: %s" % ( vars ( self ) ) )
 
@@ -110,29 +187,23 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
         logging.warning ( "VALIDATE INPUTS HERE" )
 
-        if basepage == 'setprofile':
+        if req [ 'basepage' ] == 'setprofile':
             self.send_response ( 406 ) # not acceptible
             return
 
-        elif basepage == 'tally':
+        elif req [ 'basepage' ] == 'tally':
 
-            if req [ 'gamename' ] not in ( 'mspacman', 'sf2', 'dkong' ):
+            if not self.is_valid_game ( req ):
                 self.send_response ( 406 ) # not acceptible
                 return
 
-            raw_data = self.rfile.read ( length )
+            req [ '_bindata' ] = self.rfile.read ( length )
+            req [ '_binlen' ] = length
 
-            now = datetime.datetime.now()
-
-            writepath = "runtime/hidb/" + req [ 'gamename' ] + "/" + str(now.year) + "." + str('%02d'%now.month) + "/"
-            try:
-                os.makedirs ( writepath )
-            except:
-                pass
-
-            f = open ( writepath + "raw.hi", "w" )
-            f.write ( raw_data )
-            f.close()
+            if req [ 'gamename' ] in modulemap.mapper:
+                modulemap.mapper [ req [ 'gamename' ] ].update_hi ( req )
+            else:
+                logging.error ( "No module found for game %s" % ( gamename ) )
 
             self.send_response ( 200 ) # okay
 

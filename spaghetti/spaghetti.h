@@ -31,4 +31,8 @@ int spaghetti_get_prid ( char *r_pridbuf, unsigned int buflen );
 //         -1 .. not not determine prid
 int spaghetti_post_wrapper ( char *gamename, char *fullpath );
 
+int spaghetti_post_file ( char *fullpath, char *url );
+
+int spaghetti_get_ram ( char *url, void **r_buf, unsigned int *r_bufsize );
+
 #endif
