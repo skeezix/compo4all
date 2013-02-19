@@ -7,6 +7,7 @@ import logging
 import datetime   # datetime.now()
 import json
 import array
+import os
 
 logging.info ( "g_mspacman is loading" )
 
@@ -16,6 +17,7 @@ def update_hi ( req ):
     writepath = _basepath ( req )
 
     try:
+        logging.debug ( "Attempt to create dirs %s" % ( writepath ) )
         os.makedirs ( writepath )
     except:
         pass
