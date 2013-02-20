@@ -32,24 +32,57 @@ class Frontend:
         self.new_prof_cancel_b = gtk.Button ( "Cancel" )
         self.new_prof_cancel_b.connect ( "clicked", self.cb_new_profile_cancel, None )
 
+        self.new_prof_table_l = gtk.Table ( rows = 4, columns = 3 )
 
-        self.new_prof_shortname_e = gtk.Entry()
+        # labels
+        self.new_prof_shortname_l = gtk.Label()
+        self.new_prof_shortname_l.set_markup ( "3 Letter Nick (ex <b>SKZ</b>)" )
+        self.new_prof_shortname_l.show()
+        self.new_prof_shortname_l.set_alignment ( xalign=0.0, yalign=0.5 )
 
-        self.new_prof_longname_e = gtk.Entry()
+        self.new_prof_longname_l = gtk.Label()
+        self.new_prof_longname_l.set_markup ( "Display Nick (ex <b>EvilDragon</b>)" )
+        self.new_prof_longname_l.show()
+        self.new_prof_longname_l.set_alignment ( xalign=0.0, yalign=0.5 )
 
-        self.new_prof_password_e = gtk.Entry()
+        self.new_prof_password_l = gtk.Label()
+        self.new_prof_password_l.set_markup ( "Alphanumeric Password (ex <b>aBc123</b>)" )
+        self.new_prof_password_l.show()
+        self.new_prof_password_l.set_alignment ( xalign=0.0, yalign=0.5 )
 
-        self.new_prof_email_e = gtk.Entry()
+        self.new_prof_email_l = gtk.Label()
+        self.new_prof_email_l.set_markup ( "Email Address for score\nbeing beaten notifications (ex <b>billg@microsoft.com.</b>)" )
+        self.new_prof_email_l.show()
+        self.new_prof_email_l.set_alignment ( xalign=0.0, yalign=0.5 )
+
+        # text entry fields
+        self.new_prof_shortname_e = gtk.Entry ( max = 3 )
+        self.new_prof_longname_e = gtk.Entry ( max = 32 )
+        self.new_prof_password_e = gtk.Entry ( max = 32 )
+        self.new_prof_email_e = gtk.Entry ( max = 256 )
 
         self.new_prof_shortname_e.show()
         self.new_prof_longname_e.show()
-        self.new_prof_shortname_e.show()
-        self.new_prof_shortname_e.show()
+        self.new_prof_password_e.show()
+        self.new_prof_email_e.show()
 
+        self.new_prof_table_l.attach ( self.new_prof_shortname_l, 0, 1, 0, 1 )
+        self.new_prof_table_l.attach ( self.new_prof_shortname_e, 1, 2, 0, 1 )
+        self.new_prof_table_l.attach ( self.new_prof_longname_l, 0, 1, 1, 2 )
+        self.new_prof_table_l.attach ( self.new_prof_longname_e, 1, 2, 1, 2 )
+        self.new_prof_table_l.attach ( self.new_prof_password_l, 0, 1, 2, 3 )
+        self.new_prof_table_l.attach ( self.new_prof_password_e, 1, 2, 2, 3 )
+        self.new_prof_table_l.attach ( self.new_prof_email_l, 0, 1, 3, 4 )
+        self.new_prof_table_l.attach ( self.new_prof_email_e, 1, 2, 3, 4 )
 
+        self.new_prof_table_l.set_col_spacings ( 10 )
+        self.new_prof_table_l.set_row_spacings ( 10 )
+
+        self.new_prof_table_l.show()
         self.new_prof_ok_b.show()
         self.new_prof_cancel_b.show()
 
+        self.new_prof_d.vbox.pack_start ( self.new_prof_table_l, False, False, 10 )
         self.new_prof_d.action_area.pack_start ( self.new_prof_ok_b, False, False, 0 )
         self.new_prof_d.action_area.pack_start ( self.new_prof_cancel_b, False, False, 0 )
 
@@ -173,6 +206,13 @@ class Frontend:
         self.window.show()
 
         # data pull notification..
+        if not self.is_server_available():
+            md = gtk.MessageDialog ( self.window, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_ERROR, 
+                                     gtk.BUTTONS_CLOSE, "Error contacting server!")
+            md.run()
+            md.destroy()
+            sys.exit ( -1 )
+
         self.pull_banner_and_update_with_ui()
         self.pull_gamelist_and_update_with_ui()
 
@@ -180,6 +220,27 @@ class Frontend:
             self.pull_profile_and_update_with_ui()
         else:
             self.del_profile_b.set_sensitive ( False )
+
+    def is_server_available ( self ):
+
+        md = gtk.MessageDialog ( self.window, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_INFO, 
+                                 gtk.BUTTONS_NONE, "Checking connectivity ..")
+        md.show()
+
+        try:
+            b = subprocess.check_output ( config.get ( 'Sources', 'ohai' ), stderr=subprocess.STDOUT, shell=True )
+            j = json.loads ( b )
+
+            md.destroy()
+
+            if j [ 'status' ] == 'OK':
+                return 1
+
+            return 0
+
+        except:
+            md.destroy()
+            return 0
 
     def pull_banner_and_update_with_ui ( self ):
         # blast, python + thread + urllib/httplib2/etc are fubar, skip for now

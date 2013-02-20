@@ -122,8 +122,14 @@ class RequestHandler(SimpleHTTPRequestHandler):
         if req [ 'basepage' ] == 'banner':
             d = dict()
 
-            d [ 'banner' ] = '<b>Welcome to Compo4All (ROT season 2)</b>\nRunning <b>March 2013</b>\nMarch games: <b>Ms Pacman</b>'
+            d [ 'banner' ] = '<b>Welcome to Compo4All (ROT season 2)</b>\n\nRunning <b>March 2013</b>\n\nMarch season games:\n<b>Ms Pacman</b>\n\n\n\n\n\n<i>Security disclosure: In case it is not obvious, this\napplication talks to a remote server. For questions\nor concerns contact "skeezix" at\nhttp://boards.openpandora.org</i>'
 
+            bindata = json.dumps ( d )
+            self.wfile.write ( bindata )
+
+        elif req [ 'basepage' ] == 'ohai':
+            d = dict()
+            d [ 'status' ] = 'OK'
             bindata = json.dumps ( d )
             self.wfile.write ( bindata )
 
