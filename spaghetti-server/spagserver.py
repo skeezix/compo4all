@@ -5,6 +5,7 @@ import logging
 import urlparse
 import os         # makedirs
 import json
+import string
 
 # command line args
 #
@@ -117,12 +118,13 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
         logging.debug ( "request looks like %s" % ( req ) )
 
-        logging.warning ( "VALIDATE INPUTS HERE" )
+        if not self.is_valid_request ( req ):
+            self.send_response ( 406 ) # not acceptible
 
         if req [ 'basepage' ] == 'banner':
             d = dict()
 
-            d [ 'banner' ] = '<b>Welcome to Compo4All (ROT season 2)</b>\n\nRunning <b>March 2013</b>\n\nMarch season games:\n<b>Ms Pacman</b>\n\n\n\n\n\n<i>Security disclosure: In case it is not obvious, this\napplication talks to a remote server. For questions\nor concerns contact "skeezix" at\nhttp://boards.openpandora.org</i>'
+            d [ 'banner' ] = 'Retro.Online.Tournament.\n\n<b>Welcome to Compo4All (ROT season 2)</b>\n\nRunning <b>March 2013</b>\n\nMarch season games:\n<b>Ms Pacman</b>\n\n\n\n<i>Security disclosure: In case it is not obvious, this application talks to a remote server to push and pull scoring (and thats it.) For questions or concerns contact "skeezix" at\nhttp://boards.openpandora.org</i>\n\n\nPlease support out friends at:\nhttps://www.dragonbox.de/en/'
 
             bindata = json.dumps ( d )
             self.wfile.write ( bindata )
@@ -142,6 +144,20 @@ class RequestHandler(SimpleHTTPRequestHandler):
             bindata = json.dumps ( d )
             self.wfile.write ( bindata )
 
+        elif req [ 'basepage' ] == 'json':
+
+            if not self.is_valid_game ( req ):
+                self.send_response ( 406 ) # not acceptible
+                return
+
+            if req [ 'gamename' ] in modulemap.mapper:
+                modulemap.mapper [ req [ 'gamename' ] ].get_json_tally ( req )
+                self.wfile.write ( req [ '_bindata' ] )
+                #self.send_response ( 200 ) # okay
+            else:
+                self.send_response ( 406 ) # not acceptible
+                logging.error ( "No module found for game %s" % ( gamename ) )
+
         elif req [ 'basepage' ] == 'scoreboard':
 
             if not self.is_valid_game ( req ):
@@ -149,7 +165,12 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 return
 
             if req [ 'gamename' ] in modulemap.mapper:
-                modulemap.mapper [ req [ 'gamename' ] ].get_tally ( req )
+                modulemap.mapper [ req [ 'gamename' ] ].get_html_tally ( req )
+
+                self.send_response ( 200 )
+                self.send_header ( 'Content-type', 'text/html' )
+                self.end_headers()
+
                 self.wfile.write ( req [ '_bindata' ] )
                 #self.send_response ( 200 ) # okay
             else:
@@ -177,29 +198,65 @@ class RequestHandler(SimpleHTTPRequestHandler):
     def do_PUT ( self ):
         #logging.debug ( "vars: %s" % ( vars ( self ) ) )
 
-        length = int ( self.headers['Content-Length'] )
+        try:
+            length = int ( self.headers['Content-Length'] )
+        except:
+            length = -1
 
-        paths = self.path.split ( "/", 6 )
         req = dict()
-        # nil = paths [ 0 ]
-        # basepage and ver == paths [ 1 ]
-        req [ 'gamename' ] = paths [ 2 ]
-        req [ 'platform' ] = paths [ 3 ]
-        req [ 'emuname' ] = paths [ 4 ]
-        req [ 'prid' ] = paths [ 5 ]
-        # etc == paths [ 6 ]
+        try:
+            paths = self.path.split ( "/", 6 )
 
-        basepage, basepage_ver = paths [ 1 ].split ( '_', 2 )
-        req [ 'basepage' ] = basepage
-        req [ 'ver' ] = basepage_ver
+            # nil = paths [ 0 ]
+            # basepage and ver == paths [ 1 ]
+            req [ 'gamename' ] = paths [ 2 ]
+            req [ 'platform' ] = paths [ 3 ]
+            req [ 'emuname' ] = paths [ 4 ]
+            req [ 'prid' ] = paths [ 5 ]
+            # etc == paths [ 6 ]
+
+            basepage, basepage_ver = paths [ 1 ].split ( '_', 2 )
+            req [ 'basepage' ] = basepage
+            req [ 'ver' ] = basepage_ver
+
+        except:
+            basepage, basepage_ver = paths [ 1 ].split ( '_', 2 )
+            req [ 'basepage' ] = basepage
+            req [ 'ver' ] = basepage_ver
 
         logging.debug ( "request looks like %s" % ( req ) )
 
-        logging.warning ( "VALIDATE INPUTS HERE" )
+        if not self.is_valid_request ( req ):
+            self.send_response ( 406 ) # not acceptible
 
         if req [ 'basepage' ] == 'setprofile':
-            self.send_response ( 406 ) # not acceptible
-            return
+            req [ '_bindata' ] = self.rfile.read ( length )
+            req [ '_binlen' ] = length
+
+            prid = json.loads ( req [ '_bindata' ] )
+
+            if not self.is_valid_request ( prid ):
+                self.send_response ( 406 ) # not acceptible
+
+            f = open ( "runtime/profiles/" + prid [ 'prid' ], 'w' )
+            f.write ( req [ '_bindata' ] )
+            f.close()
+
+            self.send_response ( 200 ) # okay
+
+        elif req [ 'basepage' ] == 'delprofile':
+
+            req [ '_bindata' ] = self.rfile.read ( length )
+            req [ '_binlen' ] = length
+
+            prid = json.loads ( req [ '_bindata' ] )
+
+            if not self.is_valid_request ( prid ):
+                self.send_response ( 406 ) # not acceptible
+
+            os.unlink ( "runtime/profiles/" + prid [ 'prid' ] )
+
+            self.send_response ( 200 ) # okay
 
         elif req [ 'basepage' ] == 'tally':
 
@@ -228,6 +285,60 @@ class RequestHandler(SimpleHTTPRequestHandler):
         """
 
         #logging.debug ( "received %s" % ( raw_data ) )
+
+    def is_valid_request ( self, req ):
+
+        if 'prid' in req:
+            if not all(c in string.ascii_letters+'-'+string.digits for c in req [ 'prid' ]):
+                logging.warning ( "illegal prid from request %s" % ( req ) )
+                return False
+
+        if 'shortname' in req:
+            if not all(c in string.ascii_letters+string.digits for c in req [ 'shortname' ]):
+                logging.warning ( "illegal shortname from request %s" % ( req ) )
+                return False
+
+        if 'longname' in req:
+            if not all(c in string.ascii_letters+string.digits for c in req [ 'longname' ]):
+                logging.warning ( "illegal longname from request %s" % ( req ) )
+                return False
+
+        if 'email' in req:
+            if not all(c in string.ascii_letters+string.digits+string.punctuation for c in req [ 'email' ]):
+                logging.warning ( "illegal email from request %s" % ( req ) )
+                return False
+
+        if 'password' in req:
+            if not all(c in string.ascii_letters+string.digits for c in req [ 'password' ]):
+                logging.warning ( "illegal password from request %s" % ( req ) )
+                return False
+
+        if 'emuname' in req:
+            if not all(c in string.ascii_letters for c in req [ 'emuname' ]):
+                logging.warning ( "illegal emuname from request %s" % ( req ) )
+                return False
+
+        if 'platform' in req:
+            if not all(c in string.ascii_letters for c in req [ 'platform' ]):
+                logging.warning ( "illegal platform from request %s" % ( req ) )
+                return False
+
+        if 'gamename' in req:
+            if not all(c in string.ascii_letters for c in req [ 'gamename' ]):
+                logging.warning ( "illegal gamename from request %s" % ( req ) )
+                return False
+
+        if 'basepage' in req:
+            if not all(c in string.ascii_letters for c in req [ 'basepage' ]):
+                logging.warning ( "illegal basepage from request %s" % ( req ) )
+                return False
+
+        if 'ver' in req:
+            if not all(c in string.digits for c in req [ 'ver' ]):
+                logging.warning ( "illegal ver from request %s" % ( req ) )
+                return False
+
+        return True
 
     def translate_path ( self, path ):
         """translate path given routes"""

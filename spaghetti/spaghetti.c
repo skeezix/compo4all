@@ -26,6 +26,10 @@ int spaghetti_get_prid ( char *r_pridbuf, unsigned int buflen ) {
 
   fclose ( f );
 
+  if ( strchr ( buf, '\n' ) ) {
+    * strchr ( buf, '\n' ) = '\0';
+  }
+
   strncpy ( r_pridbuf, buf, buflen );
 
   return ( 0 );

@@ -3,12 +3,33 @@
 import pygtk
 pygtk.require('2.0')
 import gtk
+import gobject
 import time
 import threading
 import subprocess
 import json
 import sys
 import os
+import string
+import uuid
+import urllib2
+import tempfile
+
+# monkey patch py2.7's check_output() into py2.6's missing one :)
+if "check_output" not in dir( subprocess ): # duck punch it in!
+    def f(*popenargs, **kwargs):
+        if 'stdout' in kwargs:
+            raise ValueError('stdout argument not allowed, it will be overridden.')
+        process = subprocess.Popen(stdout=subprocess.PIPE, *popenargs, **kwargs)
+        output, unused_err = process.communicate()
+        retcode = process.poll()
+        if retcode:
+            cmd = kwargs.get("args")
+            if cmd is None:
+                cmd = popenargs[0]
+            raise CalledProcessError(retcode, cmd)
+        return output
+    subprocess.check_output = f
 
 import ConfigParser
 config = ConfigParser.SafeConfigParser()
@@ -21,9 +42,13 @@ if config.has_section ( 'PyPath' ):
 else:
     print "WARN: Config is missing [PyPath] section"
 
+PRIDFILENAME = "c4a-prof"
+
 class Frontend:
 
-    def cb_new_profile ( self, widget, data=None ):
+    def cb_newedit_profile ( self, widget, data=None, edit=False ):
+
+        prid = None
 
         self.new_prof_d = gtk.Dialog ( title="Create Profile", parent=None, flags=0, buttons=None )
 
@@ -36,7 +61,7 @@ class Frontend:
 
         # labels
         self.new_prof_shortname_l = gtk.Label()
-        self.new_prof_shortname_l.set_markup ( "3 Letter Nick (ex <b>SKZ</b>)" )
+        self.new_prof_shortname_l.set_markup ( "3 Letter Nick (ex <b>EVD</b>)" )
         self.new_prof_shortname_l.show()
         self.new_prof_shortname_l.set_alignment ( xalign=0.0, yalign=0.5 )
 
@@ -57,9 +82,13 @@ class Frontend:
 
         # text entry fields
         self.new_prof_shortname_e = gtk.Entry ( max = 3 )
+        self.new_prof_shortname_e.connect ( "insert_text", self.cb_password_insert_handler )
         self.new_prof_longname_e = gtk.Entry ( max = 32 )
+        self.new_prof_longname_e.connect ( "insert_text", self.cb_password_insert_handler )
         self.new_prof_password_e = gtk.Entry ( max = 32 )
+        self.new_prof_password_e.connect ( "insert_text", self.cb_password_insert_handler )
         self.new_prof_email_e = gtk.Entry ( max = 256 )
+        self.new_prof_email_e.connect ( "insert_text", self.cb_email_insert_handler )
 
         self.new_prof_shortname_e.show()
         self.new_prof_longname_e.show()
@@ -88,17 +117,143 @@ class Frontend:
 
         self.new_prof_d.show()
 
+        # edit?
+        if edit:
+            pridfile = self.fetch_pridfile()
+
+            prid = pridfile [ 'prid' ]
+
+            self.new_prof_shortname_e.get_buffer().set_text ( pridfile [ 'shortname' ], len ( pridfile [ 'shortname' ] ) )
+            self.new_prof_longname_e.get_buffer().set_text ( pridfile [ 'longname' ], len ( pridfile [ 'longname' ] ) )
+            self.new_prof_password_e.get_buffer().set_text ( pridfile [ 'password' ], len ( pridfile [ 'password' ] ) )
+            self.new_prof_email_e.get_buffer().set_text ( pridfile [ 'email' ], len ( pridfile [ 'email' ] ) )
+
+        # run it..
+        #
+        r = self.new_prof_d.run()
+
+        if r == True:
+            pridfile = dict()
+
+            if edit:
+                pridfile [ 'prid' ] = prid
+            else:
+                pridfile [ 'prid' ] = str( uuid.uuid4() )
+            pridfile [ 'shortname' ] = self.new_prof_shortname_e.get_buffer().get_text().upper()
+            pridfile [ 'longname' ] = self.new_prof_longname_e.get_buffer().get_text()
+            pridfile [ 'password' ] = self.new_prof_password_e.get_buffer().get_text()
+            pridfile [ 'email' ] = self.new_prof_email_e.get_buffer().get_text()
+
+            self.write_pridfile ( pridfile )
+            self.push_profile ( pridfile )
+
+        self.update_grayed_out()
+
+        self.new_prof_d.hide()
+        self.new_prof_d.destroy()
+
+    def cb_password_insert_handler ( self, entry, text, length, position ):
+
+        position = entry.get_position() # Because the method parameter 'position' is useless
+
+        # Build a new string with allowed characters only.
+        result = ''.join([c for c in text if c in string.ascii_letters+string.digits ])
+
+        # The above line could also be written like so (more readable but less efficient):
+        # result = ''
+        # for c in text:
+        #     if c in string.hexdigits:
+        #         result += c
+
+        if result != '':
+            # Insert the new text at cursor (and block the handler to avoid recursion).
+            entry.handler_block_by_func ( self.cb_password_insert_handler )
+            entry.insert_text ( result, position )
+            entry.handler_unblock_by_func ( self.cb_password_insert_handler )
+
+            # Set the new cursor position immediately after the inserted text.
+            new_pos = position + len ( result )
+
+            # Can't modify the cursor position from within this handler,
+            # so we add it to be done at the end of the main loop:
+            gobject.gobject.idle_add ( entry.set_position, new_pos )
+
+        # We handled the signal so stop it from being processed further.
+        entry.stop_emission("insert_text")
+
+    def cb_email_insert_handler ( self, entry, text, length, position ):
+
+        position = entry.get_position() # Because the method parameter 'position' is useless
+
+        # Build a new string with allowed characters only.
+        result = ''.join([c for c in text if c in string.ascii_letters+string.digits+string.punctuation ])
+
+        # The above line could also be written like so (more readable but less efficient):
+        # result = ''
+        # for c in text:
+        #     if c in string.hexdigits:
+        #         result += c
+
+        if result != '':
+            # Insert the new text at cursor (and block the handler to avoid recursion).
+            entry.handler_block_by_func ( self.cb_email_insert_handler )
+            entry.insert_text ( result, position )
+            entry.handler_unblock_by_func ( self.cb_email_insert_handler )
+
+            # Set the new cursor position immediately after the inserted text.
+            new_pos = position + len ( result )
+
+            # Can't modify the cursor position from within this handler,
+            # so we add it to be done at the end of the main loop:
+            gobject.gobject.idle_add ( entry.set_position, new_pos )
+
+        # We handled the signal so stop it from being processed further.
+        entry.stop_emission("insert_text")
+
+    def is_entry_valid ( self, t ):
+
+        if len ( t ) == 0:
+            return False
+
+        return True
+
     def cb_new_profile_ok ( self, widget, data=None ):
-        pass
+
+        t = self.new_prof_shortname_e.get_buffer().get_text().upper()
+        if not self.is_entry_valid ( t ):
+            return
+
+        t = self.new_prof_longname_e.get_buffer().get_text()
+        if not self.is_entry_valid ( t ):
+            return
+
+        t = self.new_prof_password_e.get_buffer().get_text()
+        if not self.is_entry_valid ( t ):
+            return
+
+        t = self.new_prof_email_e.get_buffer().get_text()
+        if not self.is_entry_valid ( t ):
+            return
+
+        self.new_prof_d.response ( True )
 
     def cb_new_profile_cancel ( self, widget, data=None ):
-        pass
+        self.new_prof_d.response ( False )
 
     def cb_edit_profile ( self, widget, data=None ):
-        pass
+        self.cb_newedit_profile ( widget, data, edit = True )
 
     def cb_del_profile ( self, widget, data=None ):
-        print "Delete existing profile"
+
+        dialog = gtk.MessageDialog ( self.window, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO, gtk.BUTTONS_YES_NO,
+                                     "Delete current profile? (may not recovered!)" )
+        r = dialog.run()
+        dialog.destroy()
+
+        if r == gtk.RESPONSE_YES:
+            if self.push_delete_profile ( self.fetch_pridfile() ):
+                os.unlink ( PRIDFILENAME )
+                self.update_grayed_out()
 
     def cb_set_banner ( self, text ):
         self.banner_l.set_markup ( text )
@@ -110,27 +265,63 @@ class Frontend:
             b.connect ( "clicked", self.cb_clicked_game, k )
             self.left_vb.pack_end ( b, False, False, 0 )
 
+            """
             if self.is_profile_exist():
                 pass
             else:
                 b.set_sensitive ( False )
+            """
 
             b.show()
 
             self.gamebuttons.append ( b )
 
     def cb_clicked_game ( self, but, v ):
-        print "Desire to start game", v
+        #print "Desire to start game", v
+
+        if self.is_profile_exist():
+            self.invoke_emu ( v )
+        else:
+            md = gtk.MessageDialog ( self.window, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_ERROR, 
+                                     gtk.BUTTONS_CLOSE, "Please create a profile first" )
+            md.run()
+            md.destroy()
+
+    def invoke_emu ( self, gamename ):
+        emubase = config.get ( 'Exec', 'mamebase' )
+        emu = emubase % { "gamename": gamename }
+        print "REM: Invoking '%s'" % ( emu )
+        subprocess.call ( emu, shell=True )
+
+    def update_grayed_out ( self ):
+
+        if self.is_profile_exist():
+            self.new_profile_b.set_sensitive ( False )
+        else:
+            self.new_profile_b.set_sensitive ( True )
+
+        if self.is_profile_exist():
+            self.edit_profile_b.set_sensitive ( True )
+        else:
+            self.edit_profile_b.set_sensitive ( False )
+
+        if self.is_profile_exist():
+            self.del_profile_b.set_sensitive ( True )
+        else:
+            self.del_profile_b.set_sensitive ( False )
 
 
     def delete_event ( self, widget, event, data=None ):
         # return False -> GTK will ask for destroy
         # return True -> GTK will not ask to destroy (ask "you're sure?"?)
-        print "User asks for delete widget"
+        #print "User asks for delete widget"
         return False # kill me
 
     def destroy ( self, widget, data=None ):
-        print "destroy signal occurred"
+        #print "destroy signal occurred"
+
+        self.sync_gamelist_with_ui ( push = True ) # push
+
         gtk.main_quit() # exeunt
 
     def __init__(self):
@@ -156,19 +347,21 @@ class Frontend:
         self.right_vb = gtk.VBox ( False, 0 )
         self.outer_hb.pack_start ( self.left_vb )
         self.outer_hb.pack_start ( self.right_vb )
+
+        image = gtk.Image()
+        image.set_from_file ( "./artwork/retro_offline_tournament.png" )
+        image.show()
+        self.right_vb.pack_start ( image )
     
         # Buttons
         self.new_profile_b = gtk.Button ( "Create new profile" )
-        self.new_profile_b.connect ( "clicked", self.cb_new_profile, None )
+        self.new_profile_b.connect ( "clicked", self.cb_newedit_profile, None )
 
         self.edit_profile_b = gtk.Button ( "Edit existing profile" )
         self.edit_profile_b.connect ( "clicked", self.cb_edit_profile, None )
-        if not self.is_profile_exist():
-            self.edit_profile_b.set_sensitive ( False )
 
         self.del_profile_b = gtk.Button ( "Delete existing profile" )
-        if not self.is_profile_exist():
-            self.del_profile_b.set_sensitive ( False )
+        self.del_profile_b.connect ( "clicked", self.cb_del_profile, None )
 
         self.quit_b = gtk.Button ( "Quit C4A" )
         self.quit_b.connect_object ( "clicked", gtk.Widget.destroy, self.window )
@@ -185,6 +378,8 @@ class Frontend:
 
         self.banner_l = gtk.Label()
         self.banner_l.set_markup ( "Banner: <i>Waiting for server...</i>" )
+        self.banner_l.set_line_wrap ( True )
+        self.banner_l.set_alignment ( xalign=0.22, yalign=0.5 )
         self.banner_l.show()
         self.right_vb.pack_start ( self.banner_l )
 
@@ -215,11 +410,15 @@ class Frontend:
 
         self.pull_banner_and_update_with_ui()
         self.pull_gamelist_and_update_with_ui()
+        self.sync_gamelist_with_ui ( push = False ) # pull
 
         if self.is_profile_exist():
-            self.pull_profile_and_update_with_ui()
+            #self.pull_profile_and_update_with_ui()
+            pass
         else:
             self.del_profile_b.set_sensitive ( False )
+
+        self.update_grayed_out()
 
     def is_server_available ( self ):
 
@@ -231,16 +430,17 @@ class Frontend:
             b = subprocess.check_output ( config.get ( 'Sources', 'ohai' ), stderr=subprocess.STDOUT, shell=True )
             j = json.loads ( b )
 
-            md.destroy()
-
             if j [ 'status' ] == 'OK':
+                md.destroy()
                 return 1
 
-            return 0
+            print "Bad status from server OHAI"
 
         except:
-            md.destroy()
-            return 0
+            print "avail: Unexpected error:", sys.exc_info()[0]
+
+        md.destroy()
+        return 0
 
     def pull_banner_and_update_with_ui ( self ):
         # blast, python + thread + urllib/httplib2/etc are fubar, skip for now
@@ -257,6 +457,31 @@ class Frontend:
 
         md.destroy()
 
+    def sync_gamelist_with_ui ( self, push = True ):
+        scpath = config.get ( 'Exec', 'spaghetti' )
+
+        md = gtk.MessageDialog ( self.window, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_INFO, 
+                                 gtk.BUTTONS_NONE, "Syncing scores for current season ..")
+        md.show()
+
+        if push:
+            for gn in self.gamelist:
+                scrun = scpath + " push " + gn
+                try:
+                    subprocess.call ( scrun )
+                except:
+                    print "sync push: Unexpected error:", sys.exc_info()
+
+        else:
+            for gn in self.gamelist:
+                scrun = scpath + " pull " + gn
+                try:
+                    subprocess.call ( scrun )
+                except:
+                    print "sync pull: Unexpected error:", sys.exc_info()
+
+        md.destroy()
+
     def pull_gamelist_and_update_with_ui ( self ):
         # blast, python + thread + urllib/httplib2/etc are fubar, skip for now
         # http://zetcode.com/gui/pygtk/dialogs/
@@ -269,17 +494,19 @@ class Frontend:
         j = json.loads ( b )
 
         self.cb_set_gamelist ( j [ 'gamelist' ] )
+        self.gamelist = j [ 'gamelist' ]
 
         md.destroy()
 
     def is_profile_exist ( self ):
-        if os.path.isfile ( "c4a-prof" ):
+        if os.path.isfile ( PRIDFILENAME ):
             return True
         return False
 
-    def fetch_prid ( self ):
+    def fetch_pridfile ( self ):
         try:
-            f = open ( "c4a-prof", "r" )
+            f = open ( PRIDFILENAME, "r" )
+            f.readline() # pull off leading prid
             pridfile = f.read()
             j = json.loads ( pridfile )
             f.close()
@@ -287,8 +514,60 @@ class Frontend:
         except:
             return None
 
+    def write_pridfile ( self, d ):
+        f = open ( PRIDFILENAME, "w" )
+        f.write ( d [ 'prid' ] + "\n" )
+        f.write ( json.dumps ( d ) )
+        f.close()
+
+    def push_delete_profile ( self, d ):
+        curlpath = config.get ( 'Exec', 'curl' )
+
+        url = config.get ( 'Sources', 'delprofile' )
+        j = json.dumps ( d )
+
+        f = tempfile.NamedTemporaryFile ( delete = False )
+        f.write ( j )
+        f.close()
+
+        curlrun = curlpath + " -T " + f.name + " " + url
+
+        subprocess.call ( curlrun, shell = True )
+
+        os.unlink ( f.name )
+
+        return True
+
+    def push_profile ( self, d ):
+        curlpath = config.get ( 'Exec', 'curl' )
+
+        url = config.get ( 'Sources', 'setprofile' )
+        j = json.dumps ( d )
+
+        #opener = urllib2.build_opener(urllib2.HTTPHandler)
+        #request = urllib2.Request ( url, data=j )
+        #request.add_header ( 'Content-Type', 'text/json' )
+        #request.get_method = lambda: 'PUT'
+        #url = opener.open(request)
+
+        f = tempfile.NamedTemporaryFile ( delete = False )
+        f.write ( j )
+        f.close()
+
+        #curlrun = curlpath + " -T - " + url
+        #curlrun = curlpath + " -T ../Makefile " + url
+        curlrun = curlpath + " -T " + f.name + " " + url
+
+        #p = subprocess.Popen ( [ '/usr/bin/curl', '-T', '-', url ], stdin=subprocess.PIPE )
+        #p.communicate ( input=j )
+        subprocess.call ( curlrun, shell = True )
+
+        os.unlink ( f.name )
+
+        return True
+
     def pull_profile_and_update_with_ui ( self ):
-        prid = self.fetch_prid()
+        prid = self.fetch_pridfile()
 
         if not prid:
             return

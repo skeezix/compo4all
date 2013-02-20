@@ -1,7 +1,8 @@
 
 # update_hi - receive binary and i) parse it, ii) update json tally as needed, iii) store .hi file for later
 # get_hi -- fetch a bin for the emu
-# get_tally - given json (or missing file..), generate new tally binstream to feed emu!
+# get_json_tally - dump highscore table as json (for fancy frontend to display, say)
+# get_html_tally - dump highscore in vaguely readable html table (for web browser quickies)
 
 import logging
 import datetime   # datetime.now()
@@ -88,9 +89,15 @@ def get_hi ( req ):
 
     return
 
-def get_tally ( req ):
+def get_json_tally ( req ):
     tally = _read_tally ( req )
     req [ '_bindata' ] = json.dumps ( tally )
+    req [ '_binlen' ] = len ( req [ '_bindata' ] )
+    return
+
+def get_html_tally ( req ):
+    tally = _read_tally ( req )
+    req [ '_bindata' ] = "<h1>" + req [ 'gamename' ] + "</h1>"
     req [ '_binlen' ] = len ( req [ '_bindata' ] )
     return
 
