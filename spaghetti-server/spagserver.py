@@ -109,8 +109,11 @@ class RequestHandler(SimpleHTTPRequestHandler):
             req [ 'basepage' ] = basepage
             req [ 'ver' ] = basepage_ver
             req [ 'gamename' ] = paths [ 2 ]
+
         except:
-            req [ 'basepage' ] = self.path [ 1: ]
+            basepage, basepage_ver = paths [ 1 ].split ( '_', 2 )
+            req [ 'basepage' ] = basepage
+            req [ 'ver' ] = basepage_ver
 
         logging.debug ( "request looks like %s" % ( req ) )
 
@@ -119,16 +122,17 @@ class RequestHandler(SimpleHTTPRequestHandler):
         if req [ 'basepage' ] == 'banner':
             d = dict()
 
-            d [ 'banner' ] = 'Welcome to Compo4All (ROT season 2)\nRunning March 2013\nMarch games: Ms Pacman'
+            d [ 'banner' ] = '<b>Welcome to Compo4All (ROT season 2)</b>\nRunning <b>March 2013</b>\nMarch games: <b>Ms Pacman</b>'
 
             bindata = json.dumps ( d )
             self.wfile.write ( bindata )
 
         elif req [ 'basepage' ] == 'curgamelist':
+            gl = dict()
+            gl [ 'mspacman' ] = "Ms. Pacman"
+
             d = dict()
-            d [ 'gamelist' ] = [
-                'mspacman',
-                ]
+            d [ 'gamelist' ] = gl
             bindata = json.dumps ( d )
             self.wfile.write ( bindata )
 

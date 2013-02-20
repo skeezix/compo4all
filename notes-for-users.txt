@@ -1,0 +1,38 @@
+
+Compo4All (ROT season 2?) is descended from PanMAME (thanks mcobit!)
+
+MAME 0.106 based, so thats your romset to follow.
+
+Game chocie for game 1 for testing is Ms Pacman -- near everyone should have a legal license to this ROM; if you've
+ever purchased a Namco arcade collection for xbox, PSP, whatever, you should be good to go (otherwise, go get one from
+the bargain bin for a fiver and have legal ROM licenses to a pile of great games :)
+
+Running Compo4All MAME requires a network connection:
+  - the launcher client will not work without it
+  - the hiscore management will not work without it
+
+C4A manages hi-scores (for specific games) on remote server! When the emu launches you'll have a generated hi-score
+table mnatching the current board highest scores! When you close the emu, any winning scores will be published to the
+server. In this fashion, you're competing with everyone who joins in!
+
+  - Save-states are disabled in the emu.
+  - Quarters are permitted (you can add more in) for now; it would be too annoying to force 'iron man' and onyl 1 quarter :)
+  - if you want to practice endlessly, you might want to use PanMAME or mame4all or any other mame, just to get the more
+    complete experience without also needing a network connection
+
+The front-end is quite simple
+  - first run, you must create your profile (so that any scores (regardless of what name you put in-game) will be
+    registered against your profile); do not delete your profile, or lose it!
+  - once you've got a profile set up, it will let you run any of the current seasons games
+
+Please play honorably and don't try to cheat; it is not particularly difficult to cheat (I can think of a dozen ways off top
+of my head)
+  - My goal is to arrange a _competition_ here, so if we have cheating.. we can't do a compo :(
+  - If people cheat, I may have to resort to forcing playback recording and proving authenticity of playback files and such,
+    which is a big pile of no-fun
+  - Trying to use playback files from online and calling them yours .. will get you beaten
+  - Trying to use alternate emu builds .. will get you beaten
+  - Trying to hexedit score files and ROMs .. will get you beaten (I don't want to start checksumming executables and ROMs and so forth, please)
+  - Trying to impersonate someone else in name or by using their profile .. lame!
+  - Trying to attack my server-side to fake scores .. lame!
+  - .. etc .. We're all friends here, lets be sportsman
