@@ -264,8 +264,12 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 self.send_response ( 406 ) # not acceptible
                 return
 
-            req [ '_bindata' ] = self.rfile.read ( length )
-            req [ '_binlen' ] = length
+            if length > 0:
+                req [ '_bindata' ] = self.rfile.read ( length )
+                req [ '_binlen' ] = length
+            else:
+                req [ '_bindata' ] = self.rfile.read()
+                req [ '_binlen' ] = len ( req [ '_bindata' ] )
 
             if req [ 'gamename' ] in modulemap.mapper:
                 modulemap.mapper [ req [ 'gamename' ] ].update_hi ( req )
