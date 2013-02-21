@@ -123,10 +123,10 @@ class Frontend:
 
             prid = pridfile [ 'prid' ]
 
-            self.new_prof_shortname_e.get_buffer().set_text ( pridfile [ 'shortname' ], len ( pridfile [ 'shortname' ] ) )
-            self.new_prof_longname_e.get_buffer().set_text ( pridfile [ 'longname' ], len ( pridfile [ 'longname' ] ) )
-            self.new_prof_password_e.get_buffer().set_text ( pridfile [ 'password' ], len ( pridfile [ 'password' ] ) )
-            self.new_prof_email_e.get_buffer().set_text ( pridfile [ 'email' ], len ( pridfile [ 'email' ] ) )
+            self.new_prof_shortname_e.set_text ( pridfile [ 'shortname' ], len ( pridfile [ 'shortname' ] ) )
+            self.new_prof_longname_e.set_text ( pridfile [ 'longname' ], len ( pridfile [ 'longname' ] ) )
+            self.new_prof_password_e.set_text ( pridfile [ 'password' ], len ( pridfile [ 'password' ] ) )
+            self.new_prof_email_e.set_text ( pridfile [ 'email' ], len ( pridfile [ 'email' ] ) )
 
         # run it..
         #
@@ -139,10 +139,10 @@ class Frontend:
                 pridfile [ 'prid' ] = prid
             else:
                 pridfile [ 'prid' ] = str( uuid.uuid4() )
-            pridfile [ 'shortname' ] = self.new_prof_shortname_e.get_buffer().get_text().upper()
-            pridfile [ 'longname' ] = self.new_prof_longname_e.get_buffer().get_text()
-            pridfile [ 'password' ] = self.new_prof_password_e.get_buffer().get_text()
-            pridfile [ 'email' ] = self.new_prof_email_e.get_buffer().get_text()
+            pridfile [ 'shortname' ] = self.new_prof_shortname_e.get_text().upper()
+            pridfile [ 'longname' ] = self.new_prof_longname_e.get_text()
+            pridfile [ 'password' ] = self.new_prof_password_e.get_text()
+            pridfile [ 'email' ] = self.new_prof_email_e.get_text()
 
             self.write_pridfile ( pridfile )
             self.push_profile ( pridfile )
@@ -219,19 +219,19 @@ class Frontend:
 
     def cb_new_profile_ok ( self, widget, data=None ):
 
-        t = self.new_prof_shortname_e.get_buffer().get_text().upper()
+        t = self.new_prof_shortname_e.get_text().upper()
         if not self.is_entry_valid ( t ):
             return
 
-        t = self.new_prof_longname_e.get_buffer().get_text()
+        t = self.new_prof_longname_e.get_text()
         if not self.is_entry_valid ( t ):
             return
 
-        t = self.new_prof_password_e.get_buffer().get_text()
+        t = self.new_prof_password_e.get_text()
         if not self.is_entry_valid ( t ):
             return
 
-        t = self.new_prof_email_e.get_buffer().get_text()
+        t = self.new_prof_email_e.get_text()
         if not self.is_entry_valid ( t ):
             return
 
