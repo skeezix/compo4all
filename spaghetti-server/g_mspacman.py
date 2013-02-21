@@ -9,10 +9,18 @@ import datetime   # datetime.now()
 import json
 import array
 import os
+import pprint
+import time
+
+import profile
+
+SCOREBOARD_MAX=25
 
 logging.info ( "g_mspacman is loading" )
 
 def update_hi ( req ):
+
+    pp = pprint.PrettyPrinter ( indent=4 )
 
     # base game path
     writepath = _basepath ( req )
@@ -26,6 +34,7 @@ def update_hi ( req ):
     # pull up existing tally file
     #
     tally = _read_tally ( req )
+    sb = tally [ 'scoreboard' ]
 
     # parse new hi buffer
     #
@@ -40,27 +49,41 @@ def update_hi ( req ):
     # .. store new tally file
 
     # -------
-    if hi <= tally [ 'hi' ]:
-        # new submission is not higher -> no dice
-        # (implication; first submitter is still winner in a tie)
-        logging.info ( "%s - submitter score of %d is not sufficient for update against existing %d" % ( req [ 'gamename' ], hi, tally [ 'hi' ] ) )
+
+    # does this score factor into the high score table, or too low to count?
+    if hi < sb [ SCOREBOARD_MAX - 1 ][ 'score' ]:
+        logging.info ( "hidb - %s - submitter score of %d is NOT sufficient to enter scoreboard (lowest %d, highest %d)" % ( req [ 'gamename' ], hi, sb [ SCOREBOARD_MAX - 1 ][ 'score' ], sb [ 0 ][ 'score' ] ) )
         return
 
-    logging.info ( "%s - submitter score of %d is sufficient for win against existing %d" % ( req [ 'gamename' ], hi, tally [ 'hi' ] ) )
+    # okay, so the guys score is at least better than one of them.. start at top, pushing the way down
+    logging.info ( "hidb - %s - submitter score of %d IS sufficient to enter scoreboard (lowest %d, highest %d)" % ( req [ 'gamename' ], hi, sb [ SCOREBOARD_MAX - 1 ][ 'score' ], sb [ 0 ][ 'score' ] ) )
 
-    # .. great! emit new tally file
-    tally [ 'hi' ] = hi
-    tally [ 'prid' ] = req [ 'prid' ]
+    for i in range ( SCOREBOARD_MAX ):
+        if hi > sb [ i ][ 'score' ]:
+            # insert new score entry
+            d = dict()
+            d [ 'prid' ] = req [ 'prid' ]
+            d [ 'score' ] = hi
+            d [ 'time' ] = int ( time.time() )
+            sb.insert ( 0, d )
+            # drop off last guy
+            sb.pop()
+            # if we updated the first entry, the very highest score, spit out a new .hi file
+            # (mspacman only has a single high score, so we only update it for the highest score.. not a whole table)
+            if i == 0:
+                f = open ( writepath + req [ 'gamename' ] + ".hi", "w" )
+                f.write ( build_hi_bin ( sb [ 0 ][ 'score' ] ) )
+                f.close()
+            break
+
+    # write out the updated tally file
+    tally [ 'hi' ] = sb [ 0 ][ 'score' ]
+    tally [ 'prid' ] = sb [ 0 ][ 'prid' ]
 
     tallyfile = json.dumps ( tally )
 
     f = open ( writepath + req [ 'gamename' ] + ".json", "w" )
     f.write ( tallyfile )
-    f.close()
-
-    # .. great! ms pacman only has 1 high score, so just save the hi-file :)
-    f = open ( writepath + req [ 'gamename' ] + ".hi", "w" )
-    f.write ( req [ '_bindata' ] )
     f.close()
 
     #logging.debug ( "received len %d" % ( req [ '_binlen' ] ) )
@@ -97,8 +120,49 @@ def get_json_tally ( req ):
 
 def get_html_tally ( req ):
     tally = _read_tally ( req )
-    req [ '_bindata' ] = "<h1>" + req [ 'gamename' ] + "</h1>"
+
+    html = ''
+    html += "<h2>" + req [ 'gamename' ] + "</h2>\n"
+    html += "<table>\n"
+
+    html += '<tr>\n'
+    html += '  <td style="padding:0 15px 0 15px;"></td>\n'
+    html += '  <td style="padding:0 15px 0 15px;"><b>Initial</b></td>\n'
+    html += '  <td style="padding:0 15px 0 15px;"><b>Name</b></td>\n'
+    html += '  <td style="padding:0 15px 0 15px;"><b>Score</b></td>\n'
+    html += '  <td style="padding:0 15px 0 15px;"><b>When</b></td>\n'
+    html += '</tr>\n'
+
+    i = 1
+    for ent in tally [ 'scoreboard' ]:
+        prident = profile.fetch_pridfile_as_dict ( ent [ 'prid' ] )
+        if prident == None:
+            prident = profile.NULL_PROFILE
+
+        tlocal = time.localtime ( ent [ 'time' ] )
+        tdisplay = time.strftime ( '%d-%b-%Y', tlocal )
+
+        html += '<tr>\n'
+        html += '  <td style="padding:0 15px 0 15px;">' + str ( i ) + "</td>\n"
+        html += '  <td style="padding:0 15px 0 15px;">' + prident [ 'shortname' ] + "</td>\n"
+        html += '  <td style="padding:0 15px 0 15px;">' + prident [ 'longname' ] + "</td>\n"
+        if ent [ 'score' ] > 0:
+            html += '  <td style="padding:0 15px 0 15px;">' + str ( ent [ 'score' ] ) + "</td>\n"
+        else:
+            html += '  <td style="padding:0 15px 0 15px;">-</td>\n'
+        if ent [ 'time' ] > 0:
+            html += '  <td style="padding:0 15px 0 15px;">' + tdisplay + "</td>\n"
+        else:
+            html += '  <td style="padding:0 15px 0 15px;"></td>\n'
+        html += '</tr>\n'
+
+        i += 1
+
+    html += "</table>\n"
+
+    req [ '_bindata' ] = html
     req [ '_binlen' ] = len ( req [ '_bindata' ] )
+
     return
 
 # ---------------
@@ -124,6 +188,11 @@ def _read_tally ( req ):
         tally = dict()
         tally [ 'hi' ] = 0
         tally [ 'prid' ] = '_default_'
+
+        scoreboard = list()
+        for i in range ( SCOREBOARD_MAX ):
+            scoreboard.append ( { 'prid': '_default_', 'score': 0, 'time': 0 } )
+        tally [ 'scoreboard' ] = scoreboard
 
     return tally
 

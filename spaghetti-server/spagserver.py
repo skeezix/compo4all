@@ -238,7 +238,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
             if not self.is_valid_request ( prid ):
                 self.send_response ( 406 ) # not acceptible
 
-            f = open ( "runtime/profiles/" + prid [ 'prid' ], 'w' )
+            f = open ( "runtime/profiles/" + prid [ 'prid' ] + ".json", 'w' )
             f.write ( req [ '_bindata' ] )
             f.close()
 
@@ -254,7 +254,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
             if not self.is_valid_request ( prid ):
                 self.send_response ( 406 ) # not acceptible
 
-            os.unlink ( "runtime/profiles/" + prid [ 'prid' ] )
+            os.unlink ( "runtime/profiles/" + prid [ 'prid' ] + ".json" )
 
             self.send_response ( 200 ) # okay
 

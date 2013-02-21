@@ -6,3 +6,4 @@ clean:
 	cd spaghetti; rm -f *.o
 	rm -f spaghetti/sc
 	cd spaghetti-server/runtime/hidb; rm -rf *
+	cd spaghetti-server/runtime/profiles; rm -rf *
