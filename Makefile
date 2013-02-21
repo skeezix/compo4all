@@ -7,3 +7,7 @@ clean:
 	rm -f spaghetti/sc
 	cd spaghetti-server/runtime/hidb; rm -rf *
 	cd spaghetti-server/runtime/profiles; rm -rf *
+
+deployserver:
+	ssh skeezix@skeewalled "cd compo4all && rm -f *.py*"
+	cd spaghetti-server && scp *.py* skeezix@skeewalled:./compo4all
