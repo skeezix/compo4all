@@ -123,10 +123,10 @@ class Frontend:
 
             prid = pridfile [ 'prid' ]
 
-            self.new_prof_shortname_e.set_text ( pridfile [ 'shortname' ], len ( pridfile [ 'shortname' ] ) )
-            self.new_prof_longname_e.set_text ( pridfile [ 'longname' ], len ( pridfile [ 'longname' ] ) )
-            self.new_prof_password_e.set_text ( pridfile [ 'password' ], len ( pridfile [ 'password' ] ) )
-            self.new_prof_email_e.set_text ( pridfile [ 'email' ], len ( pridfile [ 'email' ] ) )
+            self.new_prof_shortname_e.set_text ( pridfile [ 'shortname' ] )
+            self.new_prof_longname_e.set_text ( pridfile [ 'longname' ] )
+            self.new_prof_password_e.set_text ( pridfile [ 'password' ] )
+            self.new_prof_email_e.set_text ( pridfile [ 'email' ] )
 
         # run it..
         #
@@ -471,6 +471,7 @@ class Frontend:
                     subprocess.call ( scrun )
                 except:
                     print "sync push: Unexpected error:", sys.exc_info()
+                    print scrun
 
         else:
             for gn in self.gamelist:
@@ -479,6 +480,7 @@ class Frontend:
                     subprocess.call ( scrun )
                 except:
                     print "sync pull: Unexpected error:", sys.exc_info()
+                    print scrun
 
         md.destroy()
 
