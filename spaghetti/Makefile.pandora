@@ -1,0 +1,15 @@
+
+PNDPREFIX=/home/skeezix/archive/devo/projects/pandora-image/current/
+
+CFLAGS=-Wall -O3 -DPANDORA -I/usr/include
+LDFLAGS=-L${PNDPREFIX}
+CC=/home/skeezix/archive/tools/arm-2007q3/bin/arm-none-linux-gnueabi-gcc
+LD=/home/skeezix/archive/tools/arm-2007q3/bin/arm-none-linux-gnueabi-gcc
+
+all: sc
+
+sc:	curlpost.o spaghetti.o spaghetti_client.o spaghetti_get.o
+	${LD} ${LDFLAGS}/usr/lib -o sc curlpost.o spaghetti.o spaghetti_client.o spaghetti_get.o -lcurl -lgnutls -lgcrypt -lz -lgpg
+
+clean:
+	rm -f *~* spaghetti_post *.o
