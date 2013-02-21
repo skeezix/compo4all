@@ -2,7 +2,11 @@
 #define h_spaghetti_h
 
 #define SPAGHETTI_VER "1" /* urls base page appended with _+VER */
+#ifdef PANDORA
+#define SPAGHETTI_SERVER_BASE "http://skeezix.wallednetworks.com:13001"
+#else
 #define SPAGHETTI_SERVER_BASE "http://127.0.0.1:13001"
+#endif
 
 // SERVER SHOULD BE-WARY .. all of this could be faked with a wget and full of nasty stuff
 
