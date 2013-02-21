@@ -468,7 +468,7 @@ class Frontend:
             for gn in self.gamelist:
                 scrun = scpath + " push " + gn
                 try:
-                    subprocess.call ( scrun )
+                    subprocess.call ( scrun, shell = True )
                 except:
                     print "sync push: Unexpected error:", sys.exc_info()
                     print scrun
@@ -477,7 +477,7 @@ class Frontend:
             for gn in self.gamelist:
                 scrun = scpath + " pull " + gn
                 try:
-                    subprocess.call ( scrun )
+                    subprocess.call ( scrun, shell = True )
                 except:
                     print "sync pull: Unexpected error:", sys.exc_info()
                     print scrun
