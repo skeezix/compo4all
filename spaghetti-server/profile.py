@@ -10,13 +10,13 @@ NULL_PROFILE [ 'email' ] = ''
 NULL_PROFILE [ 'password' ] = ''
 
 def fetch_pridfile_as_dict ( prid ):
-    print "++", prid
 
     try:
         f = open ( "runtime/profiles/" + prid + ".json", 'r' )
     except:
-        logging.error ( "Couldn't locate pridfile for %s" % ( prid ) )
-        print "Unexpected error:", sys.exc_info()
+        if prid != '_default_':
+            logging.error ( "Couldn't locate pridfile for %s" % ( prid ) )
+            print "Unexpected error:", sys.exc_info()
         return None
 
     try:

@@ -116,7 +116,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
             req [ 'basepage' ] = basepage
             req [ 'ver' ] = basepage_ver
 
-        logging.debug ( "request looks like %s" % ( req ) )
+        logging.debug ( "request looks like GET %s" % ( req ) )
 
         if not self.is_valid_request ( req ):
             self.send_response ( 406 ) # not acceptible
@@ -198,10 +198,14 @@ class RequestHandler(SimpleHTTPRequestHandler):
     def do_PUT ( self ):
         #logging.debug ( "vars: %s" % ( vars ( self ) ) )
 
-        try:
-            length = int ( self.headers['Content-Length'] )
-        except:
-            length = -1
+        length = -1
+
+        if 'Content-Length' in self.headers:
+            try:
+                length = int ( self.headers['Content-Length'] ) & 0xFFFF # why do I need to mask this?
+                logging.debug ( "Content-Length header implies length is %s" % ( length ) )
+            except:
+                logging.debug ( "Couldn't determine Content-Length from header" )
 
         req = dict()
         try:
@@ -224,7 +228,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
             req [ 'basepage' ] = basepage
             req [ 'ver' ] = basepage_ver
 
-        logging.debug ( "request looks like %s" % ( req ) )
+        logging.debug ( "request looks like PUT %s" % ( req ) )
 
         if not self.is_valid_request ( req ):
             self.send_response ( 406 ) # not acceptible
@@ -268,7 +272,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 req [ '_bindata' ] = self.rfile.read ( length )
                 req [ '_binlen' ] = length
             else:
-                req [ '_bindata' ] = self.rfile.read()
+                req [ '_bindata' ] = self.rfile.read() # will likely hang waiting for timeout..
                 req [ '_binlen' ] = len ( req [ '_bindata' ] )
 
             if req [ 'gamename' ] in modulemap.mapper:
