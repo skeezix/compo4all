@@ -5,7 +5,7 @@
 # configuration edit the Makefile.usr file and NOT this file.
 #
 
-prefix=/mnt/utmp/panmame
+prefix=/mnt/utmp/c4a-mame
 datadir=${prefix}/share
 sysconfdir=${prefix}/etc
 exec_prefix=${prefix}
@@ -40,7 +40,7 @@ CONF_LIB_MCPN=no
 CONF_CFLAGS_ARCH= -DUSE_LSB
 CONF_CFLAGS_OPT=-DPANDORA -DHAVE_GLES -O3 -pipe -march=armv7-a -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp -ftree-vectorize -ffast-math -fsingle-precision-constant -fsigned-char
 PNDPREFIX=/home/skeezix/archive/devo/projects/pandora-image/current/
-CONF_LDFLAGS=-L${PNDPREFIX}/usr/lib -Wl,-rpath,${PNDPREFIX}/usr/lib -L/mnt/utmp/panmame/lib
+CONF_LDFLAGS=-L${PNDPREFIX}/usr/lib -Wl,-rpath,${PNDPREFIX}/usr/lib -L/mnt/utmp/c4a-mame/lib
 CONF_DEBUGGER=no
 CONF_DEBUG=no
 CONF_DEFS=-DHAVE_CONFIG_H
