@@ -466,7 +466,7 @@ class Frontend:
 
         if push:
             for gn in self.gamelist:
-                scrun = scpath + " push " + gn
+                scrun = scpath + " push -d " + gn
                 try:
                     subprocess.call ( scrun, shell = True )
                 except:
