@@ -15,7 +15,7 @@ export README='
 		<vbox>
 			<button><action>cp -n -R /mnt/utmp/c4a-mame/defconf/* .|zenity --progress --title="Copy files progress" --text="Setting up folders..." --auto-close --pulsate && mkdir /mnt/utmp/c4a-mame/.advance && cp -n -R /mnt/utmp/c4a-mame/defconf/.advance/* /mnt/utmp/c4a-mame/.advance/|zenity --progress --pulsate --percentage=100 --title="Copy files progress" --text="Copying default config..." --auto-close</action><action type="exit">Exit by button</action></button>
 			<text use-markup="true" wrap="false">
-				<label>"<span fgcolor='"'black'"' bgcolor='"'white'"'> Press OK to setup appdatafolders and close this window. </span>"</label>
+				<label>"<span fgcolor='"'black'"' bgcolor='"'white'"'>Click to setup /pandora/appdata/c4a-mame folder - add rom and restart</span>"</label>
 			</text>
 			<vbox scrollable="true">
 				<text wrap="true">
