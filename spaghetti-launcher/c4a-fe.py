@@ -260,7 +260,7 @@ class Frontend:
 
     def cb_set_gamelist ( self, gamelist ):
 
-        for gent in gamelist():
+        for gent in gamelist:
             b = gtk.Button ( "Start " + gent [ 'longname' ] )
             b.connect ( "clicked", self.cb_clicked_game, gent [ 'gamename' ] )
             self.left_vb.pack_end ( b, False, False, 0 )

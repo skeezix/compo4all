@@ -189,8 +189,11 @@ def get_html_tally ( req ):
     return
 
 def get_last_modify_epoch ( req ):
-    filename = _basepath ( req ) + req [ 'gamename' ] + ".json"
-    return int ( os.path.getmtime ( filename ) )
+    try:
+        filename = _basepath ( req ) + req [ 'gamename' ] + ".json"
+        return int ( os.path.getmtime ( filename ) )
+    except:
+        return 0
 
 # ---------------
 
