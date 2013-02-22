@@ -78,7 +78,7 @@ def update_hi ( req ):
             d [ 'prid' ] = req [ 'prid' ]
             d [ 'score' ] = hi
             d [ 'time' ] = int ( time.time() )
-            sb.insert ( 0, d )
+            sb.insert ( i, d )
             # drop off last guy
             sb.pop()
             # if we updated the first entry, the very highest score, spit out a new .hi file
