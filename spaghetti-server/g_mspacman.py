@@ -3,6 +3,7 @@
 # get_hi -- fetch a bin for the emu
 # get_json_tally - dump highscore table as json (for fancy frontend to display, say)
 # get_html_tally - dump highscore in vaguely readable html table (for web browser quickies)
+# get_last_modify_epoch - get epoch-time of last tally modify
 
 import logging
 import datetime   # datetime.now()
@@ -17,6 +18,13 @@ import profile
 SCOREBOARD_MAX=25
 
 logging.info ( "g_mspacman is loading" )
+
+def _basepath ( req ):
+    now = datetime.datetime.now()
+    writepath = "runtime/hidb/" + req [ 'gamename' ] + "/" + str(now.year) + "." + str('%02d'%now.month) + "/"
+    return writepath
+
+# -----------------
 
 def update_hi ( req ):
 
@@ -53,6 +61,11 @@ def update_hi ( req ):
     # does this score factor into the high score table, or too low to count?
     if hi < sb [ SCOREBOARD_MAX - 1 ][ 'score' ]:
         logging.info ( "hidb - %s - submitter score of %d is NOT sufficient to enter scoreboard (lowest %d, highest %d)" % ( req [ 'gamename' ], hi, sb [ SCOREBOARD_MAX - 1 ][ 'score' ], sb [ 0 ][ 'score' ] ) )
+        return
+
+    # is score same as existing top .. if so, its just resubmitting the score they pulled down, likely, so.. discard
+    if hi == sb [ 0 ][ 'score' ]:
+        logging.info ( "hidb - %s - submitter score of %d is same as highest score .. probably just looping. (lowest %d, highest %d)" % ( req [ 'gamename' ], hi, sb [ SCOREBOARD_MAX - 1 ][ 'score' ], sb [ 0 ][ 'score' ] ) )
         return
 
     # okay, so the guys score is at least better than one of them.. start at top, pushing the way down
@@ -114,6 +127,16 @@ def get_hi ( req ):
 
 def get_json_tally ( req ):
     tally = _read_tally ( req )
+
+    for ent in tally [ 'scoreboard' ]:
+        prident = profile.fetch_pridfile_as_dict ( ent [ 'prid' ] )
+        if prident == None:
+            prident = profile.NULL_PROFILE
+
+        ent [ 'shortname' ] = prident [ 'shortname' ]
+        ent [ 'longname' ] = prident [ 'longname' ]
+        del ent [ 'prid' ]
+
     req [ '_bindata' ] = json.dumps ( tally )
     req [ '_binlen' ] = len ( req [ '_bindata' ] )
     return
@@ -165,12 +188,11 @@ def get_html_tally ( req ):
 
     return
 
-# ---------------
+def get_last_modify_epoch ( req ):
+    filename = _basepath ( req ) + req [ 'gamename' ] + ".json"
+    return int ( os.path.getmtime ( filename ) )
 
-def _basepath ( req ):
-    now = datetime.datetime.now()
-    writepath = "runtime/hidb/" + req [ 'gamename' ] + "/" + str(now.year) + "." + str('%02d'%now.month) + "/"
-    return writepath
+# ---------------
 
 def _read_tally ( req ):
 

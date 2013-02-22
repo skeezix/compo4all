@@ -260,9 +260,9 @@ class Frontend:
 
     def cb_set_gamelist ( self, gamelist ):
 
-        for k,v in gamelist.iteritems():
-            b = gtk.Button ( "Start " + v )
-            b.connect ( "clicked", self.cb_clicked_game, k )
+        for gent in gamelist():
+            b = gtk.Button ( "Start " + gent [ 'longname' ] )
+            b.connect ( "clicked", self.cb_clicked_game, gent [ 'gamename' ] )
             self.left_vb.pack_end ( b, False, False, 0 )
 
             """
@@ -466,7 +466,7 @@ class Frontend:
 
         if push:
             for gn in self.gamelist:
-                scrun = scpath + " push -d " + gn
+                scrun = scpath + " push -d " + gn [ 'gamename' ]
                 try:
                     subprocess.call ( scrun, shell = True )
                 except:
@@ -475,7 +475,7 @@ class Frontend:
 
         else:
             for gn in self.gamelist:
-                scrun = scpath + " pull " + gn
+                scrun = scpath + " pull " + gn [ 'gamename' ]
                 try:
                     subprocess.call ( scrun, shell = True )
                 except:

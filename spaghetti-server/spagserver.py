@@ -124,7 +124,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
         if req [ 'basepage' ] == 'banner':
             d = dict()
 
-            d [ 'banner' ] = 'Retro.Online.Tournament.\n\n<b>Welcome to Compo4All (ROT season 2)</b>\n\nRunning <b>March 2013</b>\n\nMarch season games:\n<b>Ms Pacman</b>\n\n\n\n<i>Security disclosure: In case it is not obvious, this application talks to a remote server to push and pull scoring (and thats it.) For questions or concerns contact "skeezix" at\nhttp://boards.openpandora.org</i>\n\n\nPlease support out friends at:\nhttps://www.dragonbox.de/en/'
+            d [ 'banner' ] = 'Retro.Online.Tournament. <>BETA</B>\n\n<b>Welcome to Compo4All (ROT season 2)</b>\n\nRunning <b>March 2013</b>\n\nMarch season games:\n<b>Ms Pacman</b>\n\n\n\n<i>Security disclosure: In case it is not obvious, this application talks to a remote server to push and pull scoring (and thats it.) For questions or concerns contact "skeezix" at\nhttp://boards.openpandora.org</i>\n\n\nPlease support out friends at:\nhttps://www.dragonbox.de/en/'
 
             bindata = json.dumps ( d )
             self.wfile.write ( bindata )
@@ -136,11 +136,17 @@ class RequestHandler(SimpleHTTPRequestHandler):
             self.wfile.write ( bindata )
 
         elif req [ 'basepage' ] == 'curgamelist':
-            gl = dict()
-            gl [ 'mspacman' ] = "Ms. Pacman"
+            gl = list()
+
+            req = dict()
+            req [ 'gamename' ] = 'mspacman'
+            req [ 'longname' ] = "Ms. Pacman"
+            req [ '_last_tally_update_e' ] = modulemap.mapper [ req [ 'gamename' ] ].get_last_modify_epoch ( req )
+            gl.append ( req )
 
             d = dict()
             d [ 'gamelist' ] = gl
+
             bindata = json.dumps ( d )
             self.wfile.write ( bindata )
 
