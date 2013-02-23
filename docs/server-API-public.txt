@@ -1,0 +1,91 @@
+
+The server 'public API' (if you can call it an API), is pretty hackish but should do the job; it is
+not set in stone so let me know if it is unsufficient.
+
+The overall goal was..
+
+o if we want joe-user to be able to get at a feature just using a browser, stick it in the url
+o otherwise its a JSON-request fed in during PUT, on top of a limited url
+
+The whole interface is GET and PUT driven, for what its worth :P
+
+
+
+
+Theres other options, but I doubt you need those.
+
+
+
+
+Current list of games available "right now":
+
+http://skeezix.wallednetworks.com:13001/curgamelist_1
+--> returns JSON
+{   'gamelist': [   {   '_last_tally_update_e': 1361552329,
+                        'gamename': 'mspacman',
+                        'longname': 'Ms. Pacman' }
+		 ]
+}
+
+ie: returns a dict, which maps 'gamelist' to a list
+    that list in turn is a list of dicts
+    one dict per game
+    	gamename (the driver name)
+	longname (human readable)
+	_last_tally_update_e (epoch time since last tally change)
+
+ie: key 'gamelist' has a list, where each list entry is another dict of actual game details
+
+
+
+
+Pulling Highscores:
+
+As simple but joe user readable web page (plain html):
+http://skeezix.wallednetworks.com:13001/scoreboard_1/mspacman
+                                                        ^- game 'driver name' ("./mame mspacman")
+                                                  ^------- API version 1 (sort of dumb, but it is what it is)
+                                           ^-------------- command
+                                    ^--------------------- domain/port of course
+
+    o I may add options later, to control length of leaderboard, or month/season to show...
+
+
+
+As JSON (almost same data as HTML one, but in JSON format):
+
+http://skeezix.wallednetworks.com:13001/json_1/mspacman
+                                          ^--------------- json command instead of scoreboard command
+
+    o the JSON dump back here is also pretty simple..
+    o a dict with keys 'hi', 'prid' (you can ignore) and 'scoreboard'; scoreboard key gets you a list value
+    o that list is the table; a list of dicts, since I love dicts so much
+    o each dict is 'longname' (display name), 'score', 'shortname' (initials) and 'time' in epoch when that was posted to server
+
+{   'hi': 32500,
+    'prid': 'b992c4cd-a3ba-4e4b-baa0-5ffb27c0adfd',
+    'scoreboard': [   {   'longname': 'EvilDragon',
+                           'score': 32500,
+                           'shortname': 'EVD',
+                           'time': 1361558768},
+                       {   'longname': 'MrLoon',
+                           'score': 26310,
+                           'shortname': 'MRL',
+                           'time': 1361546333},
+                       {   'longname': 'Budweiser',
+                           'score': 23640,
+                           'shortname': 'BUD',
+                           'time': 1361548136},
+                       {   'longname': 'EvilDragon',
+                           'score': 21740,
+                           'shortname': 'EVD',
+                           'time': 1361552329},
+			   .....etc...
+
+    o a blank will show up like this:
+
+                       {   'longname': '',
+                           'score': 0,
+                           'shortname': '',
+                           'time': 0},
+
