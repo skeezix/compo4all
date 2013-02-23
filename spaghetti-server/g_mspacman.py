@@ -15,7 +15,7 @@ import time
 
 import profile
 
-SCOREBOARD_MAX=25
+SCOREBOARD_MAX=100
 
 logging.info ( "g_mspacman is loading" )
 
@@ -158,7 +158,9 @@ def get_html_tally ( req ):
 
     i = 1
     for ent in tally [ 'scoreboard' ]:
-        prident = profile.fetch_pridfile_as_dict ( ent [ 'prid' ] )
+        prident = None
+        if ent [ 'prid' ]:
+            prident = profile.fetch_pridfile_as_dict ( ent [ 'prid' ] )
         if prident == None:
             prident = profile.NULL_PROFILE
 
