@@ -100,21 +100,31 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
     def do_GET( self ):
         #logging.debug ( "vars: %s" % ( vars ( self ) ) )
+        logging.debug ( "GET against path '%s'" % ( self.path ) )
 
         req = dict()
 
         try:
             paths = self.path.split ( "/", 6 )
 
-            basepage, basepage_ver = paths [ 1 ].split ( '_', 2 )
+            try:
+                basepage, basepage_ver = paths [ 1 ].split ( '_', 2 )
+                req [ 'ver' ] = basepage_ver
+            except:
+                logging.debug ( "Missing _ver: vars: %s" % ( vars ( self ) ) )
+                basepage = paths [ 1 ]
             req [ 'basepage' ] = basepage
-            req [ 'ver' ] = basepage_ver
             req [ 'gamename' ] = paths [ 2 ]
 
         except:
-            basepage, basepage_ver = paths [ 1 ].split ( '_', 2 )
+
+            try:
+                basepage, basepage_ver = paths [ 1 ].split ( '_', 2 )
+                req [ 'ver' ] = basepage_ver
+            except:
+                logging.debug ( "Missing _ver: vars: %s" % ( vars ( self ) ) )
+                basepage = paths [ 1 ]
             req [ 'basepage' ] = basepage
-            req [ 'ver' ] = basepage_ver
 
         logging.debug ( "request looks like GET %s" % ( req ) )
 
@@ -225,14 +235,24 @@ class RequestHandler(SimpleHTTPRequestHandler):
             req [ 'prid' ] = paths [ 5 ]
             # etc == paths [ 6 ]
 
-            basepage, basepage_ver = paths [ 1 ].split ( '_', 2 )
+            try:
+                basepage, basepage_ver = paths [ 1 ].split ( '_', 2 )
+                req [ 'ver' ] = basepage_ver
+            except:
+                basepage = paths [ 1 ]
+                logging.debug ( "Missing _ver: vars: %s" % ( vars ( self ) ) )
             req [ 'basepage' ] = basepage
-            req [ 'ver' ] = basepage_ver
 
         except:
-            basepage, basepage_ver = paths [ 1 ].split ( '_', 2 )
+
+            try:
+                basepage, basepage_ver = paths [ 1 ].split ( '_', 2 )
+                req [ 'ver' ] = basepage_ver
+            except:
+                basepage = paths [ 1 ]
+                logging.debug ( "Missing _ver: vars: %s" % ( vars ( self ) ) )
+
             req [ 'basepage' ] = basepage
-            req [ 'ver' ] = basepage_ver
 
         logging.debug ( "request looks like PUT %s" % ( req ) )
 
