@@ -109,13 +109,13 @@ def get_hi ( req ):
         req [ '_bindata' ] = bindata
         req [ '_binlen' ] = len ( bindata )
 
-        logging.info ( "%s - pulled existant hi file" % ( req [ 'gamename' ] ) )
+        logging.info ( "%s - pulled existant hi file (len %s)" % ( req [ 'gamename' ], req [ '_binlen' ] ) )
 
     except:
         req [ '_bindata' ] = build_hi_bin ( req, 270 )
         req [ '_binlen' ] = len ( req [ '_bindata' ] )
 
-        logging.info ( "%s - pulled generated zero-score hi file" % ( req [ 'gamename' ] ) )
+        logging.info ( "%s - pulled generated zero-score hi file (len %s)" % ( req [ 'gamename' ], req [ '_binlen' ] ) )
 
     return
 
