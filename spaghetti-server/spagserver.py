@@ -99,7 +99,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
         return True
 
     def do_GET( self ):
-        #logging.debug ( "vars: %s" % ( vars ( self ) ) )
+        logging.debug ( "do_GET vars: %s" % ( vars ( self ) ) )
         logging.debug ( "GET against path '%s'" % ( self.path ) )
 
         req = dict()
@@ -221,7 +221,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
             return
 
     def do_PUT ( self ):
-        #logging.debug ( "vars: %s" % ( vars ( self ) ) )
+        logging.debug ( "do_PUT vars: %s" % ( vars ( self ) ) )
 
         length = -1
 
