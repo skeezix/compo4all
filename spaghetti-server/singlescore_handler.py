@@ -6,7 +6,6 @@
 # get_last_modify_epoch - get epoch-time of last tally modify
 
 import logging
-import datetime   # datetime.now()
 import json
 import array
 import os
@@ -14,17 +13,12 @@ import pprint
 import time
 
 import profile
+from paths import _basepath
+import modulemap
 
 SCOREBOARD_MAX=100
 
-logging.info ( "g_mspacman is loading" )
-
-def _basepath ( req ):
-    now = datetime.datetime.now()
-    writepath = "runtime/hidb/" + req [ 'gamename' ] + "/" + str(now.year) + "." + str('%02d'%now.month) + "/"
-    return writepath
-
-# -----------------
+logging.info ( "LOADING: singlescore_handler" )
 
 def update_hi ( req ):
 
@@ -46,7 +40,7 @@ def update_hi ( req ):
 
     # parse new hi buffer
     #
-    hi = parse_hi_bin ( req [ '_bindata' ] )
+    hi = parse_hi_bin ( req, req [ '_bindata' ] )
 
     # is any of this new buffer better than existing tally?
     # if so, update tally file and record it
@@ -85,7 +79,7 @@ def update_hi ( req ):
             # (mspacman only has a single high score, so we only update it for the highest score.. not a whole table)
             if i == 0:
                 f = open ( writepath + req [ 'gamename' ] + ".hi", "w" )
-                f.write ( build_hi_bin ( sb [ 0 ][ 'score' ] ) )
+                f.write ( build_hi_bin ( req, sb [ 0 ][ 'score' ] ) )
                 f.close()
             break
 
@@ -118,7 +112,7 @@ def get_hi ( req ):
         logging.info ( "%s - pulled existant hi file" % ( req [ 'gamename' ] ) )
 
     except:
-        req [ '_bindata' ] = build_hi_bin ( 270 )
+        req [ '_bindata' ] = build_hi_bin ( req, 270 )
         req [ '_binlen' ] = len ( req [ '_bindata' ] )
 
         logging.info ( "%s - pulled generated zero-score hi file" % ( req [ 'gamename' ] ) )
@@ -223,53 +217,8 @@ def _read_tally ( req ):
 
     return tally
 
-def _decode ( byte ):
-    # @ -> blank
-    # otherwise, literal byte value is number; ^A (is byte value 1) is number one; ^@ (0) is zero
-    if byte == 64: # '@'
-        # print "#", int ( byte ), "->0"
-        return 0
-    else:
-        # print "#", int ( byte ), "->", byte
-        return byte
+def parse_hi_bin ( req, bindata ):
+    return modulemap.drivermap [ req [ 'gamename' ] ].parse_hi_bin ( req, bindata )
 
-def parse_hi_bin ( bindata ):
-
-    a = array.array ( 'B' )
-    a.fromstring ( bindata )
-
-    hi = _decode ( a [ 4 ] ) +              \
-        ( _decode ( a [ 5 ] ) * 10 ) +      \
-        ( _decode ( a [ 6 ] ) * 100 ) +     \
-        ( _decode ( a [ 7 ] ) * 1000 ) +    \
-        ( _decode ( a [ 8 ] ) * 10000 ) +   \
-        ( _decode ( a [ 9 ] ) * 100000 )
-
-    # print "received score", hi
-    return hi
-
-def build_hi_bin ( hiscore ):
-
-    a = array.array ( 'B' )
-    a.append ( 112 ) # p
-    a.append ( 2 )
-    a.append ( 0 )
-    a.append ( 0 )
-    a.append ( 0 )
-    a.append ( 7 )
-    a.append ( 2 )
-    a.append ( 64 ) # @
-    a.append ( 64 ) # @
-    a.append ( 64 ) # @
-    a.append ( 72 ) # H
-
-    for i in range ( 6 ):
-        a [ 4 + i ] = 64 # blank by default
-
-    source = "%d" % hiscore
-    pos = 0
-    for c in reversed ( source ):
-        a [ 4 + pos ] = int(c)
-        pos += 1
-
-    return a.tostring()
+def build_hi_bin ( req, hiscore ):
+    return modulemap.drivermap [ req [ 'gamename' ] ].build_hi_bin ( req, hiscore )

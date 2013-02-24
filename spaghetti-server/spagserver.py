@@ -93,7 +93,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
     
     def is_valid_game ( self, req ):
 
-        if req [ 'gamename' ] not in ( 'mspacman', 'sf2', 'dkong' ):
+        if req [ 'gamename' ] not in ( 'mspacman', 'galaxian' ):
             return False
 
         return True
@@ -151,6 +151,14 @@ class RequestHandler(SimpleHTTPRequestHandler):
             req = dict()
             req [ 'gamename' ] = 'mspacman'
             req [ 'longname' ] = "Ms. Pacman"
+            req [ 'status' ] = 'active'
+            req [ '_last_tally_update_e' ] = modulemap.mapper [ req [ 'gamename' ] ].get_last_modify_epoch ( req )
+            gl.append ( req )
+
+            req = dict()
+            req [ 'gamename' ] = 'galaxian'
+            req [ 'longname' ] = "Galaxian"
+            req [ 'status' ] = 'active'
             req [ '_last_tally_update_e' ] = modulemap.mapper [ req [ 'gamename' ] ].get_last_modify_epoch ( req )
             gl.append ( req )
 
