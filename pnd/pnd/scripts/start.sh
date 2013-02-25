@@ -36,7 +36,7 @@ cd $HOME
 export MAIN_DIALOG='
 <window window_position="1" title="PanMAME" decorated="false" width_request="600" height_request="360">
     <pixmap>
-      <input file>/mnt/utmp/c4a-mame/artwork/retro_offline_tournament.png</input>
+      <input file>/mnt/utmp/c4a-mame/artwork/splash.png</input>
     </pixmap>
 </window>
 '

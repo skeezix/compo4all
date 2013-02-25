@@ -288,10 +288,19 @@ class Frontend:
             md.destroy()
 
     def invoke_emu ( self, gamename ):
+
+        # sync scores - pull
+        # we pull them all, since they can switch games in-emu..
+        self.sync_gamelist_with_ui ( push = False ) # pull
+
+        # run the emu
         emubase = config.get ( 'Exec', 'mamebase' )
         emu = emubase % { "gamename": gamename }
         print "REM: Invoking '%s'" % ( emu )
         subprocess.call ( emu, shell=True )
+
+        # sync scores - push
+        self.sync_gamelist_with_ui ( push = True ) # push
 
     def update_grayed_out ( self ):
 
@@ -319,9 +328,6 @@ class Frontend:
 
     def destroy ( self, widget, data=None ):
         #print "destroy signal occurred"
-
-        self.sync_gamelist_with_ui ( push = True ) # push
-
         gtk.main_quit() # exeunt
 
     def __init__(self):
@@ -410,7 +416,6 @@ class Frontend:
 
         self.pull_banner_and_update_with_ui()
         self.pull_gamelist_and_update_with_ui()
-        self.sync_gamelist_with_ui ( push = False ) # pull
 
         if self.is_profile_exist():
             #self.pull_profile_and_update_with_ui()
