@@ -16,7 +16,7 @@ import profile
 from paths import _basepath
 import modulemap
 
-SCOREBOARD_MAX=100
+SCOREBOARD_MAX=500
 
 logging.info ( "LOADING: singlescore_handler" )
 
@@ -99,6 +99,12 @@ def update_hi ( req ):
 
 def get_hi ( req ):
 
+    req [ '_bindata' ] = build_hi_bin ( req, 0 )
+    req [ '_binlen' ] = len ( req [ '_bindata' ] )
+
+    logging.info ( "%s - pulled generated zero-score hi file (len %s)" % ( req [ 'gamename' ], req [ '_binlen' ] ) )
+
+    '''
     writepath = _basepath ( req )
 
     try:
@@ -116,6 +122,7 @@ def get_hi ( req ):
         req [ '_binlen' ] = len ( req [ '_bindata' ] )
 
         logging.info ( "%s - pulled generated zero-score hi file (len %s)" % ( req [ 'gamename' ], req [ '_binlen' ] ) )
+    '''
 
     return
 
@@ -151,10 +158,15 @@ def get_html_tally ( req ):
     html += '</tr>\n'
 
     i = 1
+    pridcache = dict()
     for ent in tally [ 'scoreboard' ]:
         prident = None
         if ent [ 'prid' ]:
-            prident = profile.fetch_pridfile_as_dict ( ent [ 'prid' ] )
+            try:
+                prident = pridcache [ ent [ 'prid' ] ]
+            except:
+                prident = profile.fetch_pridfile_as_dict ( ent [ 'prid' ] )
+                pridcache [ ent [ 'prid' ] ] = prident
         if prident == None:
             prident = profile.NULL_PROFILE
 
@@ -178,6 +190,8 @@ def get_html_tally ( req ):
         i += 1
 
     html += "</table>\n"
+
+    html += "<p>%d unique profiles in the leaderboard</p>\n" % ( len ( pridcache ) )
 
     req [ '_bindata' ] = html
     req [ '_binlen' ] = len ( req [ '_bindata' ] )

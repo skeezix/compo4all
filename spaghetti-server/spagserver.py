@@ -140,6 +140,10 @@ class RequestHandler(SimpleHTTPRequestHandler):
             self.wfile.write ( bindata )
 
         elif req [ 'basepage' ] == 'ohai':
+
+            self.send_response ( 200 ) # okay; the following is the right header sequence
+            self.end_headers()
+
             d = dict()
             d [ 'status' ] = 'OK'
             bindata = json.dumps ( d )
@@ -166,6 +170,11 @@ class RequestHandler(SimpleHTTPRequestHandler):
             d [ 'gamelist' ] = gl
 
             bindata = json.dumps ( d )
+
+            self.send_response ( 200 ) # okay; the following is the right header sequence
+            self.send_header ( 'Content-length', len ( bindata ) )
+            self.end_headers()
+
             self.wfile.write ( bindata )
 
         elif req [ 'basepage' ] == 'json':
@@ -175,11 +184,14 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 return
 
             if req [ 'gamename' ] in modulemap.mapper:
-                modulemap.mapper [ req [ 'gamename' ] ].get_json_tally ( req )
-                self.wfile.write ( req [ '_bindata' ] )
+                self.send_response ( 200 ) # okay; the following is the right header sequence
                 self.send_header ( 'Access-Control-Allow-Origin', '*' ) # milkshake: http://enable-cors.org/
                 self.send_header ( 'Content-type', 'application/json; charset=utf-8' )
-                #self.send_response ( 200 ) # okay
+                self.end_headers()
+
+                modulemap.mapper [ req [ 'gamename' ] ].get_json_tally ( req )
+                self.wfile.write ( req [ '_bindata' ] )
+
             else:
                 self.send_response ( 406 ) # not acceptible
                 logging.error ( "No module found for game %s" % ( gamename ) )
@@ -195,6 +207,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
                 self.send_response ( 200 )
                 self.send_header ( 'Content-type', 'text/html' )
+                self.send_header ( 'Content-length', len ( req [ '_bindata' ] ) )
                 self.end_headers()
 
                 self.wfile.write ( req [ '_bindata' ] )
@@ -211,9 +224,12 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
             if req [ 'gamename' ] in modulemap.mapper:
                 modulemap.mapper [ req [ 'gamename' ] ].get_hi ( req )
-                self.wfile.write ( req [ '_bindata' ] )
+
+                self.send_response ( 200 )
                 self.send_header ( 'Content-length', req [ '_binlen' ] )
-                #self.send_response ( 200 ) # okay
+                self.end_headers()
+
+                self.wfile.write ( req [ '_bindata' ] )
             else:
                 self.send_response ( 406 ) # not acceptible
                 logging.error ( "No module found for game %s" % ( gamename ) )

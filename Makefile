@@ -11,3 +11,7 @@ clean:
 deployserver:
 	ssh skeezix@skeewalled "cd compo4all && rm -f *.py*"
 	cd spaghetti-server && scp *.py* skeezix@skeewalled:./compo4all
+
+deployutil:
+	ssh skeezix@skeewalled "cd compo4all/util && rm -f *.py*"
+	cd util && scp *.py* skeezix@skeewalled:./compo4all/util
