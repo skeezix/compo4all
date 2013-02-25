@@ -177,6 +177,8 @@ class RequestHandler(SimpleHTTPRequestHandler):
             if req [ 'gamename' ] in modulemap.mapper:
                 modulemap.mapper [ req [ 'gamename' ] ].get_json_tally ( req )
                 self.wfile.write ( req [ '_bindata' ] )
+                self.send_header ( 'Access-Control-Allow-Origin', '*' ) # milkshake: http://enable-cors.org/
+                self.send_header ( 'Content-type', 'application/json; charset=utf-8' )
                 #self.send_response ( 200 ) # okay
             else:
                 self.send_response ( 406 ) # not acceptible
