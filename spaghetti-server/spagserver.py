@@ -452,9 +452,13 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
         return path
 
+class ThreadingHTTPServer ( SocketServer.ThreadingMixIn, BaseHTTPServer.HTTPServer ):
+    # use some mixins to make a threading server.. lets see how this works
+    pass
+
 server_address = ('', state.server_port)
 RequestHandler.protocol_version = "HTTP/1.0"
-httpd = BaseHTTPServer.HTTPServer ( server_address, RequestHandler )
+httpd = ThreadingHTTPServer ( server_address, RequestHandler )
 sa = httpd.socket.getsockname()
 logging.info ( "Serving HTTP on " + str(sa[0]) + " port " + str(sa[1]) + "..." )
 httpd.serve_forever()
