@@ -147,6 +147,12 @@ class RequestHandler(SimpleHTTPRequestHandler):
             d = dict()
             d [ 'status' ] = 'OK'
             bindata = json.dumps ( d )
+
+            self.send_response ( 200 ) # okay; the following is the right header sequence
+            self.send_header ( 'Content-type', 'application/json; charset=utf-8' )
+            self.send_header ( 'Content-length', len ( bindata ) )
+            self.end_headers()
+
             self.wfile.write ( bindata )
 
         elif req [ 'basepage' ] == 'curgamelist':
@@ -172,6 +178,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
             bindata = json.dumps ( d )
 
             self.send_response ( 200 ) # okay; the following is the right header sequence
+            self.send_header ( 'Content-type', 'application/json; charset=utf-8' )
             self.send_header ( 'Content-length', len ( bindata ) )
             self.end_headers()
 
