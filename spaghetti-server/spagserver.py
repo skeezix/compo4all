@@ -137,12 +137,15 @@ class RequestHandler(SimpleHTTPRequestHandler):
             d [ 'banner' ] = 'Retro.Online.Tournament. <b>BETA</b>\n\n<b>Welcome to Compo4All (ROT season 2)</b>\n\nRunning <b>March 2013</b>\n\nMarch season games:\n<b>Ms Pacman, Galaxian</b>\n\n\n\n<i>Security disclosure: In case it is not obvious, this application talks to a remote server to push and pull scoring (and thats it.) For questions or concerns contact "skeezix" at\nhttp://boards.openpandora.org</i>\n\n\nPlease support our friends at:\nhttps://www.dragonbox.de'
 
             bindata = json.dumps ( d )
+
+            self.send_response ( 200 ) # okay; the following is the right header sequence
+            self.send_header ( 'Content-type', 'application/json; charset=utf-8' )
+            self.send_header ( 'Content-length', len ( bindata ) )
+            self.end_headers()
+
             self.wfile.write ( bindata )
 
         elif req [ 'basepage' ] == 'ohai':
-
-            self.send_response ( 200 ) # okay; the following is the right header sequence
-            self.end_headers()
 
             d = dict()
             d [ 'status' ] = 'OK'
@@ -178,6 +181,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
             bindata = json.dumps ( d )
 
             self.send_response ( 200 ) # okay; the following is the right header sequence
+            self.send_header ( 'Access-Control-Allow-Origin', '*' ) # milkshake: http://enable-cors.org/
             self.send_header ( 'Content-type', 'application/json; charset=utf-8' )
             self.send_header ( 'Content-length', len ( bindata ) )
             self.end_headers()
