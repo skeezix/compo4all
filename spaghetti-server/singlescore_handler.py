@@ -154,7 +154,7 @@ def get_html_tally ( req ):
     html += "<table>\n"
 
     html += '<tr>\n'
-    html += '  <td style="padding:0 15px 0 15px;"></td>\n'
+    html += '  <td style="padding:0 15px 0 15px;"><b>Rank</b></td>\n'
     html += '  <td style="padding:0 15px 0 15px;"><b>Initial</b></td>\n'
     html += '  <td style="padding:0 15px 0 15px;"><b>Name</b></td>\n'
     html += '  <td style="padding:0 15px 0 15px;"><b>Score</b></td>\n'
@@ -163,7 +163,11 @@ def get_html_tally ( req ):
 
     i = 1
     pridcache = dict()
+    lastprident = None
+    lastrun = 0 # for an RLE-like run count
+
     for ent in tally [ 'scoreboard' ]:
+
         prident = None
         if ent [ 'prid' ]:
             try:
@@ -177,20 +181,55 @@ def get_html_tally ( req ):
         tlocal = time.localtime ( ent [ 'time' ] )
         tdisplay = time.strftime ( '%d-%b-%Y', tlocal )
 
-        html += '<tr>\n'
-        html += '  <td style="padding:0 15px 0 15px;">' + str ( i ) + "</td>\n"
-        html += '  <td style="padding:0 15px 0 15px;">' + prident [ 'shortname' ] + "</td>\n"
-        html += '  <td style="padding:0 15px 0 15px;">' + prident [ 'longname' ] + "</td>\n"
-        if ent [ 'score' ] > 0:
-            html += '  <td style="padding:0 15px 0 15px;">' + str ( ent [ 'score' ] ) + "</td>\n"
-        else:
-            html += '  <td style="padding:0 15px 0 15px;">-</td>\n'
-        if ent [ 'time' ] > 0:
-            html += '  <td style="padding:0 15px 0 15px;">' + tdisplay + "</td>\n"
-        else:
-            html += '  <td style="padding:0 15px 0 15px;"></td>\n'
-        html += '</tr>\n'
+        showrow = 1 # 0 no, 1 yes, 2 ellipses
 
+        if lastprident == prident:
+            showrow = 0
+            lastrun += 1
+        else:
+
+            # if not first row, and the RLE is significant .. show an ellipses
+            if lastprident != None and lastrun > 0:
+                showrow = 2
+            else:
+                showrow = 1
+
+            # last and current are not the same, so RLE is back to zero
+            lastrun = 0
+
+        if showrow == 0:
+            pass # suppress
+
+        else:
+
+            if showrow == 2:
+                # so our last row is not same as this row, and last guy was not also the first
+                # row.. so show "..."
+                html += '<tr>\n'
+                html += '  <td style="padding:0 15px 0 15px;">' + "" + "</td>\n"
+                html += '  <td style="padding:0 15px 0 15px;">' + "" + "</td>\n"
+                html += '  <td style="padding:0 15px 0 15px;">' + "..." + "</td>\n"
+                html += '  <td style="padding:0 15px 0 15px;"></td>\n'
+                html += '  <td style="padding:0 15px 0 15px;"></td>\n'
+                html += '</tr>\n'
+
+            # showrow == 1, or showrow == 2 .. show this line
+            html += '<tr>\n'
+
+            html += '  <td style="padding:0 15px 0 15px;">' + str ( i ) + "</td>\n"
+            html += '  <td style="padding:0 15px 0 15px;">' + prident [ 'shortname' ] + "</td>\n"
+            html += '  <td style="padding:0 15px 0 15px;">' + prident [ 'longname' ] + "</td>\n"
+            if ent [ 'score' ] > 0:
+                html += '  <td style="padding:0 15px 0 15px;">' + str ( ent [ 'score' ] ) + "</td>\n"
+            else:
+                html += '  <td style="padding:0 15px 0 15px;">-</td>\n'
+            if ent [ 'time' ] > 0:
+                html += '  <td style="padding:0 15px 0 15px;">' + tdisplay + "</td>\n"
+            else:
+                html += '  <td style="padding:0 15px 0 15px;"></td>\n'
+            html += '</tr>\n'
+
+        lastprident = prident
         i += 1
 
     html += "</table>\n"
