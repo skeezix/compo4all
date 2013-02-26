@@ -5,3 +5,7 @@ def _basepath ( req ):
     now = datetime.datetime.now()
     writepath = "runtime/hidb/" + req [ 'gamename' ] + "/" + str(now.year) + "." + str('%02d'%now.month) + "/"
     return writepath
+
+def templatepath ( req ):
+    path = "runtime/templates/" + req [ 'gamename' ] + ".hi"
+    return path

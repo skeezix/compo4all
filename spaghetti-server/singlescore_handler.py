@@ -20,7 +20,8 @@ SCOREBOARD_MAX=500
 
 logging.info ( "LOADING: singlescore_handler" )
 
-def update_hi ( req ):
+# "score" should not be supplied, unless its multiscore sending its shit here
+def update_hi ( req, score_int=None ):
 
     pp = pprint.PrettyPrinter ( indent=4 )
 
@@ -40,7 +41,10 @@ def update_hi ( req ):
 
     # parse new hi buffer
     #
-    hi = parse_hi_bin ( req, req [ '_bindata' ] )
+    if score_int:
+        hi = score_int
+    else:
+        hi = parse_hi_bin ( req, req [ '_bindata' ] )
 
     # is any of this new buffer better than existing tally?
     # if so, update tally file and record it
@@ -77,7 +81,7 @@ def update_hi ( req ):
             sb.pop()
             # if we updated the first entry, the very highest score, spit out a new .hi file
             # (mspacman only has a single high score, so we only update it for the highest score.. not a whole table)
-            if i == 0:
+            if i == 0 and score_int == None:
                 f = open ( writepath + req [ 'gamename' ] + ".hi", "w" )
                 f.write ( build_hi_bin ( req, sb [ 0 ][ 'score' ] ) )
                 f.close()
@@ -232,7 +236,7 @@ def _read_tally ( req ):
     return tally
 
 def parse_hi_bin ( req, bindata ):
-    return modulemap.drivermap [ req [ 'gamename' ] ].parse_hi_bin ( req, bindata )
+    return modulemap.gamemap [ req [ 'gamename' ] ][ 'module' ].parse_hi_bin ( req, bindata )
 
 def build_hi_bin ( req, hiscore ):
-    return modulemap.drivermap [ req [ 'gamename' ] ].build_hi_bin ( req, hiscore )
+    return modulemap.gamemap [ req [ 'gamename' ] ][ 'module' ].build_hi_bin ( req, hiscore )

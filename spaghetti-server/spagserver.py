@@ -93,13 +93,13 @@ class RequestHandler(SimpleHTTPRequestHandler):
     
     def is_valid_game ( self, req ):
 
-        if req [ 'gamename' ] not in ( 'mspacman', 'galaxian' ):
+        if req [ 'gamename' ] not in modulemap.gamemap:
             return False
 
         return True
 
     def do_GET( self ):
-        logging.debug ( "do_GET vars: %s" % ( vars ( self ) ) )
+        #logging.debug ( "do_GET vars: %s" % ( vars ( self ) ) )
         logging.debug ( "GET against path '%s'" % ( self.path ) )
 
         req = dict()
@@ -161,19 +161,15 @@ class RequestHandler(SimpleHTTPRequestHandler):
         elif req [ 'basepage' ] == 'curgamelist':
             gl = list()
 
-            req = dict()
-            req [ 'gamename' ] = 'mspacman'
-            req [ 'longname' ] = "Ms. Pacman"
-            req [ 'status' ] = 'active'
-            req [ '_last_tally_update_e' ] = modulemap.mapper [ req [ 'gamename' ] ].get_last_modify_epoch ( req )
-            gl.append ( req )
+            for k,mm in modulemap.gamemap.iteritems():
 
-            req = dict()
-            req [ 'gamename' ] = 'galaxian'
-            req [ 'longname' ] = "Galaxian"
-            req [ 'status' ] = 'active'
-            req [ '_last_tally_update_e' ] = modulemap.mapper [ req [ 'gamename' ] ].get_last_modify_epoch ( req )
-            gl.append ( req )
+                if mm [ 'status' ] in ( 'available', 'active' ):
+                    req = dict()
+                    req [ 'gamename' ] = mm [ 'gamename' ]
+                    req [ 'longname' ] = mm [ 'longname' ]
+                    req [ 'status' ] = mm [ 'status' ]
+                    req [ '_last_tally_update_e' ] = mm [ '_last_tally_update_e' ]
+                    gl.append ( req )
 
             d = dict()
             d [ 'gamelist' ] = gl
@@ -194,13 +190,13 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 self.send_response ( 406 ) # not acceptible
                 return
 
-            if req [ 'gamename' ] in modulemap.mapper:
+            if req [ 'gamename' ] in modulemap.gamemap:
                 self.send_response ( 200 ) # okay; the following is the right header sequence
                 self.send_header ( 'Access-Control-Allow-Origin', '*' ) # milkshake: http://enable-cors.org/
                 self.send_header ( 'Content-type', 'application/json; charset=utf-8' )
                 self.end_headers()
 
-                modulemap.mapper [ req [ 'gamename' ] ].get_json_tally ( req )
+                modulemap.gamemap [ req [ 'gamename' ] ][ 'handler' ].get_json_tally ( req )
                 self.wfile.write ( req [ '_bindata' ] )
 
             else:
@@ -213,8 +209,8 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 self.send_response ( 406 ) # not acceptible
                 return
 
-            if req [ 'gamename' ] in modulemap.mapper:
-                modulemap.mapper [ req [ 'gamename' ] ].get_html_tally ( req )
+            if req [ 'gamename' ] in modulemap.gamemap:
+                modulemap.gamemap [ req [ 'gamename' ] ][ 'handler' ].get_html_tally ( req )
 
                 self.send_response ( 200 )
                 self.send_header ( 'Content-type', 'text/html' )
@@ -233,8 +229,8 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 self.send_response ( 406 ) # not acceptible
                 return
 
-            if req [ 'gamename' ] in modulemap.mapper:
-                modulemap.mapper [ req [ 'gamename' ] ].get_hi ( req )
+            if req [ 'gamename' ] in modulemap.gamemap:
+                modulemap.gamemap [ req [ 'gamename' ] ][ 'handler' ].get_hi ( req )
 
                 self.send_response ( 200 )
                 self.send_header ( 'Content-length', req [ '_binlen' ] )
@@ -250,7 +246,8 @@ class RequestHandler(SimpleHTTPRequestHandler):
             return
 
     def do_PUT ( self ):
-        logging.debug ( "do_PUT vars: %s" % ( vars ( self ) ) )
+        #logging.debug ( "do_PUT vars: %s" % ( vars ( self ) ) )
+        logging.debug ( "PUT against path '%s'" % ( self.path ) )
 
         length = -1
 
@@ -339,8 +336,8 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 req [ '_bindata' ] = self.rfile.read() # will likely hang waiting for timeout..
                 req [ '_binlen' ] = len ( req [ '_bindata' ] )
 
-            if req [ 'gamename' ] in modulemap.mapper:
-                modulemap.mapper [ req [ 'gamename' ] ].update_hi ( req )
+            if req [ 'gamename' ] in modulemap.gamemap:
+                modulemap.gamemap [ req [ 'gamename' ] ][ 'handler' ].update_hi ( req )
             else:
                 logging.error ( "No module found for game %s" % ( gamename ) )
 
