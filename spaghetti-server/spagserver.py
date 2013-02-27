@@ -134,7 +134,12 @@ class RequestHandler(SimpleHTTPRequestHandler):
         if req [ 'basepage' ] == 'banner':
             d = dict()
 
-            d [ 'banner' ] = 'Retro.Online.Tournament. <b>BETA</b>\n\n<b>Welcome to Compo4All (ROT season 2)</b>\n\nRunning <b>March 2013</b>\n\nMarch season games:\n<b>Ms Pacman, Galaxian</b>\n\n\n\n<i>Security disclosure: In case it is not obvious, this application talks to a remote server to push and pull scoring (and thats it.) For questions or concerns contact "skeezix" at\nhttp://boards.openpandora.org</i>\n\n\nPlease support our friends at:\nhttps://www.dragonbox.de'
+            f = open ( "runtime/banner/banner.txt", 'r' )
+            text = f.read()
+            f.close()
+            print text
+
+            d [ 'banner' ] = text
 
             bindata = json.dumps ( d )
 

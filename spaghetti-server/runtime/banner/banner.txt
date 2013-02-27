@@ -1,0 +1,8 @@
+<b>Welcome to Compo4All (Retro Online Tournament season 2!)</b>
+
+See the forum for active competitions or play for all-time rankings!
+
+<i>Security disclosure: In case it is not obvious, this application talks to a remote server to push and pull scoring (and thats it.)</i>
+
+
+Please support our friends at: https://www.dragonbox.de
