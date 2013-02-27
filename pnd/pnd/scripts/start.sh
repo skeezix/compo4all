@@ -34,13 +34,15 @@ else
 
 cd $HOME
 export MAIN_DIALOG='
-<window window_position="1" title="PanMAME" decorated="false" width_request="600" height_request="360">
+<window window_position="1" title="PanMAME" decorated="false" width_request="400" height_request="400">
     <pixmap>
       <input file>/mnt/utmp/c4a-mame/artwork/splash.png</input>
     </pixmap>
 </window>
 '
 exec /mnt/utmp/c4a-mame/bin/gtkdialog --program=MAIN_DIALOG &
+
+sleep 1
 fi
 
 cp -n -R /mnt/utmp/c4a-mame/defconf/* .
