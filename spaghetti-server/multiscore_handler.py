@@ -12,6 +12,9 @@ def update_hi ( req ):
     # how many slots in the table?
     n = modulemap.gamemap [ req [ 'gamename' ] ][ 'module' ].get_table_slots ( req )
 
+    # keep a copy of bindata since get_hi is destructive right now .. why oh why?!
+    bindata = req [ '_bindata' ]
+
     # get the template table bits..
     template = get_hi ( req )
     thi = list()
@@ -29,7 +32,7 @@ def update_hi ( req ):
     #     if new, send it to singleserver
 
     for i in range ( n ):
-        d = modulemap.gamemap [ req [ 'gamename' ] ][ 'module' ].get_table_slot_dict ( req, req [ '_bindata' ], i )
+        d = modulemap.gamemap [ req [ 'gamename' ] ][ 'module' ].get_table_slot_dict ( req, bindata, i )
 
         found = False
         for t in range ( n ):
@@ -55,6 +58,11 @@ def get_hi ( req ):
     req [ '_binlen' ] = len ( bindata )
 
     logging.info ( "%s - pulled template hi file (len %s)" % ( req [ 'gamename' ], req [ '_binlen' ] ) )
+
+    try:
+        d = modulemap.gamemap [ req [ 'gamename' ] ][ 'module' ].optional_prepare_template ( req )
+    except:
+        pass
 
     return bindata
 

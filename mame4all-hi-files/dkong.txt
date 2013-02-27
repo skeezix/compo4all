@@ -6,6 +6,8 @@ HS = 007650
 Chars
 -----
 Assume encoding is 0-9 then ABCD... hence B is 12; 0-9 is up to 10, and then A is 11, B is 12..
+well, we know A is 11.. not sure about numbers
+10 is blank .. hmm.
 
 
 Rank Score      Name
@@ -43,3 +45,19 @@ won 6300 (2nd) with BCD
 00000090: 0005 0005 0010 1010 1010 1010 1010 1010  ................
 000000a0: 1010 103f 0050 5000 fc76 5076 0000 0007  ...?.PP..vPv....
 000000b0: 0605 00                                  ...
+
+score 1st: 327651
+00000000: 9477 0123 2410 1003 0207 0605 0110 1010
+                                        01 last digit of score
+                                          10 10 footer
+                                               10 -- blank, first initial
+therefore:
+
+rank 1 is: buffer + 7 == first digit
+           ... buffer + 12 == last digit
+           ... buffer + 15..17 == initials
+rank 2 is: buffer + 41 == first digit
+
+therefore: 41-7 == distance 34
+
+therefore rank 3 test .. buffer + 41 + 34 = rank3 .. buffer + 75..

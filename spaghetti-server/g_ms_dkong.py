@@ -1,8 +1,11 @@
 
+import logging
 import array
 
 import decode_bcd
 import hexdump
+import singlescore_handler
+import profile
 
 def get_table_slots ( req ):
     return 5
@@ -11,33 +14,62 @@ def get_table_slots ( req ):
 # return dict of: score, shortname
 def get_table_slot_dict ( req, blockdata, n ):
 
-    offset = 0 + ( 7 * n )
-    length = 7
+    offset = 7 + ( 34 * n )
+    length = 11
 
     a = array.array ( 'B' )
-    a.fromstring ( blockdata [ offset : offset + 7 ] )
+    a.fromstring ( blockdata [ offset : offset + length ] )
 
-    hi = ( decode_bcd.bcd_byte_to_int ( a [ 1 ] ) * 1000 ) + \
-         ( decode_bcd.bcd_byte_to_int ( a [ 0 ] ) *   100 )
+    hi = ( a [ 0 ] * 100000 ) + \
+         ( a [ 1 ] *  10000 ) + \
+         ( a [ 2 ] *   1000 ) + \
+         ( a [ 3 ] *    100 ) + \
+         ( a [ 4 ] *     10 ) + \
+         ( a [ 5 ] *      1 )
 
-    level = a [ 3 ]
-
-    # charset I bet is..
-    # 0-9 -> 0-9
-    # 10 0xA -> A
-    # 11 0xB -> B ...
-    initials = decode_char ( a [ 4 ] ) + \
-               decode_char ( a [ 5 ] ) + \
-               decode_char ( a [ 6 ] )
+    initials = decode_char ( a [ 8 ] ) + \
+               decode_char ( a [ 9 ] ) + \
+               decode_char ( a [ 10 ] )
 
     d = dict()
     d [ 'score' ] = hi
-    d [ 'level' ] = level
     d [ 'shortname' ] = initials
 
     return d
 
+def optional_prepare_template ( req ):
+
+    return # forget it for now
+
+    logging.info ( "dkong does attempt to modify template prior to sending to client..." )
+
+    # fetch tally
+    tally = singlescore_handler._read_tally ( req )
+
+    if tally [ 'scoreboard' ][ 0 ][ 'prid' ] != '_default_':
+        # theres a real score here
+        pridfile = profile.fetch_pridfile_as_dict ( tally [ 'scoreboard' ][ 0 ][ 'prid' ] )
+
+        if not pridfile:
+            return
+
+        if not pridfile [ 'shortname' ].isdigit():
+            return
+
+        # imprint top initials
+        req [ '_bindata' ][ 7 +  8 ] = encode_char ( pridfile [ 'shortname' ][ 0 ] )
+        req [ '_bindata' ][ 7 +  9 ] = encode_char ( pridfile [ 'shortname' ][ 1 ] )
+        req [ '_bindata' ][ 7 + 10 ] = encode_char ( pridfile [ 'shortname' ][ 2 ] )
+
+# -------------------------------------
+
 def decode_char ( c ):
-    if c < 10:
-        return chr ( ord ( '0' ) + c )
-    return chr ( ord ( 'A' ) + c - 10 )
+    if c < 10: # not verified
+        return chr ( ord ( '0' ) + c ) # not verified
+    if c == 16:
+        return ' '
+    return chr ( ord ( 'A' ) + c - 17 )
+
+def encode_char ( c ):
+    # only works for A-Z for now
+    return ord ( c ) - ord ( 'A' ) + 17

@@ -262,7 +262,7 @@ def _read_tally ( req ):
         tally = json.loads ( tallyfile )
 
     except:
-        logging.warning ( "%s - assuming new score (0) file" % ( req [ 'gamename' ] ) )
+        logging.warning ( "%s - assuming new score file (all zeroes)" % ( req [ 'gamename' ] ) )
         tally = dict()
         tally [ 'hi' ] = 0
         tally [ 'prid' ] = '_default_'
