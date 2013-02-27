@@ -137,7 +137,6 @@ class RequestHandler(SimpleHTTPRequestHandler):
             f = open ( "runtime/banner/banner.txt", 'r' )
             text = f.read()
             f.close()
-            print text
 
             d [ 'banner' ] = text
 

@@ -1,4 +1,11 @@
 
+import array
+
+def get_array ( blockdata, offset, length ):
+    a = array.array ( 'B' )
+    a.fromstring ( blockdata [ offset : offset + length ] )
+    return a
+
 # origin of this code.. g_ss_mspacman
 #
 def decode64 ( byte ):

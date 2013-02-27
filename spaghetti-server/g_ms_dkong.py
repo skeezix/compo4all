@@ -3,6 +3,7 @@ import logging
 import array
 
 import decode_bcd
+import decode_common
 import hexdump
 import singlescore_handler
 import profile
@@ -14,11 +15,7 @@ def get_table_slots ( req ):
 # return dict of: score, shortname
 def get_table_slot_dict ( req, blockdata, n ):
 
-    offset = 7 + ( 34 * n )
-    length = 11
-
-    a = array.array ( 'B' )
-    a.fromstring ( blockdata [ offset : offset + length ] )
+    a = decode_common.get_array ( blockdata, 7 + ( 34 * n ), 11 )
 
     hi = ( a [ 0 ] * 100000 ) + \
          ( a [ 1 ] *  10000 ) + \
