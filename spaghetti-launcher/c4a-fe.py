@@ -258,7 +258,7 @@ class Frontend:
     def cb_play_game ( self, widget, data=None ):
 
         if self.is_profile_exist():
-            self.invoke_emu ( data )
+            self.invoke_emu ( self.selected_gamename )
         else:
             md = gtk.MessageDialog ( self.window, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_ERROR, 
                                      gtk.BUTTONS_CLOSE, "Please create a profile first" )
