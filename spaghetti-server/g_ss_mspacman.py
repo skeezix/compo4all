@@ -1,27 +1,19 @@
 
 import array
 
-def _decode ( byte ):
-    # @ -> blank
-    # otherwise, literal byte value is number; ^A (is byte value 1) is number one; ^@ (0) is zero
-    if byte == 64: # '@'
-        # print "#", int ( byte ), "->0"
-        return 0
-    else:
-        # print "#", int ( byte ), "->", byte
-        return byte
+import decode_common
 
 def parse_hi_bin ( req, bindata ):
 
     a = array.array ( 'B' )
     a.fromstring ( bindata )
 
-    hi = _decode ( a [ 4 ] ) +              \
-        ( _decode ( a [ 5 ] ) * 10 ) +      \
-        ( _decode ( a [ 6 ] ) * 100 ) +     \
-        ( _decode ( a [ 7 ] ) * 1000 ) +    \
-        ( _decode ( a [ 8 ] ) * 10000 ) +   \
-        ( _decode ( a [ 9 ] ) * 100000 )
+    hi = decode_common.decode64 ( a [ 4 ] ) +              \
+        ( decode_common.decode64 ( a [ 5 ] ) * 10 ) +      \
+        ( decode_common.decode64 ( a [ 6 ] ) * 100 ) +     \
+        ( decode_common.decode64 ( a [ 7 ] ) * 1000 ) +    \
+        ( decode_common.decode64 ( a [ 8 ] ) * 10000 ) +   \
+        ( decode_common.decode64 ( a [ 9 ] ) * 100000 )
 
     # print "received score", hi
     return hi

@@ -37,6 +37,4 @@ register ( 'mspacman', 'Ms. Pacman',      singlescore_handler, g_ss_mspacman, 'a
 register ( 'galaxian', 'Galaxian',        singlescore_handler, g_ss_galaxian, 'active' )
 register ( 'invaders', 'Space Invaders',  singlescore_handler, g_ss_invaders, 'active' )
 register ( 'rthunder', 'Rolling Thunder', multiscore_handler,  g_ms_rthunder, 'unavailable' ) # coded, emu is not writing hi out :/
-
-register ( 'dkong',    'Donkey Kong',     multiscore_handler,  g_ms_dkong,    'unavailable' ) # not yet coded
-
+register ( 'dkong',    'Donkey Kong',     multiscore_handler,  g_ms_dkong,    'active' )

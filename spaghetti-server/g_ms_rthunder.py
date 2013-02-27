@@ -32,6 +32,7 @@ import array
 
 import decode_bcd
 import hexdump
+import decode_common
 
 def get_table_slots ( req ):
     return 5
@@ -55,9 +56,9 @@ def get_table_slot_dict ( req, blockdata, n ):
     # 0-9 -> 0-9
     # 10 0xA -> A
     # 11 0xB -> B ...
-    initials = decode_char ( a [ 4 ] ) + \
-               decode_char ( a [ 5 ] ) + \
-               decode_char ( a [ 6 ] )
+    initials = decode_common.decode_numchar ( a [ 4 ] ) + \
+               decode_common.decode_numchar ( a [ 5 ] ) + \
+               decode_common.decode_numchar ( a [ 6 ] )
 
     d = dict()
     d [ 'score' ] = hi
@@ -65,8 +66,3 @@ def get_table_slot_dict ( req, blockdata, n ):
     d [ 'shortname' ] = initials
 
     return d
-
-def decode_char ( c ):
-    if c < 10:
-        return chr ( ord ( '0' ) + c )
-    return chr ( ord ( 'A' ) + c - 10 )
