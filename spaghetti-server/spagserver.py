@@ -6,6 +6,9 @@ import urlparse
 import os         # makedirs
 import json
 import string
+import datetime
+
+import dates
 
 # command line args
 #
@@ -162,6 +165,37 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
             self.wfile.write ( bindata )
 
+        elif req [ 'basepage' ] == 'links':
+
+            now = datetime.datetime.now()
+            lastmonth =  dates.subtract_one_month ( now )
+
+            html = ''
+            html += '<table>\n'
+            html += '  <tr>\n'
+            html += '    <td style="padding:0 15px 0 15px;"><b>Game</b></td>\n'
+            html += '    <td style="padding:0 15px 0 15px;"><b>Last Month</b></td>\n'
+            html += '    <td style="padding:0 15px 0 15px;"><b>Current Month</b></td>\n'
+            html += '    <td style="padding:0 15px 0 15px;"><b>All Time</b></td>\n'
+            html += '  </tr>\n'
+
+            for k,mm in modulemap.gamemap.iteritems():
+                if mm [ 'status' ] in ( 'available', 'active' ):
+
+                    html += '  <tr>\n'
+                    html += '    <td style="padding:0 15px 0 15px;">%s</td>\n' % ( mm [ 'longname' ] )
+                    html += '    <td style="padding:0 15px 0 15px;"><a href="%s">here</a></td>\n' % ( config.get ( 'WhereAmI', 'displayhost' ) + 'scoreboard_1/' + mm [ 'gamename' ] + '/' + str(lastmonth.year) + str('%02d'%lastmonth.month) + '/' )
+                    html += '    <td style="padding:0 15px 0 15px;"><a href="%s">here</a></td>\n' % ( config.get ( 'WhereAmI', 'displayhost' ) + 'scoreboard_1/' + mm [ 'gamename' ] + '/' )
+                    html += '    <td style="padding:0 15px 0 15px;">tbd</td>\n'
+                    html += '  </tr>\n'
+
+            self.send_response ( 200 ) # okay; the following is the right header sequence
+            self.send_header ( 'Content-type', 'text/html; charset=utf-8' )
+            self.send_header ( 'Content-length', len ( html ) )
+            self.end_headers()
+
+            self.wfile.write ( html )
+
         elif req [ 'basepage' ] == 'curgamelist':
             gl = list()
 
@@ -208,6 +242,10 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 logging.error ( "No module found for game %s" % ( gamename ) )
 
         elif req [ 'basepage' ] == 'scoreboard':
+
+            if paths [ 3 ] and paths [ 3 ].isdigit():
+                req [ '_backdate' ] = paths [ 3 ]
+                logging.info ( "Request is backdated; now looks like %s" % ( req ) )
 
             if not self.is_valid_game ( req ):
                 self.send_response ( 406 ) # not acceptible
