@@ -243,7 +243,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
         elif req [ 'basepage' ] == 'scoreboard':
 
-            if paths [ 3 ] and paths [ 3 ].isdigit():
+            if len ( paths ) == 4 and paths [ 3 ] and paths [ 3 ].isdigit():
                 req [ '_backdate' ] = paths [ 3 ]
                 logging.info ( "Request is backdated; now looks like %s" % ( req ) )
 
