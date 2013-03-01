@@ -224,6 +224,14 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
         elif req [ 'basepage' ] == 'json':
 
+            if len ( paths ) >= 4 and paths [ 3 ]:
+                if paths [ 3 ].isdigit():
+                    req [ '_backdate' ] = paths [ 3 ]
+                    logging.info ( "Request is backdated; now looks like %s" % ( req ) )
+                else:
+                    req [ '_backdate' ] = 'ALLTIM'
+                    logging.info ( "Request is for all-time; now looks like %s" % ( req ) )
+
             if not self.is_valid_game ( req ):
                 self.send_response ( 406 ) # not acceptible
                 return
