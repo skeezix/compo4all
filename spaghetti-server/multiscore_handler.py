@@ -24,6 +24,8 @@ def update_hi ( req ):
 
         logging.debug ( "%s template slot %d is %s: %s" % ( req [ 'gamename' ], i, d [ 'shortname' ], d [ 'score' ] ) )
 
+    req [ '_bindata' ] = bindata
+
     # with luck, we can parse out a single entries block and send that to single-handler; do this once per entry
     # in the hi table, that looks like a new entry
 

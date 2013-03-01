@@ -186,7 +186,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
                     html += '    <td style="padding:0 15px 0 15px;">%s</td>\n' % ( mm [ 'longname' ] )
                     html += '    <td style="padding:0 15px 0 15px;"><a href="%s">here</a></td>\n' % ( config.get ( 'WhereAmI', 'displayhost' ) + 'scoreboard_1/' + mm [ 'gamename' ] + '/' + str(lastmonth.year) + str('%02d'%lastmonth.month) + '/' )
                     html += '    <td style="padding:0 15px 0 15px;"><a href="%s">here</a></td>\n' % ( config.get ( 'WhereAmI', 'displayhost' ) + 'scoreboard_1/' + mm [ 'gamename' ] + '/' )
-                    html += '    <td style="padding:0 15px 0 15px;">tbd</td>\n'
+                    html += '    <td style="padding:0 15px 0 15px;"><a href="%s">here</a></td>\n' % ( config.get ( 'WhereAmI', 'displayhost' ) + 'scoreboard_1/' + mm [ 'gamename' ] + '/ALL' )
                     html += '  </tr>\n'
 
             self.send_response ( 200 ) # okay; the following is the right header sequence
@@ -243,9 +243,13 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
         elif req [ 'basepage' ] == 'scoreboard':
 
-            if len ( paths ) == 4 and paths [ 3 ] and paths [ 3 ].isdigit():
-                req [ '_backdate' ] = paths [ 3 ]
-                logging.info ( "Request is backdated; now looks like %s" % ( req ) )
+            if len ( paths ) >= 4 and paths [ 3 ]:
+                if paths [ 3 ].isdigit():
+                    req [ '_backdate' ] = paths [ 3 ]
+                    logging.info ( "Request is backdated; now looks like %s" % ( req ) )
+                else:
+                    req [ '_backdate' ] = 'ALLTIM'
+                    logging.info ( "Request is for all-time; now looks like %s" % ( req ) )
 
             if not self.is_valid_game ( req ):
                 self.send_response ( 406 ) # not acceptible
@@ -379,7 +383,13 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 req [ '_binlen' ] = len ( req [ '_bindata' ] )
 
             if req [ 'gamename' ] in modulemap.gamemap:
+                logging.debug ( "First update_hi - for actual current month" )
                 modulemap.gamemap [ req [ 'gamename' ] ][ 'handler' ].update_hi ( req )
+
+                logging.debug ( "Second update_hi - for ALLT.IM" )
+                req [ '_backdate' ] = 'ALLTIM'
+                modulemap.gamemap [ req [ 'gamename' ] ][ 'handler' ].update_hi ( req )
+
             else:
                 logging.error ( "No module found for game %s" % ( gamename ) )
 

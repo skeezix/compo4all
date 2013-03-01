@@ -149,8 +149,17 @@ def get_json_tally ( req ):
 def get_html_tally ( req ):
     tally = _read_tally ( req )
 
+    if '_backdate' in req:
+        if req [ '_backdate' ].isdigit():
+            timeframe = 'Specific Month: ' + req [ '_backdate' ]
+        else:
+            timeframe = 'All Time'
+    else:
+        timeframe = 'Current Month'
+
     html = ''
     html += "<h2>" + req [ 'gamename' ] + "</h2>\n"
+    html += "<h3>" + timeframe + "</h3>\n"
     html += "<table>\n"
 
     html += '<tr>\n'
