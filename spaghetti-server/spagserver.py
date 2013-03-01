@@ -175,7 +175,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
             html += '  <tr>\n'
             html += '    <td style="padding:0 15px 0 15px;"><b>Game</b></td>\n'
             html += '    <td style="padding:0 15px 0 15px;"><b>Last Month</b></td>\n'
-            html += '    <td style="padding:0 15px 0 15px;"><b>Current Month</b></td>\n'
+            html += '    <td style="padding:0 15px 0 15px;"><b>Current Month So Far</b></td>\n'
             html += '    <td style="padding:0 15px 0 15px;"><b>All Time</b></td>\n'
             html += '  </tr>\n'
 
