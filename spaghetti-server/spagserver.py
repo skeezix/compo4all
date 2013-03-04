@@ -109,6 +109,10 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
         # parse out ?key=value sillyness
         if '?' in self.path:
+            try:
+                self.path, crap = self.path.split ( '&', 2 )
+            except:
+                pass
             self.path, query = self.path.split ( '?', 2 )
             self._query = dict()
             key, value = query.split ( '=', 2 )
@@ -227,7 +231,6 @@ class RequestHandler(SimpleHTTPRequestHandler):
                     req [ 'status' ] = mm [ 'status' ]
                     req [ '_last_tally_update_e' ] = mm [ '_last_tally_update_e' ]
 
-                    print mm
                     t = mm [ 'handler' ]._read_tally ( req )
                     try:
                         req [ '_top_score' ] = t [ 'hi' ]
