@@ -76,3 +76,6 @@ def get_html_tally ( req ):
 
 def get_last_modify_epoch ( req ):
     return singlescore_handler.get_last_modify_epoch ( req )
+
+def _read_tally ( req ):
+    return singlescore_handler._read_tally ( req )

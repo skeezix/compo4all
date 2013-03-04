@@ -9,6 +9,7 @@ import string
 import datetime
 
 import dates
+import profile
 
 # command line args
 #
@@ -207,6 +208,19 @@ class RequestHandler(SimpleHTTPRequestHandler):
                     req [ 'longname' ] = mm [ 'longname' ]
                     req [ 'status' ] = mm [ 'status' ]
                     req [ '_last_tally_update_e' ] = mm [ '_last_tally_update_e' ]
+
+                    print mm
+                    t = mm [ 'handler' ]._read_tally ( req )
+                    try:
+                        req [ '_top_score' ] = t [ 'hi' ]
+                        pridfile = profile.fetch_pridfile_as_dict ( t [ 'prid' ] )
+                        req [ '_top_shortname' ] = pridfile [ 'shortname' ]
+                        req [ '_top_longname' ] = pridfile [ 'longname' ]
+                    except:
+                        req [ '_top_score' ] = 0
+                        req [ '_top_shortname' ] = ''
+                        req [ '_top_longname' ] = ''
+
                     gl.append ( req )
 
             d = dict()
