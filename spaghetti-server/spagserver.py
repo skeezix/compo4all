@@ -10,6 +10,7 @@ import datetime
 
 import dates
 import profile
+import httpparse
 
 # command line args
 #
@@ -105,6 +106,23 @@ class RequestHandler(SimpleHTTPRequestHandler):
     def do_GET( self ):
         #logging.debug ( "do_GET vars: %s" % ( vars ( self ) ) )
         logging.debug ( "GET against path '%s'" % ( self.path ) )
+
+        # parse out ?key=value sillyness
+        if '?' in self.path:
+            self.path, query = self.path.split ( '?', 2 )
+            self._query = dict()
+            key, value = query.split ( '=', 2 )
+            self._query [ key ] = value
+
+        # do we have a JSONP request?
+        jsonp_pre = ''
+        jsonp_post = ''
+        try:
+            if 'jsonp' in self._query:
+                jsonp_pre = self._query [ 'jsonp' ] + '('
+                jsonp_post = ');'
+        except:
+            pass
 
         req = dict()
 
@@ -226,7 +244,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
             d = dict()
             d [ 'gamelist' ] = gl
 
-            bindata = json.dumps ( d )
+            bindata = jsonp_pre + json.dumps ( d ) + jsonp_post
 
             self.send_response ( 200 ) # okay; the following is the right header sequence
             self.send_header ( 'Access-Control-Allow-Origin', '*' ) # milkshake: http://enable-cors.org/
@@ -257,7 +275,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 self.end_headers()
 
                 modulemap.gamemap [ req [ 'gamename' ] ][ 'handler' ].get_json_tally ( req )
-                self.wfile.write ( req [ '_bindata' ] )
+                self.wfile.write ( jsonp_pre + req [ '_bindata' ] + jsonp_post )
 
             else:
                 self.send_response ( 406 ) # not acceptible
