@@ -15,6 +15,7 @@ import g_ms_dkong
 import g_ms_fshark # sky shark
 import g_ms_mrdo
 import g_ms_pulstar
+import g_ms_bublbobl
 
 gamemap = dict()
 
@@ -36,6 +37,7 @@ def register ( gamename, longname, handler, module, status ):
 
 # really should make an interface, a class for each, and mixins for the handler+module ..
 
+register ( 'bublbobl', 'Bubble Bobble',   multiscore_handler,  g_ms_bublbobl, 'active' )
 register ( 'dkong',    'Donkey Kong',     multiscore_handler,  g_ms_dkong,    'active' )
 register ( 'fshark',   'Flying Shark',    multiscore_handler,  g_ms_fshark,   'active' )
 register ( 'galaxian', 'Galaxian',        singlescore_handler, g_ss_galaxian, 'active' )
