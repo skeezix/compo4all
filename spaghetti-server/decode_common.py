@@ -24,3 +24,6 @@ def decode_numchar ( c ):
     if c < 10:
         return chr ( ord ( '0' ) + c )
     return chr ( ord ( 'A' ) + c - 10 )
+
+def decode_ascii ( c ):
+    return chr ( c )

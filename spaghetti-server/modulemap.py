@@ -14,6 +14,7 @@ import g_ms_rthunder
 import g_ms_dkong
 import g_ms_fshark # sky shark
 import g_ms_mrdo
+import g_ms_pulstar
 
 gamemap = dict()
 
@@ -35,10 +36,11 @@ def register ( gamename, longname, handler, module, status ):
 
 # really should make an interface, a class for each, and mixins for the handler+module ..
 
-register ( 'mspacman', 'Ms. Pacman',      singlescore_handler, g_ss_mspacman, 'active' )
-register ( 'galaxian', 'Galaxian',        singlescore_handler, g_ss_galaxian, 'active' )
-register ( 'invaders', 'Space Invaders',  singlescore_handler, g_ss_invaders, 'active' )
-register ( 'rthunder', 'Rolling Thunder', multiscore_handler,  g_ms_rthunder, 'unavailable' ) # coded, emu is not writing hi out :/
 register ( 'dkong',    'Donkey Kong',     multiscore_handler,  g_ms_dkong,    'active' )
 register ( 'fshark',   'Flying Shark',    multiscore_handler,  g_ms_fshark,   'active' )
+register ( 'galaxian', 'Galaxian',        singlescore_handler, g_ss_galaxian, 'active' )
+register ( 'invaders', 'Space Invaders',  singlescore_handler, g_ss_invaders, 'active' )
 register ( 'mrdo',     'Mr. Do!',         multiscore_handler,  g_ms_mrdo,     'active' )
+register ( 'mspacman', 'Ms. Pacman',      singlescore_handler, g_ss_mspacman, 'active' )
+register ( 'pulstar',  'Pulstar',         multiscore_handler,  g_ms_pulstar,  'active' )
+register ( 'rthunder', 'Rolling Thunder', multiscore_handler,  g_ms_rthunder, 'unavailable' ) # coded, emu is not writing hi out :/
