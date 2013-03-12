@@ -16,6 +16,7 @@ import g_ms_fshark # sky shark
 import g_ms_mrdo
 import g_ms_pulstar
 import g_ms_bublbobl
+import g_ms_rygar
 
 gamemap = dict()
 
@@ -46,3 +47,4 @@ register ( 'mrdo',     'Mr. Do!',         multiscore_handler,  g_ms_mrdo,     'a
 register ( 'mspacman', 'Ms. Pacman',      singlescore_handler, g_ss_mspacman, 'active' )
 register ( 'pulstar',  'Pulstar',         multiscore_handler,  g_ms_pulstar,  'active' )
 register ( 'rthunder', 'Rolling Thunder', multiscore_handler,  g_ms_rthunder, 'unavailable' ) # coded, emu is not writing hi out :/
+register ( 'rygar',    'Rygar',           multiscore_handler,  g_ms_rygar,    'active' )

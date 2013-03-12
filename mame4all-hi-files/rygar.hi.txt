@@ -1,0 +1,10 @@
+50 scores (!!)
+
+00000000: 4100 0300 0041 4141 0241 0003 0000 4141  A....AAA.A....AA
+          A <- who knows?
+            00 0300 00 <- score
+                       A A A <- initials
+                               2 <- round
+
+00000000: 4102 0301 0241 4141 0341 0003 0000 4141  A....AAA.A....AA
+          score 02030102 -> actual score 2030102 .. so literally in order?! nice
