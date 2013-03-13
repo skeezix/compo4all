@@ -15,6 +15,7 @@ import time
 import profile
 from paths import _basepath
 import modulemap
+import activity_log
 
 SCOREBOARD_MAX=500
 
@@ -23,7 +24,7 @@ logging.info ( "LOADING: singlescore_handler" )
 # "score" should not be supplied, unless its multiscore sending its shit here
 def update_hi ( req, score_int=None ):
 
-    pp = pprint.PrettyPrinter ( indent=4 )
+    #pp = pprint.PrettyPrinter ( indent=4 )
 
     # base game path
     writepath = _basepath ( req )
@@ -76,6 +77,9 @@ def update_hi ( req, score_int=None ):
             d [ 'prid' ] = req [ 'prid' ]
             d [ 'score' ] = hi
             d [ 'time' ] = int ( time.time() )
+            # log the activity
+            activity_log.log_entry ( req, d, i )
+            # insert
             sb.insert ( i, d )
             # drop off last guy
             sb.pop()

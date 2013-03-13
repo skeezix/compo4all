@@ -43,6 +43,8 @@ if config.has_section ( 'PyPath' ):
 else:
     print "WARN: Config is missing [PyPath] section"
 
+state.config = config
+
 # set up logging
 #
 loglevel = getattr ( logging, config.get ( 'Logging', 'level' ).upper() )
@@ -83,6 +85,7 @@ for pair in config.items ( 'Routing' ):
 #
 
 import modulemap
+import activity_log
 
 # open up webserver
 #
@@ -311,6 +314,17 @@ class RequestHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_response ( 406 ) # not acceptible
                 logging.error ( "No module found for game %s" % ( gamename ) )
+
+        elif req [ 'basepage' ] == 'activity':
+
+            activity_log.get_log_html ( req )
+
+            self.send_response ( 200 )
+            self.send_header ( 'Content-type', 'text/html' )
+            self.send_header ( 'Content-length', len ( req [ '_bindata' ] ) )
+            self.end_headers()
+
+            self.wfile.write ( req [ '_bindata' ] )
 
         elif req [ 'basepage' ] == 'hi':
 

@@ -14,3 +14,7 @@ def _basepath ( req ):
 def templatepath ( req ):
     path = "runtime/templates/" + req [ 'gamename' ] + ".hi"
     return path
+
+def actlogfullpath ( req ):
+    path = "runtime/logs/activity.json"
+    return path
