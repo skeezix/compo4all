@@ -197,6 +197,10 @@ class RequestHandler(SimpleHTTPRequestHandler):
             lastmonth =  dates.subtract_one_month ( now )
 
             html = ''
+            html += '<br/>\n'
+            html += 'Recent score submissions: <a href="%s">here</a></td>\n' % ( config.get ( 'WhereAmI', 'displayhost' ) + 'activity_1/' )
+            html += '<br/>\n'
+            html += '<br/>\n'
             html += '<table>\n'
             html += '  <tr>\n'
             html += '    <td style="padding:0 15px 0 15px;"><b>Game</b></td>\n'
