@@ -330,6 +330,21 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
             self.wfile.write ( req [ '_bindata' ] )
 
+        elif req [ 'basepage' ] == 'activityjson':
+
+            logging.info ( "Fetching activity log" )
+
+            j = activity_log.get_log_json ( req )
+            data = jsonp_pre + j + jsonp_post
+            req [ '_bindata' ] = data
+
+            self.send_response ( 200 )
+            self.send_header ( 'Content-type', 'text/html' )
+            self.send_header ( 'Content-length', len ( req [ '_bindata' ] ) )
+            self.end_headers()
+
+            self.wfile.write ( req [ '_bindata' ] )
+
         elif req [ 'basepage' ] == 'hi':
 
             if not self.is_valid_game ( req ):

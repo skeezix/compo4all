@@ -127,6 +127,72 @@ def get_log_html ( req ):
 
     return
 
+def get_log_json ( req ):
+
+    tally = _readlog ( req )
+
+    retlist = list()
+
+    i = 1
+    pridcache = dict()
+
+    for ent in tally:
+
+        newent = dict()
+
+        if ent [ 'gamename' ] == '':
+            break # end of table
+
+        prident = None
+        if ent [ 'prid' ]:
+            try:
+                prident = pridcache [ ent [ 'prid' ] ]
+            except:
+                prident = profile.fetch_pridfile_as_dict ( ent [ 'prid' ] )
+                pridcache [ ent [ 'prid' ] ] = prident
+
+        if prident == None:
+            prident = profile.NULL_PROFILE
+
+        tlocal = time.localtime ( ent [ 'time' ] )
+        tdisplay = time.strftime ( '%d-%b-%Y', tlocal )
+
+        showrow = 1 # 0 no, 1 yes, 2 ellipses
+
+        if showrow == 0:
+            pass # suppress
+
+        else:
+
+            # showrow == 1, or showrow == 2 .. show this line
+
+            newent [ 'shortname' ] = prident [ 'shortname' ]
+            newent [ 'longname' ] = prident [ 'longname' ]
+            newent [ 'gamename' ] = modulemap.gamemap [ ent [ 'gamename' ] ][ 'longname' ]
+
+            if ent [ 'score' ] > 0:
+                newent [ 'score' ] = ent [ 'score' ]
+            else:
+                newent [ 'score' ] = 0
+
+            newent [ 'rank' ] = ent [ 'rank' ] + 1
+
+            if ent [ 'time' ] > 0:
+                newent [ 'time' ] = tdisplay
+            else:
+                newent [ 'time' ] = ''
+
+        retlist.append ( newent )
+
+        i += 1
+
+        if i > 50:
+            break
+
+    bindata = json.dumps ( retlist )
+
+    return bindata
+
 def _readlog ( req ):
 
     writepath = actlogfullpath ( req )
