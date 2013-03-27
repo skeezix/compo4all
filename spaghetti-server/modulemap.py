@@ -12,11 +12,13 @@ import g_ss_galaxian
 import g_ss_invaders
 import g_ms_rthunder
 import g_ms_dkong
+import g_ms_dkongjr
 import g_ms_fshark # sky shark
 import g_ms_mrdo
 import g_ms_pulstar
 import g_ms_bublbobl
 import g_ms_rygar
+import g_ms_kod
 
 gamemap = dict()
 
@@ -40,9 +42,11 @@ def register ( gamename, longname, handler, module, status ):
 
 register ( 'bublbobl', 'Bubble Bobble',   multiscore_handler,  g_ms_bublbobl, 'active' )
 register ( 'dkong',    'Donkey Kong',     multiscore_handler,  g_ms_dkong,    'active' )
+register ( 'dkongjr',  'Donkey Kong Jr.', multiscore_handler,  g_ms_dkongjr,  'active' )
 register ( 'fshark',   'Flying Shark',    multiscore_handler,  g_ms_fshark,   'active' )
 register ( 'galaxian', 'Galaxian',        singlescore_handler, g_ss_galaxian, 'active' )
 register ( 'invaders', 'Space Invaders',  singlescore_handler, g_ss_invaders, 'active' )
+register ( 'kod',      'King of Dragons', multiscore_handler,  g_ms_kod,      'active' )
 register ( 'mrdo',     'Mr. Do!',         multiscore_handler,  g_ms_mrdo,     'active' )
 register ( 'mspacman', 'Ms. Pacman',      singlescore_handler, g_ss_mspacman, 'active' )
 register ( 'pulstar',  'Pulstar',         multiscore_handler,  g_ms_pulstar,  'active' )

@@ -1,6 +1,10 @@
 #!/usr/bin/python
 
 import sys
+import os
+
+os.chdir ( "/home/skeezix/compo4all" )
+sys.path.append ( os.getcwd() )
 
 import modulemap
 import singlescore_handler

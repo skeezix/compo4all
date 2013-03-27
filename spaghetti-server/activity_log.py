@@ -28,6 +28,12 @@ def log_entry ( req, scoreent, rank ):
     d [ 'score' ] = scoreent [ 'score' ]
     d [ 'time' ] = scoreent [ 'time' ]
     d [ 'rank' ] = rank
+    d [ '_target' ] = 'MONTHLY'
+    try:
+        if req [ '_backdate' ] == 'ALLTIM':
+            d [ '_target' ] = 'ALLTIME'
+    except:
+        pass
 
     log = _readlog ( req )
 
@@ -53,6 +59,7 @@ def get_log_html ( req ):
     html += '  <td style="padding:0 15px 0 15px;"><b>Score</b></td>\n'
     html += '  <td style="padding:0 15px 0 15px;"><b>Board Rank</b></td>\n'
     html += '  <td style="padding:0 15px 0 15px;"><b>When</b></td>\n'
+    html += '  <td style="padding:0 15px 0 15px;"><b>Scoreboard</b></td>\n'
     html += '</tr>\n'
 
     i = 1
@@ -111,6 +118,14 @@ def get_log_html ( req ):
                 html += '  <td style="padding:0 15px 0 15px;">' + tdisplay + "</td>\n"
             else:
                 html += '  <td style="padding:0 15px 0 15px;"></td>\n'
+            try:
+                if ent [ '_target' ] == 'MONTHLY':
+                    html += '  <td style="padding:0 15px 0 15px;">Monthly</td>\n'
+                elif ent [ '_target' ] == 'ALLTIME':
+                    html += '  <td style="padding:0 15px 0 15px;">All Time</td>\n'
+            except:
+                html += '  <td style="padding:0 15px 0 15px;"></td>\n'
+
             html += '</tr>\n'
 
         i += 1
@@ -154,9 +169,6 @@ def get_log_json ( req ):
         if prident == None:
             prident = profile.NULL_PROFILE
 
-        tlocal = time.localtime ( ent [ 'time' ] )
-        tdisplay = time.strftime ( '%d-%b-%Y', tlocal )
-
         showrow = 1 # 0 no, 1 yes, 2 ellipses
 
         if showrow == 0:
@@ -178,9 +190,14 @@ def get_log_json ( req ):
             newent [ 'rank' ] = ent [ 'rank' ] + 1
 
             if ent [ 'time' ] > 0:
-                newent [ 'time' ] = tdisplay
+                newent [ 'time' ] = ent [ 'time' ]
             else:
                 newent [ 'time' ] = ''
+
+            try:
+                newent [ '_target' ] = ent [ '_target' ]
+            except:
+                pass
 
         retlist.append ( newent )
 
