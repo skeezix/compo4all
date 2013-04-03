@@ -87,6 +87,13 @@ for pair in config.items ( 'Routing' ):
 import modulemap
 import activity_log
 
+# set up plugins
+#
+
+# scoreonly
+import plug_scoreonly
+plug_scoreonly.init()
+
 # open up webserver
 #
 logging.info ( "c4a is starting up" )
