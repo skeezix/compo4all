@@ -1,7 +1,7 @@
 #ifndef h_spaghetti_h
 #define h_spaghetti_h
 
-#define SPAG_DEBUG 0 /* 0 off, 1 on */
+//#define SPAG_DEBUG 1 /* undef off, 1 on */
 
 #define SPAGHETTI_VER "1" /* urls base page appended with _+VER */
 #ifdef PANDORA
