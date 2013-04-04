@@ -1,5 +1,5 @@
 
-// #define SPAG_DEBUG 1
+#define SPAG_DEBUG 1
 
 #include <limits.h> // PATHNAME_MAX
 #include <unistd.h> // unlink
@@ -152,6 +152,14 @@ int main ( int argc, char **argv ) {
 
       // use libpnd to find c4a profile
       char *loc = pnd_locate_filename ( "/media/*/pandora/appdata/c4a-mame/:.", "c4a-prof" );
+
+#ifdef SPAG_DEBUG
+      if ( loc ) {
+        printf ( "found c4a-prof at %s\n", loc );
+      } else {
+        printf ( "could not find c4a-prof\n" );
+      }
+#endif
 
       if ( loc ) {
 
