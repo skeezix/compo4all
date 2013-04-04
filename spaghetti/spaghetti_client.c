@@ -8,6 +8,8 @@
 
 #include "spaghetti.h"
 
+#include "pnd_locate.h"
+
 static unsigned char fexist ( char *path ) {
   // lamely done
   FILE *f = fopen ( path, "r" );
@@ -22,6 +24,8 @@ int main ( int argc, char **argv ) {
 
   // sc push [-d] gamename
   // sc pull gamename
+  // newer:
+  // sc so push GAMENAME PLATFORM SCORE
 
   if ( argc < 3 ) {
     fprintf ( stderr, "Not enough arguments.\n" );
@@ -79,55 +83,97 @@ int main ( int argc, char **argv ) {
     }
 
     return ( 0 );
-  }
 
-  // pull mode?
-  // sc pull gamename
-  char fullpath [ PATH_MAX + 1 ];
-  char tmppath [ PATH_MAX + 1 ];
-  char *gamename = argv [ 2 ];
-  char url [ PATH_MAX + 1 ];
+  } else if ( strcmp ( argv [ 1 ], "pull" ) == 0 ) {
+    // pull mode?
 
-  // .. and full path
-  snprintf ( fullpath, PATH_MAX, "./hi/%s.hi", gamename );
-  snprintf ( tmppath, PATH_MAX, "./hi/%s.tmp", gamename );
+    // sc pull gamename
+    char fullpath [ PATH_MAX + 1 ];
+    char tmppath [ PATH_MAX + 1 ];
+    char *gamename = argv [ 2 ];
+    char url [ PATH_MAX + 1 ];
 
-  // .. and url
-  snprintf ( url, PATH_MAX, "%s/%s_%s/%s",
-             SPAGHETTI_SERVER_BASE, "hi", SPAGHETTI_VER, gamename );
+    // .. and full path
+    snprintf ( fullpath, PATH_MAX, "./hi/%s.hi", gamename );
+    snprintf ( tmppath, PATH_MAX, "./hi/%s.tmp", gamename );
 
-  void *hibuf;
-  unsigned int hibuflen;
-  int r = spaghetti_get_ram ( url, &hibuf, &hibuflen );
+    // .. and url
+    snprintf ( url, PATH_MAX, "%s/%s_%s/%s",
+               SPAGHETTI_SERVER_BASE, "hi", SPAGHETTI_VER, gamename );
 
-  if ( r < 0 ) {
-    fprintf ( stderr, "retval: %d\n", r );
-    _exit ( -1 );
-  }
+    void *hibuf;
+    unsigned int hibuflen;
+    int r = spaghetti_get_ram ( url, &hibuf, &hibuflen );
 
-  FILE *f = fopen ( tmppath, "w" );
+    if ( r < 0 ) {
+      fprintf ( stderr, "retval: %d\n", r );
+      _exit ( -1 );
+    }
 
-  if ( ! f ) {
-    fprintf ( stderr, "couldn't write file\n" );
-    _exit ( -2 );
-  }
+    FILE *f = fopen ( tmppath, "w" );
+
+    if ( ! f ) {
+      fprintf ( stderr, "couldn't write file\n" );
+      _exit ( -2 );
+    }
 
 #ifdef SPAG_DEBUG
-  printf ( "get: received %d bytes\n", hibuflen );
+    printf ( "get: received %d bytes\n", hibuflen );
 #endif
 
-  if ( fwrite ( hibuf, hibuflen, 1, f ) != 1 ) {
-    fprintf ( stderr, "couldn't transfer whole file\n" );
+    if ( fwrite ( hibuf, hibuflen, 1, f ) != 1 ) {
+      fprintf ( stderr, "couldn't transfer whole file\n" );
+      fclose ( f );
+      unlink ( tmppath );
+      _exit ( -3 );
+    }
+
     fclose ( f );
-    unlink ( tmppath );
-    _exit ( -3 );
-  }
 
-  fclose ( f );
+    unlink ( fullpath );
 
-  unlink ( fullpath );
+    rename ( tmppath, fullpath );
 
-  rename ( tmppath, fullpath );
+  } else if ( strcmp ( argv [ 1 ], "so" ) == 0 ) {
+    // sc so push GAMENAME PLATFORM SCORE
+    // prid is intuited
+
+    if ( strcmp ( argv [ 2 ], "push" ) == 0 ) {
+
+      if ( argc < 6 ) {
+        fprintf ( stderr, "Not enough arguments.\n" );
+        _exit ( -1 );
+      }
+
+      char *gamename = argv [ 3 ];
+      char *platform = argv [ 4 ];
+      char *score = argv [ 5 ];
+      char data [ 1024 ];
+
+      // use libpnd to find c4a profile
+      char *loc = pnd_locate_filename ( "/media/*/pandora/appdata/c4a-mame/:.", "c4a-prof" );
+
+      if ( loc ) {
+
+        sprintf ( data, "score=%s", score );
+
+        int r = spaghetti_plugpost_wrapper ( "scoreonly", gamename, platform, data, "/dev/null" );
+
+        if ( r != 0 ) {
+          fprintf ( stderr, "retval: %d\n", r );
+          _exit ( -1 );
+        }
+
+      } else {
+        fprintf ( stderr, "Could not locate c4a-mame profile.\n" );
+        _exit ( -2 );
+      }
+
+    } else {
+      // meh
+    }
+
+  } // mode
 
   return ( 0 );
 }

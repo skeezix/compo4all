@@ -34,6 +34,7 @@ int spaghetti_get_prid ( char *r_pridbuf, unsigned int buflen );
 //         <0 on error
 //         -1 .. not not determine prid
 int spaghetti_post_wrapper ( char *gamename, char *fullpath );
+int spaghetti_plugpost_wrapper ( char *plugin, char *gamename, char *platform, char *data, char *fullpath );
 
 int spaghetti_post_file ( char *fullpath, char *url );
 

@@ -8,13 +8,17 @@ import modulemap
 from paths import _basepath
 
 import state
+import singlescore_handler
 
 # why aren't I using classes in any of this code? and a nice abstracted pure-interface def'n class? ... oh, right, sleepdep.
 
 logging.info ( "LOADING: scoreonly plugin" )
 
+conf = None
+
 def init():
     # pull in all the conf files..
+    global conf
 
     try:
         confpath = state.config.get ( 'PlugScoreOnly', 'confpathbase' )
@@ -56,6 +60,22 @@ def init():
 
     pass
 
+def submit_data ( req, argdict ):
+    global conf
+
+    argdict [ 'score' ] = int( argdict [ 'score' ] )
+
+    if True:
+        logging.debug ( "First update_hi - for actual current month" )
+        singlescore_handler.update_hi ( req, score_int = argdict [ 'score' ] )
+
+    if conf [ 'alltime' ]:
+        logging.debug ( "Second update_hi - for ALLT.IM" )
+        req [ '_backdate' ] = 'ALLTIM'
+        singlescore_handler.update_hi ( req, score_int = argdict [ 'score' ] )
+
+    return
+
 def _loadconf ( fullpath ):
 
     try:
@@ -72,13 +92,18 @@ def _loadconf ( fullpath ):
         return None
 
 def _register_game ( conf ):
-    modulemap.register ( conf [ 'shortname' ], conf [ 'longname' ], sys.modules[__name__], None, 'active' )
+    modulemap.register ( conf [ 'shortname' ], conf [ 'longname' ], sys.modules[__name__], None, 'active', conf [ 'field' ], conf [ 'genre' ] )
 
 # ------------------------------------------------------------------------------------
 
 def get_last_modify_epoch ( req ):
-    try:
-        filename = _basepath ( req ) + req [ 'gamename' ] + ".json"
-        return int ( os.path.getmtime ( filename ) )
-    except:
-        return 0
+    return singlescore_handler.get_last_modify_epoch ( req )
+
+def get_json_tally ( req ):
+    return singlescore_handler.get_json_tally ( req )
+
+def get_html_tally ( req ):
+    return singlescore_handler.get_html_tally ( req )
+
+def _read_tally ( req ):
+    return singlescore_handler._read_tally ( req )

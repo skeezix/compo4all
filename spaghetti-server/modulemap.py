@@ -3,6 +3,7 @@
 #
 
 import logging
+import sys
 
 import singlescore_handler
 import multiscore_handler
@@ -23,7 +24,12 @@ import g_ms_kod
 gamemap = dict()
 
 # status in 'active', 'available', 'unavailable'
-def register ( gamename, longname, handler, module, status ):
+def register ( gamename, longname, handler, module, status, field, genre = None ):
+
+    if gamename in gamemap:
+        logging.error ( "FAIL REGISTER: %s is %s - already a game with this name" % ( gamename, status ) )
+        sys.exit ( -1 )
+        return None
 
     g = dict()
 
@@ -32,6 +38,8 @@ def register ( gamename, longname, handler, module, status ):
     g [ 'module' ] = module
     g [ 'longname' ] = longname
     g [ 'status' ] = status
+    g [ 'field' ] = field
+    g [ 'genre' ] = genre
     g [ '_last_tally_update_e' ] = handler.get_last_modify_epoch ( g )
 
     gamemap [ gamename ] = g
@@ -40,15 +48,15 @@ def register ( gamename, longname, handler, module, status ):
 
 # really should make an interface, a class for each, and mixins for the handler+module ..
 
-register ( 'bublbobl', 'Bubble Bobble',   multiscore_handler,  g_ms_bublbobl, 'active' )
-register ( 'dkong',    'Donkey Kong',     multiscore_handler,  g_ms_dkong,    'active' )
-register ( 'dkongjr',  'Donkey Kong Jr.', multiscore_handler,  g_ms_dkongjr,  'active' )
-register ( 'fshark',   'Flying Shark',    multiscore_handler,  g_ms_fshark,   'active' )
-register ( 'galaxian', 'Galaxian',        singlescore_handler, g_ss_galaxian, 'active' )
-register ( 'invaders', 'Space Invaders',  singlescore_handler, g_ss_invaders, 'active' )
-register ( 'kod',      'King of Dragons', multiscore_handler,  g_ms_kod,      'active' )
-register ( 'mrdo',     'Mr. Do!',         multiscore_handler,  g_ms_mrdo,     'active' )
-register ( 'mspacman', 'Ms. Pacman',      singlescore_handler, g_ss_mspacman, 'active' )
-register ( 'pulstar',  'Pulstar',         multiscore_handler,  g_ms_pulstar,  'active' )
-register ( 'rthunder', 'Rolling Thunder', multiscore_handler,  g_ms_rthunder, 'unavailable' ) # coded, emu is not writing hi out :/
-register ( 'rygar',    'Rygar',           multiscore_handler,  g_ms_rygar,    'active' )
+register ( 'bublbobl', 'Bubble Bobble',   multiscore_handler,  g_ms_bublbobl, 'active', 'arcade', 'platform' )
+register ( 'dkong',    'Donkey Kong',     multiscore_handler,  g_ms_dkong,    'active', 'arcade', 'platform' )
+register ( 'dkongjr',  'Donkey Kong Jr.', multiscore_handler,  g_ms_dkongjr,  'active', 'arcade', 'platform' )
+register ( 'fshark',   'Flying Shark',    multiscore_handler,  g_ms_fshark,   'active', 'arcade', 'shmup' )
+register ( 'galaxian', 'Galaxian',        singlescore_handler, g_ss_galaxian, 'active', 'arcade', 'shmup' )
+register ( 'invaders', 'Space Invaders',  singlescore_handler, g_ss_invaders, 'active', 'arcade', 'shmup' )
+register ( 'kod',      'King of Dragons', multiscore_handler,  g_ms_kod,      'active', 'arcade', 'beatemup' )
+register ( 'mrdo',     'Mr. Do!',         multiscore_handler,  g_ms_mrdo,     'active', 'arcade', 'maze' )
+register ( 'mspacman', 'Ms. Pacman',      singlescore_handler, g_ss_mspacman, 'active', 'arcade', 'maze' )
+register ( 'pulstar',  'Pulstar',         multiscore_handler,  g_ms_pulstar,  'active', 'arcade', 'shmup' )
+register ( 'rthunder', 'Rolling Thunder', multiscore_handler,  g_ms_rthunder, 'unavailable', 'arcade', 'platform' ) # coded, emu sucks
+register ( 'rygar',    'Rygar',           multiscore_handler,  g_ms_rygar,    'active', 'arcade', 'runngun' )

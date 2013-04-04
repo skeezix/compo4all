@@ -83,3 +83,31 @@ int main ( int argc, char **argv ) {
   return ( 0 );
 }
 #endif
+
+int spaghetti_plugpost_wrapper ( char *plugin, char *gamename, char *platform, char *data, char *fullpath ) {
+  char final_url [ 1024 ];
+  char pridbuf [ PRID_MAXLEN + 1 ];
+
+  // reset
+  bzero ( final_url, 1024 );
+  bzero ( pridbuf, PRID_MAXLEN + 1 );
+
+  // intuit..
+  if ( spaghetti_get_prid ( pridbuf, PRID_MAXLEN ) < 0 ) {
+    return ( -1 );
+  }
+
+  // update urlbase for live details
+  // EN -> emuname
+  // ES -> emu size (swapped top/bottom 16bits)
+  // GN -> game name (such as "mspacman")
+  // PRID -> user "unique-id"
+
+  // determine url
+  snprintf ( final_url, 1023, "%s/%s_%s/%s/%s/%s/%s?%s",
+             SPAGHETTI_SERVER_BASE, "plugtally", SPAGHETTI_VER,
+             plugin, gamename, platform, pridbuf, data );
+
+  // attempt to POST it
+  return ( spaghetti_post_file ( fullpath, final_url ) );
+}

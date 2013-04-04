@@ -1,8 +1,11 @@
 
+LIBPND_INC=../../libpnd/include
+LIBPND_STATLIB=../../libpnd/libpnd.a
+
 PNDPREFIX=/home/skeezix/archive/devo/projects/pandora-image/current/
 
-CFLAGS=-Wall -O3 -DPANDORA -I/usr/include
-LDFLAGS=-L${PNDPREFIX}
+CFLAGS=-Wall -O3 -DPANDORA -I/usr/include -I${LIBPND_INC}
+LDFLAGS=-L${PNDPREFIX} ${LIBPND_STATLIB}
 CC=/home/skeezix/archive/tools/arm-2007q3/bin/arm-none-linux-gnueabi-gcc
 LD=/home/skeezix/archive/tools/arm-2007q3/bin/arm-none-linux-gnueabi-gcc
 

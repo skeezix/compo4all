@@ -166,6 +166,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
         if not self.is_valid_request ( req ):
             self.send_response ( 406 ) # not acceptible
+            return
 
         if req [ 'basepage' ] == 'banner':
             d = dict()
@@ -243,6 +244,8 @@ class RequestHandler(SimpleHTTPRequestHandler):
                     req [ 'gamename' ] = mm [ 'gamename' ]
                     req [ 'longname' ] = mm [ 'longname' ]
                     req [ 'status' ] = mm [ 'status' ]
+                    req [ 'genre' ] = mm [ 'genre' ]
+                    req [ 'field' ] = mm [ 'field' ]
                     req [ '_last_tally_update_e' ] = mm [ '_last_tally_update_e' ]
 
                     t = mm [ 'handler' ]._read_tally ( req )
@@ -297,6 +300,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_response ( 406 ) # not acceptible
                 logging.error ( "No module found for game %s" % ( gamename ) )
+                return
 
         elif req [ 'basepage' ] == 'scoreboard':
 
@@ -325,6 +329,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_response ( 406 ) # not acceptible
                 logging.error ( "No module found for game %s" % ( gamename ) )
+                return
 
         elif req [ 'basepage' ] == 'activity':
 
@@ -369,6 +374,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_response ( 406 ) # not acceptible
                 logging.error ( "No module found for game %s" % ( gamename ) )
+                return
 
         else:
             self.send_response ( 406 ) # not acceptible
@@ -378,6 +384,18 @@ class RequestHandler(SimpleHTTPRequestHandler):
         #logging.debug ( "do_PUT vars: %s" % ( vars ( self ) ) )
         logging.debug ( "PUT against path '%s'" % ( self.path ) )
 
+        # parse out ?key=value sillyness
+        putargs = dict()
+        if '?' in self.path:
+            try:
+                self.path, crap = self.path.split ( '&', 2 )
+            except:
+                pass
+            self.path, query = self.path.split ( '?', 2 )
+            key, value = query.split ( '=', 2 )
+            putargs [ key ] = value
+
+        # length handling
         length = -1
 
         if 'Content-Length' in self.headers:
@@ -418,10 +436,17 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
             req [ 'basepage' ] = basepage
 
+        if req [ 'basepage' ].startswith ( "plug" ): # lame!
+            del req [ 'gamename' ]
+            del req [ 'platform' ]
+            del req [ 'emuname' ]
+            del req [ 'prid' ]
+
         logging.debug ( "request looks like PUT %s" % ( req ) )
 
         if not self.is_valid_request ( req ):
             self.send_response ( 406 ) # not acceptible
+            return
 
         if req [ 'basepage' ] == 'setprofile':
             req [ '_bindata' ] = self.rfile.read ( length )
@@ -431,6 +456,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
             if not self.is_valid_request ( prid ):
                 self.send_response ( 406 ) # not acceptible
+                return
 
             f = open ( "runtime/profiles/" + prid [ 'prid' ] + ".json", 'w' )
             f.write ( req [ '_bindata' ] )
@@ -447,12 +473,57 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
             if not self.is_valid_request ( prid ):
                 self.send_response ( 406 ) # not acceptible
+                return
 
             os.unlink ( "runtime/profiles/" + prid [ 'prid' ] + ".json" )
 
             self.send_response ( 200 ) # okay
 
+        elif req [ 'basepage' ] == 'plugtally':
+            # submit data (a score..) to a plugin
+            #  optional stream data in
+            # PUT /plugtally_1/plugin/gamename/platform/prid?data=data
+            #
+            # example:
+            # PUT /plugtally_1/scoreonly/testpong/windows/123456789?score=234
+
+            try:
+                paths = self.path.split ( "/", 6 )
+
+                # nil = paths [ 0 ]
+                # basepage and ver == paths [ 1 ]
+                req [ 'plugin' ] = paths [ 2 ]
+                req [ 'gamename' ] = paths [ 3 ]
+                req [ 'platform' ] = paths [ 4 ]
+                req [ 'prid' ] = paths [ 5 ]
+                # etc == paths [ 6 ]
+            except:
+                logging.error ( "bad url - %s" % ( sys.exc_info() ) )
+                self.send_response ( 406 ) # not acceptible
+                return
+
+            logging.debug ( "revised request looks like PUT %s" % ( req ) )
+            logging.debug ( "revised putargs looks like PUT %s" % ( putargs ) )
+
+            if not self.is_valid_game ( req ):
+                logging.info ( "Request is for bad game %s" % ( req [ 'gamename' ] ) )
+                self.send_response ( 406 ) # not acceptible
+                return
+
+            if 'score' not in putargs:
+                logging.info ( "Score is missing for game %s" % ( req [ 'gamename' ] ) )
+                self.send_response ( 406 ) # not acceptible
+                return
+
+            if True:
+                modulemap.gamemap [ req [ 'gamename' ] ][ 'handler' ].submit_data ( req, putargs )
+
+            self.send_response ( 200 ) # okay
+
+            pass
+
         elif req [ 'basepage' ] == 'tally':
+            # submit a hiscore bin
 
             if not self.is_valid_game ( req ):
                 self.send_response ( 406 ) # not acceptible

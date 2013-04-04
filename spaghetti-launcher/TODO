@@ -1,0 +1,10 @@
+
+- standalone c4a-profile.pnd
+
+- filter to games it knows how to run
+  - ie: arcade
+- button arrangement, to allow for more? scrollable?
+- offline handling? - retry, or pure offline mode..
+- fix blank dialogs
+
+- remove dip settings from mame?
