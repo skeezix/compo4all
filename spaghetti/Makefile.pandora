@@ -1,18 +1,18 @@
 
-LIBPND_INC=../../libpnd/include
-LIBPND_STATLIB=../../libpnd/libpnd.a
+LIBPND_INC=/archive/devo/projects/libpnd/include
+LIBPND_STATLIB=/archive/devo/projects/libpnd/libpnd.a
 
 PNDPREFIX=/home/skeezix/archive/devo/projects/pandora-image/current/
 
 CFLAGS=-Wall -O3 -DPANDORA -I/usr/include -I${LIBPND_INC}
-LDFLAGS=-L${PNDPREFIX} ${LIBPND_STATLIB}
+LDFLAGS=-L${PNDPREFIX}
 CC=/home/skeezix/archive/tools/arm-2007q3/bin/arm-none-linux-gnueabi-gcc
 LD=/home/skeezix/archive/tools/arm-2007q3/bin/arm-none-linux-gnueabi-gcc
 
 all: sc
 
 sc:	curlpost.o spaghetti.o spaghetti_client.o spaghetti_get.o
-	${LD} ${LDFLAGS}/usr/lib -o sc curlpost.o spaghetti.o spaghetti_client.o spaghetti_get.o -lcurl -lgnutls -lgcrypt -lz -lgpg
+	${LD} ${LDFLAGS}/usr/lib -o sc curlpost.o spaghetti.o spaghetti_client.o spaghetti_get.o -lcurl -lgnutls -lgcrypt -lz -lgpg ${LIBPND_STATLIB}
 
 clean:
 	rm -f *~* spaghetti_post *.o
