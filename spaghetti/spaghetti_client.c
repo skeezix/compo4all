@@ -1,6 +1,4 @@
 
-#define SPAG_DEBUG 1
-
 #include <limits.h> // PATHNAME_MAX
 #include <unistd.h> // unlink
 #include <stdio.h>
@@ -165,7 +163,7 @@ int main ( int argc, char **argv ) {
 
         sprintf ( data, "score=%s", score );
 
-        int r = spaghetti_plugpost_wrapper ( "scoreonly", gamename, platform, data, "/dev/null" );
+        int r = spaghetti_plugpost_wrapper ( loc, "scoreonly", gamename, platform, data, "/dev/null" );
 
         if ( r != 0 ) {
           fprintf ( stderr, "retval: %d\n", r );

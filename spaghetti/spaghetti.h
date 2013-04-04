@@ -1,6 +1,8 @@
 #ifndef h_spaghetti_h
 #define h_spaghetti_h
 
+#define SPAG_DEBUG 0 /* 0 off, 1 on */
+
 #define SPAGHETTI_VER "1" /* urls base page appended with _+VER */
 #ifdef PANDORA
 #define SPAGHETTI_SERVER_BASE "http://skeezix.wallednetworks.com:13001"
@@ -25,16 +27,17 @@ typedef struct {
 } spaghetti_t;
 
 // buflen should be PRID_MAXLEN or larger
+// path to profile, or if NULL the default ./cfa-prof will be used
 // retuns: 0 on success (implies pridbuf is modified)
 //        <0 on error (implies buffer unmodified)
-int spaghetti_get_prid ( char *r_pridbuf, unsigned int buflen );
+int spaghetti_get_prid ( char *fullpath_or_null, char *r_pridbuf, unsigned int buflen );
 
 // send hi-file to server, nice and easy
 // returns: 0 on success
 //         <0 on error
 //         -1 .. not not determine prid
 int spaghetti_post_wrapper ( char *gamename, char *fullpath );
-int spaghetti_plugpost_wrapper ( char *plugin, char *gamename, char *platform, char *data, char *fullpath );
+int spaghetti_plugpost_wrapper ( char *profilepath, char *plugin, char *gamename, char *platform, char *data, char *fullpath );
 
 int spaghetti_post_file ( char *fullpath, char *url );
 

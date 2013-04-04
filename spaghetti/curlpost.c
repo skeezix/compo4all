@@ -11,6 +11,8 @@
 
 #include <curl/curl.h>
 
+#include "spaghetti.h"
+
 /*
  * This example shows a HTTP PUT operation. PUTs a file given as a command
  * line argument to the URL also given on the command line.
@@ -35,8 +37,7 @@ static size_t read_callback(void *ptr, size_t size, size_t nmemb, void *stream)
 
   if ( nread != 0xdeadbeef ) { // shut up gcc warnings
 #ifdef SPAG_DEBUG
-    fprintf ( stderr, "*** We read %" CURL_FORMAT_CURL_OFF_T
-              " bytes from file\n", nread);
+    fprintf ( stderr, "*** We read %d bytes from file\n", nread );
 #endif
   }
 
@@ -70,6 +71,9 @@ int spaghetti_post_file ( char *fullpath, char *url ) {
 
   if ( ! curl ) {
     fclose ( hd_src ); /* close the local file */
+#ifdef SPAG_DEBUG
+    printf ( "Couldn't init libcurl\n" );
+#endif
     return ( -1 );
   }
 

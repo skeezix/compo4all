@@ -8,19 +8,30 @@
 
 #include "spaghetti.h"
 
-int spaghetti_get_prid ( char *r_pridbuf, unsigned int buflen ) {
+int spaghetti_get_prid ( char *fullpath_or_null, char *r_pridbuf, unsigned int buflen ) {
   char buf [ PRID_MAXLEN + 1 ];
 
   bzero ( buf, PRID_MAXLEN + 1 );
 
-  FILE *f = fopen ( PRID_FULLPATH, "rb" );
+  FILE *f;
+  if ( fullpath_or_null ) {
+    f = fopen ( fullpath_or_null, "rb" );
+  } else {
+    f = fopen ( PRID_FULLPATH, "rb" );
+  }
 
   if ( ! f ) {
+#ifdef SPAG_DEBUG
+    printf ( "Couldn't open prid file\n" );
+#endif
     return ( -1 );
   }
 
   if ( ! fgets ( buf, PRID_MAXLEN, f ) ) {
     fclose ( f );
+#ifdef SPAG_DEBUG
+    printf ( "Couldn't fgets prid file\n" );
+#endif
     return ( -1 );
   }
 
@@ -49,7 +60,7 @@ int spaghetti_post_wrapper ( char *gamename, char *fullpath ) {
   // intuit..
   sprintf ( emuname, "advmame" );
   sprintf ( platbuf, "pandora" );
-  if ( spaghetti_get_prid ( pridbuf, PRID_MAXLEN ) < 0 ) {
+  if ( spaghetti_get_prid ( NULL /*prid path*/, pridbuf, PRID_MAXLEN ) < 0 ) {
     return ( -1 );
   }
 
@@ -84,7 +95,7 @@ int main ( int argc, char **argv ) {
 }
 #endif
 
-int spaghetti_plugpost_wrapper ( char *plugin, char *gamename, char *platform, char *data, char *fullpath ) {
+int spaghetti_plugpost_wrapper ( char *profilepath, char *plugin, char *gamename, char *platform, char *data, char *fullpath ) {
   char final_url [ 1024 ];
   char pridbuf [ PRID_MAXLEN + 1 ];
 
@@ -93,7 +104,10 @@ int spaghetti_plugpost_wrapper ( char *plugin, char *gamename, char *platform, c
   bzero ( pridbuf, PRID_MAXLEN + 1 );
 
   // intuit..
-  if ( spaghetti_get_prid ( pridbuf, PRID_MAXLEN ) < 0 ) {
+  if ( spaghetti_get_prid ( profilepath, pridbuf, PRID_MAXLEN ) < 0 ) {
+#ifdef SPAG_DEBUG
+    printf ( "Couldn't get prid from file\n" );
+#endif
     return ( -1 );
   }
 
