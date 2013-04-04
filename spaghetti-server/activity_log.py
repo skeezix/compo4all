@@ -108,7 +108,10 @@ def get_log_html ( req ):
 
             html += '  <td style="padding:0 15px 0 15px;">' + prident [ 'shortname' ] + "</td>\n"
             html += '  <td style="padding:0 15px 0 15px;">' + prident [ 'longname' ] + "</td>\n"
-            html += '  <td style="padding:0 15px 0 15px;">' + modulemap.gamemap [ ent [ 'gamename' ] ][ 'longname' ] + "</td>\n"
+            try:
+                html += '  <td style="padding:0 15px 0 15px;">' + modulemap.gamemap [ ent [ 'gamename' ] ][ 'longname' ] + "</td>\n"
+            except:
+                html += '  <td style="padding:0 15px 0 15px;">' + '(missing configuration for ' + ent [ 'gamename' ] + ')' + "</td>\n"
             if ent [ 'score' ] > 0:
                 html += '  <td style="padding:0 15px 0 15px;">' + str ( ent [ 'score' ] ) + "</td>\n"
             else:
@@ -180,7 +183,10 @@ def get_log_json ( req ):
 
             newent [ 'shortname' ] = prident [ 'shortname' ]
             newent [ 'longname' ] = prident [ 'longname' ]
-            newent [ 'gamename' ] = modulemap.gamemap [ ent [ 'gamename' ] ][ 'longname' ]
+            try:
+                newent [ 'gamename' ] = modulemap.gamemap [ ent [ 'gamename' ] ][ 'longname' ]
+            except:
+                newent [ 'gamename' ] = '(missing)'
 
             if ent [ 'score' ] > 0:
                 newent [ 'score' ] = ent [ 'score' ]
