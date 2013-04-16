@@ -3,7 +3,7 @@
 <!-- please see http://pandorawiki.org/PXML_specification for more information before editing, and remember the order does matter -->
 
 <package id="compo4all-skeezix-0001">
-<version major="0" minor="106" release="3" build="3" type="release"/>
+<version major="0" minor="106" release="4" build="4" type="release"/>
 <author name="skeezix"/>
 
 <titles>
@@ -21,7 +21,7 @@
     <title lang="en_US">C4A MAME</title>
 
     <author name="Jeff Mitchell" website="http://www.codejedi.com/"/>
-    <version major="0" minor="106" release="3" build="13"/>	      <!--This programs version-->
+    <version major="0" minor="106" release="4" build="14"/>	      <!--This programs version-->
     <osversion major="1" minor="0" release="0" build="0"/>		<!--The minimum OS version required-->
 
     <description lang="en_US">C4A Launcher</description>
