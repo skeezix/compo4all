@@ -270,7 +270,14 @@ class Frontend:
 
     def cb_set_gamelist ( self, gamelist ):
 
-        for gent in gamelist:
+        # build sorted gamelist
+        names = reversed ( sorted ( gamelist, key = lambda ge: ge [ 'longname' ].lower() ) )
+
+        for gent in names:
+
+            if gent [ 'field' ] != 'arcade':
+                continue
+
             b = gtk.Button ( "Select " + gent [ 'longname' ] )
             b.connect ( "clicked", self.cb_clicked_game, gent [ 'gamename' ] )
             self.left_vb.pack_end ( b, False, False, 0 )
@@ -296,7 +303,7 @@ class Frontend:
         b = self.pull_highscore_with_ui ( v )
         j = json.loads ( b )
 
-        text = 'Highest this month (full list available at our website.)\n'
+        text = 'Highest this month (full list available at c4a.openpandora.org)\n'
         text += "\n"
         runlen = 1
         last = None
@@ -398,9 +405,14 @@ class Frontend:
         self.outer_hb = gtk.HBox ( False, 0 )
         self.window.add ( self.outer_hb )
 
+        self.left_vb_s = gtk.ScrolledWindow()
+        self.left_vb_s.set_policy ( gtk.POLICY_NEVER, gtk.POLICY_ALWAYS )
+        self.left_vb_s.show()
+
         self.left_vb = gtk.VBox ( False, 0 )
         self.right_vb = gtk.VBox ( False, 0 )
-        self.outer_hb.pack_start ( self.left_vb )
+        self.outer_hb.pack_start ( self.left_vb_s, True ) # False for thin column
+        self.left_vb_s.add_with_viewport ( self.left_vb )
         self.outer_hb.pack_start ( self.right_vb )
 
         image = gtk.Image()
@@ -441,6 +453,13 @@ class Frontend:
         self.banner_l.show()
         self.right_vb.pack_start ( self.banner_l )
 
+        self.log_l = gtk.Label()
+        self.log_l.set_markup ( "Waiting for server..." )
+        self.log_l.set_line_wrap ( True )
+        self.log_l.set_alignment ( xalign=0.0, yalign=0.0 )
+        self.log_l.show()
+        self.right_vb.pack_end ( self.log_l, True, True )
+
         self.right_vb.pack_end ( self.play_b )
 
         # The final step is to display this newly created widget.
@@ -477,16 +496,14 @@ class Frontend:
 
     def is_server_available ( self ):
 
-        md = gtk.MessageDialog ( self.window, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_INFO, 
-                                 gtk.BUTTONS_NONE, "Checking connectivity ..")
-        md.show()
+        self.append_log ( "Checking connectivity .." )
 
         try:
             b = subprocess.check_output ( config.get ( 'Sources', 'ohai' ), stderr=subprocess.STDOUT, shell=True )
             j = json.loads ( b )
 
             if j [ 'status' ] == 'OK':
-                md.destroy()
+                self.finish_log()
                 return 1
 
             print "Bad status from server OHAI"
@@ -494,19 +511,17 @@ class Frontend:
         except:
             print "avail: Unexpected error:", sys.exc_info()[0]
 
-        md.destroy()
+        self.finish_log()
         return 0
 
     def pull_highscore_with_ui ( self, gamename ):
-        md = gtk.MessageDialog ( self.window, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_INFO, 
-                                 gtk.BUTTONS_NONE, "Fetching banner from the server ..")
-        md.show()
+        self.append_log ( "Fetching scores from the server .." )
 
         url = config.get ( 'Sources', 'highscore_base' ) + gamename + "/"
 
         b = subprocess.check_output ( url, stderr=subprocess.STDOUT, shell=True )
 
-        md.destroy()
+        self.finish_log()
 
         return b
 
@@ -514,26 +529,27 @@ class Frontend:
         # blast, python + thread + urllib/httplib2/etc are fubar, skip for now
         # http://zetcode.com/gui/pygtk/dialogs/
 
-        md = gtk.MessageDialog ( self.window, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_INFO, 
-                                 gtk.BUTTONS_NONE, "Fetching banner from the server ..")
-        md.show()
+        self.append_log ( "Fetching banner from the server .." )
 
         b = subprocess.check_output ( config.get ( 'Sources', 'banner' ), stderr=subprocess.STDOUT, shell=True )
         j = json.loads ( b )
 
         self.cb_set_banner ( j [ 'banner' ] )
 
-        md.destroy()
+        self.finish_log()
 
     def sync_gamelist_with_ui ( self, push = True ):
         scpath = config.get ( 'Exec', 'spaghetti' )
 
-        md = gtk.MessageDialog ( self.window, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_INFO, 
-                                 gtk.BUTTONS_NONE, "Syncing scores for current season ..")
-        md.show()
+        self.append_log ( "Syncing scores for current season .." )
 
         if push:
             for gn in self.gamelist:
+
+                if gn [ 'field' ] != 'arcade':
+                    continue
+
+                self.append_log ( "Syncing scores for current season .. " + gn [ 'gamename' ] )
                 scrun = scpath + " push -d " + gn [ 'gamename' ]
                 try:
                     subprocess.call ( scrun, shell = True )
@@ -543,6 +559,11 @@ class Frontend:
 
         else:
             for gn in self.gamelist:
+
+                if gn [ 'field' ] != 'arcade':
+                    continue
+
+                self.append_log ( "Syncing scores for current season .. " + gn [ 'gamename' ] )
                 scrun = scpath + " pull " + gn [ 'gamename' ]
                 try:
                     subprocess.call ( scrun, shell = True )
@@ -550,15 +571,13 @@ class Frontend:
                     print "sync pull: Unexpected error:", sys.exc_info()
                     print scrun
 
-        md.destroy()
+        self.finish_log()
 
     def pull_gamelist_and_update_with_ui ( self ):
         # blast, python + thread + urllib/httplib2/etc are fubar, skip for now
         # http://zetcode.com/gui/pygtk/dialogs/
 
-        md = gtk.MessageDialog ( self.window, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_INFO, 
-                                 gtk.BUTTONS_NONE, "Fetching current game list from the server ..")
-        md.show()
+        self.append_log ( "Fetching current game list from the server .." )
 
         b = subprocess.check_output ( config.get ( 'Sources', 'curgamelist' ), stderr=subprocess.STDOUT, shell=True )
         j = json.loads ( b )
@@ -566,7 +585,7 @@ class Frontend:
         self.cb_set_gamelist ( j [ 'gamelist' ] )
         self.gamelist = j [ 'gamelist' ]
 
-        md.destroy()
+        self.finish_log()
 
     def is_profile_exist ( self ):
         if os.path.isfile ( PRIDFILENAME ):
@@ -642,9 +661,7 @@ class Frontend:
         if not prid:
             return
 
-        md = gtk.MessageDialog ( self.window, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_INFO, 
-                                 gtk.BUTTONS_NONE, "Fetching profile from the server ..")
-        md.show()
+        self.append_log ( "Fetching profile from the server .." )
 
         url = config.get ( 'Sources', 'getprofile_base' ) + prid [ 'prid' ]
 
@@ -653,7 +670,18 @@ class Frontend:
 
         #self.cb_set_banner ( j [ 'banner' ] )
 
-        md.destroy()
+        self.finish_log()
+
+    def append_log ( self, message ):
+        self.log_l.show()
+        self.log_l.set_markup ( message )
+
+        while gtk.events_pending():
+            gtk.main_iteration()
+
+    def finish_log ( self ):
+        self.log_l.set_markup ( "" )
+        self.log_l.hide()
 
     def main ( self ):
         gtk.main()
