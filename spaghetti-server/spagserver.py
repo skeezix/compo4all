@@ -313,6 +313,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
                     logging.info ( "Request is for all-time; now looks like %s" % ( req ) )
 
             if not self.is_valid_game ( req ):
+                logging.error ( "Request is for a bad gamename %s" % ( req ) )
                 self.send_response ( 406 ) # not acceptible
                 return
 
@@ -599,7 +600,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 return False
 
         if 'gamename' in req:
-            if not all(c in string.ascii_letters for c in req [ 'gamename' ]):
+            if not self.is_valid_game ( req ):
                 logging.warning ( "illegal gamename from request %s" % ( req ) )
                 return False
 
