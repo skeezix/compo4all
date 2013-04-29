@@ -63,3 +63,4 @@ register ( 'pulstar',  'Pulstar',         multiscore_handler,  g_ms_pulstar,    
 register ( 'rthunder', 'Rolling Thunder', multiscore_handler,  g_ms_rthunder,   'unavailable', 'arcade', 'platform' ) # coded, emu sucks
 register ( 'rygar',    'Rygar',           multiscore_handler,  g_ms_rygar,      'active', 'arcade', 'runngun' )
 register ( 'ladybug',  'Ladybug',         hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze' )
+register ( 'raiden',   'Raiden',          hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup' )
