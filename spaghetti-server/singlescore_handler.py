@@ -292,3 +292,6 @@ def parse_hi_bin ( req, bindata ):
 
 def build_hi_bin ( req, hiscore ):
     return modulemap.gamemap [ req [ 'gamename' ] ][ 'module' ].build_hi_bin ( req, hiscore )
+
+def done ( req ):
+    pass

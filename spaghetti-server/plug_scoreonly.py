@@ -107,3 +107,6 @@ def get_html_tally ( req ):
 
 def _read_tally ( req ):
     return singlescore_handler._read_tally ( req )
+
+def done ( req ):
+    return singlescore_handler.done ( req )

@@ -554,6 +554,9 @@ class RequestHandler(SimpleHTTPRequestHandler):
             self.send_response ( 406 ) # not acceptible
             return
 
+        # flag completion, in case handler needs to free a resource
+        modulemap.gamemap [ req [ 'gamename' ] ][ 'handler' ].done ( req )
+
         """
         post_data = urlparse.parse_qs ( self.rfile.read(length).decode('utf-8') )
         for key, value in post_data.iteritems():
