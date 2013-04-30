@@ -3,6 +3,7 @@ import logging
 import tempfile
 import shutil
 import subprocess
+import os
 
 import state
 import paths
@@ -47,19 +48,31 @@ class HiToText:
             f.write ( self.req [ '_bindata' ] )
             f.close()
 
-        command = "cd " + self.tdir + "; " + state.config.get ( 'HiToText', 'relrunnerbase' ) + ' ' + self.req [ 'gamename' ]
-        logging.debug ( "HiToText %s: Query is %s" % ( self.req [ 'gamename' ], command ) )
-        b = subprocess.check_output ( command, stderr=subprocess.STDOUT, shell=True )
+        testfile = './runtime/plugins/hitotext/' + self.req [ 'gamename' ] + '.test'
+        b = None
+        if os.path.exists ( testfile ):
+            f = open ( testfile, 'r' )
+            b = f.read()
+            f.close()
+        else:
+            command = "cd " + self.tdir + "; " + state.config.get ( 'HiToText', 'relrunnerbase' ) + ' -r ' + self.req [ 'gamename' ]
+            logging.debug ( "HiToText %s: Query is %s" % ( self.req [ 'gamename' ], command ) )
+            b = subprocess.check_output ( command, stderr=subprocess.STDOUT, shell=True )
 
-        # ladybuyg works out...
+        # ladybug works out...
         # 1|15970|       A1Z
         # 2|10000| UNIVERSAL
         # 3|10000| UNIVERSAL
 
-        self.rowcount = len ( b.split ( '\n' ) )
         self.rows = list()
+        eat = 3;
 
         for line in b.split ( '\n' ):
+
+            if eat:
+                logging.debug ( "HiToText %s: Ignored line %s" % ( self.req [ 'gamename' ], line ) )
+                eat -= 1
+                continue
 
             linestrip = line.replace ( ' ', '' )
             linestrip = linestrip.replace ( '\r', '' )
@@ -71,6 +84,10 @@ class HiToText:
                 ent = dict()
                 ent [ 'score' ] = wordlist [ 1 ]
                 ent [ 'shortname' ] = wordlist [ 2 ]
+                logging.debug ( "HiToText %s: Row back is %s / %s" % ( self.req [ 'gamename' ], wordlist [ 1 ], wordlist [ 2 ] ) )
                 self.rows.append ( ent )
+
+        self.rowcount = len ( self.rows )
+        logging.debug ( "HiToText %s: Rowcount back is %d" % ( self.req [ 'gamename' ], self.rowcount ) )
 
         return self.rowcount
