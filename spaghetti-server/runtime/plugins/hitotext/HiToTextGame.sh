@@ -6,7 +6,7 @@ GAME=$1
 export HISTIGNORE="expect*";
  
 expect -c "
-    set timeout 5
+    set timeout 1
     spawn mono ../HiToText.exe
     match_max 100000
     expect \">\"
