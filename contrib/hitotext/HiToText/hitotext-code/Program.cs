@@ -22,9 +22,9 @@ namespace HiToText
 
 #if DEBUG
         //public const string HTT_XML = @"E:\Stuff\Nick Test\SVN\hitotext\HiToText.xml";
-		public const string HTT_XML = "HiToText.xml";
+		public const string HTT_XML = "../HiToText.xml";
 #else
-        public const string HTT_XML = "HiToText.xml";
+        public const string HTT_XML = "../HiToText.xml";
 #endif
 
         #region SERVER PATHS
@@ -362,8 +362,7 @@ namespace HiToText
             DateTime tAIStart = DateTime.Now;
 #endif
 
-            Console.WriteLine("HiToText initialized, please enter command. (-h for help)");
-            Console.Write(">");
+            //Console.WriteLine("HiToText initialized, please enter command. (-h for help)");
 
                         //while (!(cmdLine = Console.ReadLine()).Equals("-q"))
 			while (true)
@@ -371,10 +370,7 @@ namespace HiToText
 				PerformCommand(parser.ParseCsv(realCLI [ 0 ] + ' ' + realCLI [ 1 ] ));
 				Environment.Exit(0);
 
-                Console.Write(">");
             }
-
-            Console.WriteLine("Exitting HiToText.");
 
 #if DEBUG
             DateTime tEnd = DateTime.Now;
@@ -463,6 +459,10 @@ namespace HiToText
                     return;
                 }
 
+				string fileName_temp = fileName.Replace ('\\', '/');
+                romName = Path.GetFileName(Path.GetFileNameWithoutExtension(fileName_temp));
+				//Console.WriteLine (romName);				
+				
                 if (supportedGames.Contains(romName))
                 {
                     game = new General(r.GetEntry(romName));
@@ -857,7 +857,7 @@ namespace HiToText
 
             string[] words = romName.Split('\\');
             romName = words [ words.Length - 1 ];
-            Console.WriteLine(romName);
+            //Console.WriteLine(romName);
 
             for (int i = 0; i < m_games.Length; i++)
             {

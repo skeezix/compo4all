@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <HiToText>
   <Entry>
     <Header>
@@ -1191,7 +1191,7 @@
           <Map Char="?" Byte="0x3e"/>
           <Map Char="!" Byte="0x3f"/>
           <Map Char=" " Byte="0x40"/>
-          <Map Char="&apos;" Byte="0x5b"/>
+          <Map Char="'" Byte="0x5b"/>
         </SpecialMapping>
       </TextParameters>
     </Header>
@@ -2060,7 +2060,7 @@
       </Mapping>
     </FileStructure>
     <SetStructure>
-      <FieldName Name="Score" FieldType="int"  ConversionType="IntToByteArrayHexAsHex" ExternalWrapper="ReverseByteArray" Position="1">
+      <FieldName Name="Score" FieldType="int" ConversionType="IntToByteArrayHexAsHex" ExternalWrapper="ReverseByteArray" Position="1">
         <SpecialUtilization>EmptyScores</SpecialUtilization>
         <SpecialUtilization>IsAdjusted</SpecialUtilization>
         <SpecialUtilization Function="HexReversed">DetermineRank</SpecialUtilization>
@@ -6181,7 +6181,7 @@
           <SwitchMap Name="Character" DefaultOne="0x00" DefaultMany="JACK TENREC">
             <Mapping One="0x01" Many="MUSTAPHA CAIRO"/>
             <Mapping One="0x02" Many="HANNAH DUNDEE"/>
-            <Mapping One="0x03" Many="MESS O&apos;BRADOVICH"/>
+            <Mapping One="0x03" Many="MESS O'BRADOVICH"/>
           </SwitchMap>
         </SwitchMaps>
       </TextParameters>
@@ -8532,12 +8532,12 @@
           <Map Char="$" Byte="0x34"/>      <!-- dollar sign -->
           <Map Char="%" Byte="0x35"/>     <!-- percentage sign -->
           <Map Char="&amp;" Byte="0x36"/>     <!-- and sign -->
-          <Map Char="&#39;" Byte="0x37"/>      <!-- single quote -->
+          <Map Char="'" Byte="0x37"/>      <!-- single quote -->
           <Map Char="(" Byte="0x38"/>      <!-- left parenthesis -->
           <Map Char=")" Byte="0x39"/>      <!-- right parenthesis -->
           <Map Char="*" Byte="0x3A"/>     <!-- asterix -->
           <Map Char="+" Byte="0x3B"/>     <!-- plus sign -->
-          <Map Char="&#96;" Byte="0x3C"/>      <!-- grave accent -->
+          <Map Char="`" Byte="0x3C"/>      <!-- grave accent -->
           <Map Char="-" Byte="0x3D"/>      <!-- minus sign -->
           <Map Char="." Byte="0x3E"/>      <!-- dot -->
           <Map Char="/" Byte="0x3F"/>      <!-- forward slash -->

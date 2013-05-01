@@ -65,7 +65,7 @@ register ( 'rygar',    'Rygar',           multiscore_handler,  g_ms_rygar,      
 # HiToText based ones
 register ( 'ladybug',  'Ladybug',         hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze' )
 register ( 'raiden',   'Raiden',          hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup' )
-#register ( 'blktiger', 'Black Tiger',     hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'runngun' )
-#register ( 'btime',    'Burger Time',     hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'platform' )
+register ( 'blktiger', 'Black Tiger',     hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'runngun' )
+register ( 'btime',    'Burger Time',     hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'platform' )
 register ( 'sf2',      'Street Fighter 2',  hitotext_handler, g_ms_hi_stub,    'active', 'arcade', 'fighting' )
 register ( 'gng',      "Ghosts'n Goblins",  hitotext_handler, g_ms_hi_stub,    'active', 'arcade', 'runngun' )

@@ -65,13 +65,18 @@ class HiToText:
         # 3|10000| UNIVERSAL
 
         self.rows = list()
-        eat = 3;
+
+        eat = 1
 
         for line in b.split ( '\n' ):
 
-            if eat:
-                logging.debug ( "HiToText %s: Ignored line %s" % ( self.req [ 'gamename' ], line ) )
+            if eat > 0:
+                logging.debug ( "HiToText %s: Ignored line (eaten) %s" % ( self.req [ 'gamename' ], line ) )
                 eat -= 1
+                continue
+
+            if '|' not in line:
+                logging.debug ( "HiToText %s: Ignored line (no |) %s" % ( self.req [ 'gamename' ], line ) )
                 continue
 
             linestrip = line.replace ( ' ', '' )
@@ -86,6 +91,9 @@ class HiToText:
                 ent [ 'shortname' ] = wordlist [ 2 ]
                 logging.debug ( "HiToText %s: Row back is %s / %s" % ( self.req [ 'gamename' ], wordlist [ 1 ], wordlist [ 2 ] ) )
                 self.rows.append ( ent )
+            else:
+                logging.debug ( "HiToText %s: Ignored line (too short) %s" % ( self.req [ 'gamename' ], line ) )
+                continue
 
         self.rowcount = len ( self.rows )
         logging.debug ( "HiToText %s: Rowcount back is %d" % ( self.req [ 'gamename' ], self.rowcount ) )
