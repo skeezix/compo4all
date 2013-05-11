@@ -67,15 +67,19 @@ class HiToText:
         self.rows = list()
 
         eat = 1
+        needpipe = True
 
         for line in b.split ( '\n' ):
 
             if eat > 0:
                 logging.debug ( "HiToText %s: Ignored line (eaten) %s" % ( self.req [ 'gamename' ], line ) )
+                if line == 'SCORE':
+                    needpipe = False
+                    logging.debug ( "HiToText %s: Not ignoring lines without |" % ( self.req [ 'gamename' ] ) )
                 eat -= 1
                 continue
 
-            if '|' not in line:
+            if needpipe and '|' not in line:
                 logging.debug ( "HiToText %s: Ignored line (no |) %s" % ( self.req [ 'gamename' ], line ) )
                 continue
 
@@ -90,6 +94,12 @@ class HiToText:
                 ent [ 'score' ] = wordlist [ 1 ]
                 ent [ 'shortname' ] = wordlist [ 2 ]
                 logging.debug ( "HiToText %s: Row back is %s / %s" % ( self.req [ 'gamename' ], wordlist [ 1 ], wordlist [ 2 ] ) )
+                self.rows.append ( ent )
+            elif len ( wordlist ) == 1 and not needpipe and len ( wordlist [ 0 ] ) > 3:
+                ent = dict()
+                ent [ 'score' ] = wordlist [ 0 ]
+                ent [ 'shortname' ] = ''
+                logging.debug ( "HiToText %s: Row back is %s / n/a" % ( self.req [ 'gamename' ], wordlist [ 0 ] ) )
                 self.rows.append ( ent )
             else:
                 logging.debug ( "HiToText %s: Ignored line (too short) %s" % ( self.req [ 'gamename' ], line ) )

@@ -90,6 +90,10 @@ import activity_log
 # set up plugins
 #
 
+# arcade
+import plug_arcade
+plug_arcade.init()
+
 # scoreonly
 import plug_scoreonly
 plug_scoreonly.init()
@@ -301,6 +305,35 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 self.send_response ( 406 ) # not acceptible
                 logging.error ( "No module found for game %s" % ( gamename ) )
                 return
+
+        elif req [ 'basepage' ] == 'execinfo':
+            # /execinfo/GAMENAME/PLATFORM
+
+            if len ( paths ) >= 4 and paths [ 3 ]:
+                if paths [ 3 ] == 'pandora':
+                    logging.debug ( "Request is for pandora execinfo; looks like %s" % ( req ) )
+                else:
+                    logging.error ( "Request is for unknown platform execinfo; looks like %s" % ( req ) )
+                    self.send_response ( 406 ) # not acceptible
+                    return
+
+            if not self.is_valid_game ( req ):
+                logging.error ( "Request is for a bad gamename %s" % ( req ) )
+                self.send_response ( 406 ) # not acceptible
+                return
+
+            # TODO: this should be abstracted into a platform handler, or source handler, or something..
+            try:
+                req [ '_bindata' ] = json.dumps ( modulemap.gamemap [ req [ 'gamename' ] ][ '_general' ][ 'execinfo' ][ paths [ 3 ] ] )
+            except:
+                req [ '_bindata' ] = json.dumps ( { "status": "ERROR in server configuration" } )
+
+            self.send_response ( 200 )
+            self.send_header ( 'Content-type', 'text/html' )
+            self.send_header ( 'Content-length', len ( req [ '_bindata' ] ) )
+            self.end_headers()
+
+            self.wfile.write ( req [ '_bindata' ] )
 
         elif req [ 'basepage' ] == 'scoreboard':
 

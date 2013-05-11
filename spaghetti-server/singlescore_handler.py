@@ -144,6 +144,10 @@ def get_json_tally ( req ):
 
         ent [ 'shortname' ] = prident [ 'shortname' ]
         ent [ 'longname' ] = prident [ 'longname' ]
+        if '_general' in modulemap.gamemap [ req [ 'gamename' ] ]:
+            if 'dispunit' in modulemap.gamemap [ req [ 'gamename' ] ][ '_general' ]:
+                ent [ 'dispunit' ] = modulemap.gamemap [ req [ 'gamename' ] ] [ '_general' ][ 'dispunit' ]
+
         del ent [ 'prid' ]
 
     req [ '_bindata' ] = json.dumps ( tally )
@@ -194,6 +198,13 @@ def get_html_tally ( req ):
         tlocal = time.localtime ( ent [ 'time' ] )
         tdisplay = time.strftime ( '%d-%b-%Y', tlocal )
 
+        # units
+        if '_general' in modulemap.gamemap [ req [ 'gamename' ] ]:
+            if 'dispunit' in modulemap.gamemap [ req [ 'gamename' ] ][ '_general' ]:
+                unit = ' ' + str ( modulemap.gamemap [ req [ 'gamename' ] ][ '_general' ][ 'dispunit' ] )
+        else:
+            unit = ''
+
         showrow = 1 # 0 no, 1 yes, 2 ellipses
 
         if lastprident == prident:
@@ -233,7 +244,7 @@ def get_html_tally ( req ):
             html += '  <td style="padding:0 15px 0 15px;">' + prident [ 'shortname' ] + "</td>\n"
             html += '  <td style="padding:0 15px 0 15px;">' + prident [ 'longname' ] + "</td>\n"
             if ent [ 'score' ] > 0:
-                html += '  <td style="padding:0 15px 0 15px;">' + str ( ent [ 'score' ] ) + "</td>\n"
+                html += '  <td style="padding:0 15px 0 15px;">' + str ( ent [ 'score' ] ) + unit + "</td>\n"
             else:
                 html += '  <td style="padding:0 15px 0 15px;">-</td>\n'
             if ent [ 'time' ] > 0:
