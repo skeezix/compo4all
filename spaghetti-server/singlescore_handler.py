@@ -199,11 +199,10 @@ def get_html_tally ( req ):
         tdisplay = time.strftime ( '%d-%b-%Y', tlocal )
 
         # units
+        unit = ''
         if '_general' in modulemap.gamemap [ req [ 'gamename' ] ]:
             if 'dispunit' in modulemap.gamemap [ req [ 'gamename' ] ][ '_general' ]:
                 unit = ' ' + str ( modulemap.gamemap [ req [ 'gamename' ] ][ '_general' ][ 'dispunit' ] )
-        else:
-            unit = ''
 
         showrow = 1 # 0 no, 1 yes, 2 ellipses
 
