@@ -251,6 +251,9 @@ class RequestHandler(SimpleHTTPRequestHandler):
                     req [ 'genre' ] = mm [ 'genre' ]
                     req [ 'field' ] = mm [ 'field' ]
                     req [ '_last_tally_update_e' ] = mm [ '_last_tally_update_e' ]
+                    if '_general' in modulemap.gamemap [ req [ 'gamename' ] ]:
+                        if 'dispunit' in modulemap.gamemap [ req [ 'gamename' ] ][ '_general' ]:
+                            req [ 'dispunit' ] = modulemap.gamemap [ req [ 'gamename' ] ] [ '_general' ][ 'dispunit' ]
 
                     t = mm [ 'handler' ]._read_tally ( req )
                     try:
