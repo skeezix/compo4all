@@ -40,7 +40,7 @@ def init():
                            "type": "arcade",
                            "pnd_unique_id": "c4a-skeezix-0001",
                            "last_known_filename_hint": "compo4all-mame.pnd",
-                           "command_line_add": "--c4a -- --game **GAMENAME**",
+                           "command_line_add": "**GAMENAME**",
                            "last_known_appdata_hint": "c4a-mame",
                            "file_dependancies_hint": "rom/**GAMENAME**.zip"
                 }
