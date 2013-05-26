@@ -1,0 +1,332 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'TestDebug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\TestDebug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'TimingTests|AnyCPU' ">
+    <OutputPath>bin\TimingTests\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DEBUG_READ;DEBUG_TIME</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Write|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Write\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DEBUG_WRITE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8179E65C-9C05-4132-8767-52B21F8249CF}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HiToText</RootNamespace>
+    <AssemblyName>HiToText</AssemblyName>
+    <ApplicationIcon>games.ico</ApplicationIcon>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>754454D65C0511A4110786563DF1EC6A57E72E98</ManifestCertificateThumbprint>
+    <ManifestKeyFile>HiToText_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>false</GenerateManifests>
+    <TargetZone>LocalIntranet</TargetZone>
+    <SignManifests>false</SignManifests>
+    <StartupObject>HiToText.Program</StartupObject>
+    <PublishUrl>C:\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationVersion>2009.2.11.0</ApplicationVersion>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'List|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\List\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DEBUG_LIST</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Read|AnyCPU' ">
+    <OutputPath>bin\Read\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DEBUG_READ</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'List%28Chillin%29|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\List%28Chillin%29\</OutputPath>
+    <DefineConstants>TRACE;DEBUG_CHILLIN</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HXML\HiToText.XPathLoad.cs" />
+    <Compile Include="Utils\Convert.cs" />
+    <Compile Include="Utils\CsvParser.cs" />
+    <Compile Include="Utils\CustomComparators.cs" />
+    <Compile Include="Games\1942.cs" />
+    <Compile Include="Games\19xx.cs" />
+    <Compile Include="Games\aquajack.cs" />
+    <Compile Include="Games\armora.cs" />
+    <Compile Include="Games\astyanax.cs" />
+    <Compile Include="Games\barrier.cs" />
+    <Compile Include="Games\berzerk.cs" />
+    <Compile Include="Games\boxingb.cs" />
+    <Compile Include="Games\captaven.cs" />
+    <Compile Include="Games\ccastles.cs" />
+    <Compile Include="Games\dazzler.cs" />
+    <Compile Include="Games\ddonpach.cs" />
+    <Compile Include="Games\defender.cs" />
+    <Compile Include="Games\demon.cs" />
+    <Compile Include="Games\domino.cs" />
+    <Compile Include="Games\dragnblz.cs" />
+    <Compile Include="Games\esprade.cs" />
+    <Compile Include="Games\gauntlet.cs" />
+    <Compile Include="Games\gigawing.cs" />
+    <Compile Include="Games\gijoe.cs" />
+    <Compile Include="Games\gng.cs" />
+    <Compile Include="Games\gunsmoke.cs" />
+    <Compile Include="Games\gyruss.cs" />
+    <Compile Include="Games\headon.cs" />
+    <Compile Include="Games\headon2.cs" />
+    <Compile Include="Games\headoni.cs" />
+    <Compile Include="Games\Unused\hunchbak.cs" />
+    <Compile Include="Games\hvysmsh.cs" />
+    <Compile Include="Games\hyperpac.cs" />
+    <Compile Include="Games\hyperspt.cs" />
+    <Compile Include="Games\hyprduel.cs" />
+    <Compile Include="Games\imgfight.cs" />
+    <Compile Include="Games\jackal.cs" />
+    <Compile Include="Games\jjsquawk.cs" />
+    <Compile Include="Games\journey.cs" />
+    <Compile Include="Games\joust.cs" />
+    <Compile Include="Games\joust2.cs" />
+    <Compile Include="Games\junglek.cs" />
+    <Compile Include="Games\jungler.cs" />
+    <Compile Include="Games\junofrst.cs" />
+    <Compile Include="Games\kamikcab.cs" />
+    <Compile Include="Games\kangaroo.cs" />
+    <Compile Include="Games\kchamp.cs" />
+    <Compile Include="Games\klax.cs" />
+    <Compile Include="Games\knights.cs" />
+    <Compile Include="Games\kungfum.cs" />
+    <Compile Include="Games\ladybug.cs" />
+    <Compile Include="Games\lrescue.cs" />
+    <Compile Include="Games\madalien.cs" />
+    <Compile Include="Games\mappy.cs" />
+    <Compile Include="Games\marble.cs" />
+    <Compile Include="Games\mario.cs" />
+    <Compile Include="Games\matmania.cs" />
+    <Compile Include="Games\megadon.cs" />
+    <Compile Include="Games\metrocrs.cs" />
+    <Compile Include="Games\mhavoc.cs" />
+    <Compile Include="Games\milliped.cs" />
+    <Compile Include="Games\mimonkey.cs" />
+    <Compile Include="Games\missile.cs" />
+    <Compile Include="Games\missile2.cs" />
+    <Compile Include="Games\mk.cs" />
+    <Compile Include="Games\mk2.cs" />
+    <Compile Include="Games\mkla1.cs" />
+    <Compile Include="Games\mooncrst.cs" />
+    <Compile Include="Games\mpatrol.cs" />
+    <Compile Include="Games\mrdo.cs" />
+    <Compile Include="Games\mrdrillr.cs" />
+    <Compile Include="Games\Unused\mrflea.cs" />
+    <Compile Include="Games\mslug.cs" />
+    <Compile Include="Games\mslug2.cs" />
+    <Compile Include="Games\mslug3.cs" />
+    <Compile Include="Games\mslug4.cs" />
+    <Compile Include="Games\mslug5.cs" />
+    <Compile Include="Games\mslugx.cs" />
+    <Compile Include="Games\msword.cs" />
+    <Compile Include="Games\mtlchamp.cs" />
+    <Compile Include="Games\mwalk.cs" />
+    <Compile Include="Games\narc.cs" />
+    <Compile Include="Games\naughtyb.cs" />
+    <Compile Include="Games\nemesis.cs" />
+    <Compile Include="Games\nitd.cs" />
+    <Compile Include="Games\nmouse.cs" />
+    <Compile Include="Games\nova2001.cs" />
+    <Compile Include="Games\olibochu.cs" />
+    <Compile Include="Games\omegaf.cs" />
+    <Compile Include="Games\omegafs.cs" />
+    <Compile Include="Games\outzone.cs" />
+    <Compile Include="Games\pacland.cs" />
+    <Compile Include="Games\pacmania.cs" />
+    <Compile Include="Games\paperboy.cs" />
+    <Compile Include="Games\pbaction.cs" />
+    <Compile Include="Games\pengo.cs" />
+    <Compile Include="Games\phoenix.cs" />
+    <Compile Include="Games\pirates.cs" />
+    <Compile Include="Games\pooyan.cs" />
+    <Compile Include="Games\popeye.cs" />
+    <Compile Include="Games\puckman.cs" />
+    <Compile Include="Games\pulstar.cs" />
+    <Compile Include="Games\punchout.cs" />
+    <Compile Include="Games\qb3.cs" />
+    <Compile Include="Games\qbert.cs" />
+    <Compile Include="Games\qbertqub.cs" />
+    <Compile Include="Games\raiden.cs" />
+    <Compile Include="Games\Unused\rallyx.cs" />
+    <Compile Include="Games\rastan.cs" />
+    <Compile Include="Games\redbaron.cs" />
+    <Compile Include="Games\ripoff.cs" />
+    <Compile Include="Games\roadrunn.cs" />
+    <Compile Include="Games\robocop.cs" />
+    <Compile Include="Games\robotron.cs" />
+    <Compile Include="Games\rpatrol.cs" />
+    <Compile Include="Games\rthunder.cs" />
+    <Compile Include="Games\rtype.cs" />
+    <Compile Include="Games\rtype2.cs" />
+    <Compile Include="Games\rygar.cs" />
+    <Compile Include="Games\s1945ii.cs" />
+    <Compile Include="Games\sci.cs" />
+    <Compile Include="Games\scramble.cs" />
+    <Compile Include="Games\sdtennis.cs" />
+    <Compile Include="Games\searthin.cs" />
+    <Compile Include="Games\seawolf2.cs" />
+    <Compile Include="Games\sf2.cs" />
+    <Compile Include="Games\shadoww.cs" />
+    <Compile Include="Games\silkworm.cs" />
+    <Compile Include="Games\simpsons.cs" />
+    <Compile Include="Games\slapfigh.cs" />
+    <Compile Include="Games\smashtv.cs" />
+    <Compile Include="Games\solarq.cs" />
+    <Compile Include="Games\spdodgeb.cs" />
+    <Compile Include="Games\speedfrk.cs" />
+    <Compile Include="Games\spf2t.cs" />
+    <Compile Include="Games\spnchotj.cs" />
+    <Compile Include="Games\spnchout.cs" />
+    <Compile Include="Games\sprint1.cs" />
+    <Compile Include="Games\srumbler.cs" />
+    <Compile Include="Games\starcas.cs" />
+    <Compile Include="Games\starwars.cs" />
+    <Compile Include="Games\steelwkr.cs" />
+    <Compile Include="Games\streakng.cs" />
+    <Compile Include="Games\subroc3d.cs" />
+    <Compile Include="Games\sundance.cs" />
+    <Compile Include="Games\suprmrio.cs" />
+    <Compile Include="Games\swimmer.cs" />
+    <Compile Include="Games\tailg.cs" />
+    <Compile Include="Games\tapper.cs" />
+    <Compile Include="Games\tempest.cs" />
+    <Compile Include="Games\terracre.cs" />
+    <Compile Include="Games\tetris.cs" />
+    <Compile Include="Games\timber.cs" />
+    <Compile Include="Games\timeplt.cs" />
+    <Compile Include="Games\tmnt.cs" />
+    <Compile Include="Games\tmnt2.cs" />
+    <Compile Include="Games\toki.cs" />
+    <Compile Include="Games\trackfld.cs" />
+    <Compile Include="Games\Alternate\trackfld_090410.cs" />
+    <Compile Include="Games\troangel.cs" />
+    <Compile Include="Games\tron.cs" />
+    <Compile Include="Games\turfmast.cs" />
+    <Compile Include="Games\twincobr.cs" />
+    <Compile Include="Games\unsquad.cs" />
+    <Compile Include="Games\upndown.cs" />
+    <Compile Include="Games\vendetta.cs" />
+    <Compile Include="Games\vigilant.cs" />
+    <Compile Include="Games\viofight.cs" />
+    <Compile Include="Games\wb3.cs" />
+    <Compile Include="Games\wboy.cs" />
+    <Compile Include="Games\woodpeck.cs" />
+    <Compile Include="Games\wotw.cs" />
+    <Compile Include="Games\wrally.cs" />
+    <Compile Include="Games\xmen.cs" />
+    <Compile Include="Games\xmvsf.cs" />
+    <Compile Include="Games\yiear.cs" />
+    <Compile Include="Games\zaxxon.cs" />
+    <Compile Include="Games\zookeep.cs" />
+    <Compile Include="Formatting.cs" />
+    <Compile Include="Generic\General.cs" />
+    <Compile Include="Hiscore.cs" />
+    <Compile Include="Generic\HiscoreData.cs" />
+    <Compile Include="HXML\HiToText.cs" />
+    <Compile Include="Utils\DisplayData.cs" />
+    <Compile Include="Utils\Flags.cs" />
+    <Compile Include="HXML\HXMLReader.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Generic\SetMapping.cs" />
+    <Compile Include="Utils\MAMEXml.cs" />
+    <Compile Include="Utils\NotMatching.cs" />
+    <Compile Include="Utils\Offset.cs" />
+    <Compile Include="Utils\OneToManyMap.cs" />
+    <Compile Include="Utils\Placement.cs" />
+    <Compile Include="Utils\TextDecodingParameters.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="games.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <BaseApplicationManifest Include="Properties\app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Games\Obsoleted\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

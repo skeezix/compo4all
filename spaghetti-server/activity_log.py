@@ -205,6 +205,10 @@ def get_log_json ( req ):
             except:
                 pass
 
+            if '_general' in modulemap.gamemap [ ent [ 'gamename' ] ]:
+                if 'dispunit' in modulemap.gamemap [ ent [ 'gamename' ] ][ '_general' ]:
+                    newent [ 'dispunit' ] = modulemap.gamemap [ ent [ 'gamename' ] ] [ '_general' ][ 'dispunit' ]
+
         retlist.append ( newent )
 
         i += 1

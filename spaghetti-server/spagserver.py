@@ -90,6 +90,10 @@ import activity_log
 # set up plugins
 #
 
+# arcade
+import plug_arcade
+plug_arcade.init()
+
 # scoreonly
 import plug_scoreonly
 plug_scoreonly.init()
@@ -247,6 +251,9 @@ class RequestHandler(SimpleHTTPRequestHandler):
                     req [ 'genre' ] = mm [ 'genre' ]
                     req [ 'field' ] = mm [ 'field' ]
                     req [ '_last_tally_update_e' ] = mm [ '_last_tally_update_e' ]
+                    if '_general' in modulemap.gamemap [ req [ 'gamename' ] ]:
+                        if 'dispunit' in modulemap.gamemap [ req [ 'gamename' ] ][ '_general' ]:
+                            req [ 'dispunit' ] = modulemap.gamemap [ req [ 'gamename' ] ] [ '_general' ][ 'dispunit' ]
 
                     t = mm [ 'handler' ]._read_tally ( req )
                     try:
@@ -302,6 +309,35 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 logging.error ( "No module found for game %s" % ( gamename ) )
                 return
 
+        elif req [ 'basepage' ] == 'execinfo':
+            # /execinfo/GAMENAME/PLATFORM
+
+            if len ( paths ) >= 4 and paths [ 3 ]:
+                if paths [ 3 ] == 'pandora':
+                    logging.debug ( "Request is for pandora execinfo; looks like %s" % ( req ) )
+                else:
+                    logging.error ( "Request is for unknown platform execinfo; looks like %s" % ( req ) )
+                    self.send_response ( 406 ) # not acceptible
+                    return
+
+            if not self.is_valid_game ( req ):
+                logging.error ( "Request is for a bad gamename %s" % ( req ) )
+                self.send_response ( 406 ) # not acceptible
+                return
+
+            # TODO: this should be abstracted into a platform handler, or source handler, or something..
+            try:
+                req [ '_bindata' ] = json.dumps ( modulemap.gamemap [ req [ 'gamename' ] ][ '_general' ][ 'execinfo' ][ paths [ 3 ] ] )
+            except:
+                req [ '_bindata' ] = json.dumps ( { "status": "ERROR in server configuration" } )
+
+            self.send_response ( 200 )
+            self.send_header ( 'Content-type', 'text/html' )
+            self.send_header ( 'Content-length', len ( req [ '_bindata' ] ) )
+            self.end_headers()
+
+            self.wfile.write ( req [ '_bindata' ] )
+
         elif req [ 'basepage' ] == 'scoreboard':
 
             if len ( paths ) >= 4 and paths [ 3 ]:
@@ -313,6 +349,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
                     logging.info ( "Request is for all-time; now looks like %s" % ( req ) )
 
             if not self.is_valid_game ( req ):
+                logging.error ( "Request is for a bad gamename %s" % ( req ) )
                 self.send_response ( 406 ) # not acceptible
                 return
 
@@ -553,6 +590,9 @@ class RequestHandler(SimpleHTTPRequestHandler):
             self.send_response ( 406 ) # not acceptible
             return
 
+        # flag completion, in case handler needs to free a resource
+        modulemap.gamemap [ req [ 'gamename' ] ][ 'handler' ].done ( req )
+
         """
         post_data = urlparse.parse_qs ( self.rfile.read(length).decode('utf-8') )
         for key, value in post_data.iteritems():
@@ -599,7 +639,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 return False
 
         if 'gamename' in req:
-            if not all(c in string.ascii_letters for c in req [ 'gamename' ]):
+            if not self.is_valid_game ( req ):
                 logging.warning ( "illegal gamename from request %s" % ( req ) )
                 return False
 

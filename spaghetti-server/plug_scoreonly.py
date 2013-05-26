@@ -40,6 +40,10 @@ def init():
             logging.debug ( "plugin %s conf entry %s - skip" % ( __name__, dirent ) )
             continue
 
+        if dirent.endswith ( "bak" ):
+            logging.debug ( "plugin %s conf entry %s - skip" % ( __name__, dirent ) )
+            continue
+
         if os.path.isdir ( confpath + dirent ):
             logging.debug ( "plugin %s conf entry %s - skip" % ( __name__, dirent ) )
             continue
@@ -92,7 +96,10 @@ def _loadconf ( fullpath ):
         return None
 
 def _register_game ( conf ):
-    modulemap.register ( conf [ 'shortname' ], conf [ 'longname' ], sys.modules[__name__], None, 'active', conf [ 'field' ], conf [ 'genre' ] )
+    status = 'available'
+    if 'status' in conf:
+        status = conf [ 'status' ]
+    modulemap.register ( conf [ 'shortname' ], conf [ 'longname' ], sys.modules[__name__], None, status, conf [ 'field' ], conf [ 'genre' ], conf )
 
 # ------------------------------------------------------------------------------------
 
@@ -107,3 +114,6 @@ def get_html_tally ( req ):
 
 def _read_tally ( req ):
     return singlescore_handler._read_tally ( req )
+
+def done ( req ):
+    return singlescore_handler.done ( req )

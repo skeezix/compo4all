@@ -26,6 +26,11 @@ http://skeezix.wallednetworks.com:13001/curgamelist_1
                         'longname': 'Ms. Pacman' }
 		 ]
 }
+status options:
+- unavailable -> server only, not shown to API consumers
+- available -> show in frontends, but not part of current 'ROT'
+- active -> show in frontends, and is highlightable.. part of ROT right now
+- wip -> available for scoring etc, but frontends should suppress it perhaps (ie: for testing of developers)
 
 ie: returns a dict, which maps 'gamelist' to a list
     that list in turn is a list of dicts

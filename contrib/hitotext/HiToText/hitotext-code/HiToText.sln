@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiToText", "HiToText.csproj", "{8179E65C-9C05-4132-8767-52B21F8249CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		TestDebug|Any CPU = TestDebug|Any CPU
+		TimingTests|Any CPU = TimingTests|Any CPU
+		Write|Any CPU = Write|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		List|Any CPU = List|Any CPU
+		Read|Any CPU = Read|Any CPU
+		List%28Chillin%29|Any CPU = List%28Chillin%29|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.List%28Chillin%29|Any CPU.ActiveCfg = List%28Chillin%29|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.List%28Chillin%29|Any CPU.Build.0 = List%28Chillin%29|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.List|Any CPU.ActiveCfg = List|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.List|Any CPU.Build.0 = List|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.Read|Any CPU.ActiveCfg = Read|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.Read|Any CPU.Build.0 = Read|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.TestDebug|Any CPU.ActiveCfg = TestDebug|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.TestDebug|Any CPU.Build.0 = TestDebug|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.TimingTests|Any CPU.ActiveCfg = TimingTests|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.TimingTests|Any CPU.Build.0 = TimingTests|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.Write|Any CPU.ActiveCfg = Write|Any CPU
+		{8179E65C-9C05-4132-8767-52B21F8249CF}.Write|Any CPU.Build.0 = Write|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = HiToText.csproj
+	EndGlobalSection
+EndGlobal
