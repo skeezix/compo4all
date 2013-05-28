@@ -60,7 +60,12 @@ export NUB1MODE=`cat /proc/pandora/nub1/mode`
 echo absolute > /proc/pandora/nub0/mode
 echo absolute > /proc/pandora/nub1/mode
 
-./c4a-fe.py
+if [ $# -eq 0 ]
+then
+    ./c4a-fe.py
+else
+    ./bin/advmame $@
+fi
 
 echo $NUB0MODE > /proc/pandora/nub0/mode
 echo $NUB1MODE > /proc/pandora/nub1/mode
