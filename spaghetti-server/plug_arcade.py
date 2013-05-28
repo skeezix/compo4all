@@ -60,13 +60,27 @@ def init():
     register ( 'rthunder', 'Rolling Thunder', multiscore_handler,  g_ms_rthunder,   'unavailable', 'arcade', 'platform', cx ( general, 'rthunder' ) ) # coded, emu sucks
     register ( 'rygar',    'Rygar',           multiscore_handler,  g_ms_rygar,      'available', 'arcade', 'runngun', cx ( general, 'rygar' ) )
     # HiToText based ones
-    register ( 'ladybug',  'Ladybug',         hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'ladybug' ) )
-    register ( 'raiden',   'Raiden',          hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup', cx ( general, 'raiden' ) )
-    register ( 'blktiger', 'Black Tiger',     hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'runngun', cx ( general, 'blktiger' ) )
-    register ( 'btime',    'Burger Time',     hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'platform', cx ( general, 'btime' ) )
-    register ( 'sf2',      'Street Fighter 2',  hitotext_handler,  g_ms_hi_stub,    'active', 'arcade', 'fighting', cx ( general, 'sf2' ) )
-    register ( 'gng',      "Ghosts'n Goblins",  hitotext_handler,  g_ms_hi_stub,    'active', 'arcade', 'runngun', cx ( general, 'gng' ) )
-    register ( 'frogger',  "Frogger",         hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'frogger' ) )
+    register ( 'ladybug',  'Ladybug',         hitotext_handler,    g_ms_hi_stub,    'available', 'arcade', 'maze', cx ( general, 'ladybug' ) )
+    register ( 'raiden',   'Raiden',          hitotext_handler,    g_ms_hi_stub,    'available', 'arcade', 'shmup', cx ( general, 'raiden' ) )
+    register ( 'blktiger', 'Black Tiger',     hitotext_handler,    g_ms_hi_stub,    'available', 'arcade', 'runngun', cx ( general, 'blktiger' ) )
+    register ( 'btime',    'Burger Time',     hitotext_handler,    g_ms_hi_stub,    'available', 'arcade', 'platform', cx ( general, 'btime' ) )
+    register ( 'sf2',      'Street Fighter 2',  hitotext_handler,  g_ms_hi_stub,    'available', 'arcade', 'fighting', cx ( general, 'sf2' ) )
+    register ( 'gng',      "Ghosts'n Goblins",  hitotext_handler,  g_ms_hi_stub,    'available', 'arcade', 'runngun', cx ( general, 'gng' ) )
+    register ( 'frogger',  "Frogger",         hitotext_handler,    g_ms_hi_stub,    'available', 'arcade', 'maze', cx ( general, 'frogger' ) )
+    # HiToTex 2013 May additions
+    register ( 'aliensyn', "Alien Syndrome",  hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'runngun', cx ( general, 'aliensyn' ) )
+    register ( 'asteroid', "Asteroids",       hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup', cx ( general, 'asteroid' ) )
+    register ( 'berzerk',  "Berzerk",         hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'berzerk' ) )
+    register ( 'bosco',    "Bosconian",       hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup', cx ( general, 'bosco' ) )
+    register ( 'citycon',  "City Connection", hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'platform', cx ( general, 'citycon' ) )
+    register ( 'galaga',   "Galaga",          hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup', cx ( general, 'galaga' ) )
+    register ( 'goldnaxe', "Golden Axe",      hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'beatemup', cx ( general, 'goldnaxe' ) )
+    register ( 'inthunt',  "Into the Hunt",   hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup', cx ( general, 'inthunt' ) )
+    register ( 'nrallyx',  "New Rally X",     hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'racing', cx ( general, 'nrallyx' ) )
+    register ( 'quartet',  "Quartet",         hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'runngun', cx ( general, 'quartet' ) )
+    register ( 'scramble', "Scramble",        hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup', cx ( general, 'scramble' ) )
+    register ( 'tigeroad', "Tiger Road",      hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'beatemup', cx ( general, 'tigeroad' ) )
+    register ( 'wboy',     "Wonderboy",       hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'runngun', cx ( general, 'wboy' ) )
 
 def cx ( d, gamename ): # customize and return dupe
 
