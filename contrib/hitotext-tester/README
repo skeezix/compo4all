@@ -1,0 +1,115 @@
+Read on hope this works, and hope you enjoy it a little :)
+
+Grab this tarball:
+
+http://www.codejedi.com/compo4all/source/hitotext-tester.tgz
+
+It 'works for me!', famous last words :) Its an exceedingly lame hack, but hopefully will cut the mustard.
+
+Background:
+
+- I was writing my own .hi and RAM decoders for awhile (early c4a); then we caught wind of another project from a few years back, where guys did a bunch of that as well..
+
+- So we tracked down some source from them, and hacked the living hell out of it, to make it work for c4a
+
+--> c4a takes plugins, and it can have per-game plugins, or it can use this module to handle arcade stuff, or other plugins
+
+Since I'm time-tight lately, writing plugins is somethign I'd prefer not to do. Hence, last months additions to c4a were all HiToText plugin guys ("Hi To Text" is that other project.)
+
+HiToText takes an xml config file (which is defined pretty nasty, or I'd just parse it and use it myself); the xml file, a heavily modified HiToText are included, along with the c4a plugin to wrap it all up.
+
+HiToText is hit or miss, its fairly buggy and they've hit a lot of agmes, but certainly not all.. so we have to test it game by game.
+
+I've made the c4a plugin executable itself, for ease of testing.
+
+So..
+
+Demo:
+
+unpack the tarball ("tar zxvf foo.tgz")
+
+cd hitotext-tester
+
+./pluh_hitotext.py dkong
+
+---> does it work?
+
+That will test you; I've included dkong.hi and the above should spit out the list of scores; if not, you're missing 'mono' package most likely.
+
+Output:
+
+$ ./plug_hitotext.py dkong
+HiToText appears to have returned 5 rows
+
+Rows returned look like:
+[   {   'score': '7650', 'shortname': ''},
+    {   'score': '6100', 'shortname': ''},
+    {   'score': '5950', 'shortname': ''},
+    {   'score': '5050', 'shortname': ''},
+    {   'score': '4300', 'shortname': ''}]
+
+_score_ is critical
+_rowcount_ is critical  <- possibly ok?
+_shortname_ is currently optional
+
+Dependancies are few .. I've kept it minimal for you:
+
+- python 2.6 and up (I use python 2.7.x)
+
+- mono ... "mono --verwsion" spits out a whole pile of crap, but our mono dependancies are very low, so just get mono (maybe package 'mono-devel' in debian or ubuntu, something like that)
+
+--
+
+How to test:
+
+- clear the .hi file if any from panmame
+
+- fire up the game, wait a sec, quit
+
+-> grab the vanilla .hi file spit out (I call it a template, since its the baseline to measure against); keep it somewhere. Or call it dkong.template.hi or templates/dkong.hi or something
+
+- fire up the game, play it, register a hi score
+
+- quit panmame
+
+- fire up the game again -- is your hi score still present?
+
+--> if not, the .hi is not saving, game is no good due to panmame limits
+
+--> if so, we can keep going to next steps
+
+-> grab the hi score file (with your own score in it); I like to rename it to the score, like dkong.hi.23455JEF or whatever
+
+Then copy one of the .hi files into the hitotext-tester directory, and give it a run
+
+./plug_hitotext.py quartet          <- or whatever
+
+You must check the output:
+
+- if the rowcount is 0 or some bizarre number .. we're dead, skip this game (could be a bug in my plugin, or more likely a bug in HiToText, or missing game, or..)
+
+- if the score table gets dumped (see above), then compare it to the in-game score table
+
+--> if the table dump looks right --> we're gold!
+
+--> if the table dump is bogus -> dump it, we're boned
+
+So in essence:
+
+- we check the scores persist
+
+- we check the game is supportev by hitotext
+
+- we check the data actually comes out right
+
+If all of these pass, game is candidate for c4a!
+
+To add it to c4a:
+
+- send me the template hi file
+
+- send me the scored hi file so I can test both template and real recorded score
+
+- I'll add it to the server configs
+
+jeff
