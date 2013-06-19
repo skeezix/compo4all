@@ -96,6 +96,8 @@ class HiToText:
 
         for line in b.split ( '\n' ):
 
+            logging.debug ( "HiToText raw: %s" % ( line ) )
+
             if eat > 0:
                 logging.debug ( "HiToText %s: Ignored line (eaten) %s" % ( self.req [ 'gamename' ], line ) )
                 if line == 'SCORE':
@@ -108,26 +110,40 @@ class HiToText:
                 logging.debug ( "HiToText %s: Ignored line (no |) %s" % ( self.req [ 'gamename' ], line ) )
                 continue
 
+            if eat == 0 and needpipe:
+                needpipe = False
+
             linestrip = line.replace ( ' ', '' )
             linestrip = linestrip.replace ( '\r', '' )
 
             wordlist = linestrip.split ( '|' ) # line: ['1', '15970', 'A1Z']
+
+            logging.debug ( 'HiToText early parse: %s :: %s :: %d' % ( linestrip, wordlist, len ( wordlist ) ) )
             #print wordlist, len ( wordlist )
 
-            if len ( wordlist ) > 1:
+            if len ( wordlist ) > 2:
                 ent = dict()
                 ent [ 'score' ] = wordlist [ 1 ]
                 ent [ 'shortname' ] = wordlist [ 2 ]
-                logging.debug ( "HiToText %s: Row back is %s / %s" % ( self.req [ 'gamename' ], wordlist [ 1 ], wordlist [ 2 ] ) )
+                logging.debug ( "HiToText >2 %s: Row back is %s / %s" % ( self.req [ 'gamename' ], wordlist [ 1 ], wordlist [ 2 ] ) )
                 self.rows.append ( ent )
+            elif len ( wordlist ) == 2:
+                if needpipe:
+                    logging.debug ( "HiToText %s: Ignored line (eating lines) %d %s" % ( self.req [ 'gamename' ], eat, line ) )
+                else:
+                    ent = dict()
+                    ent [ 'score' ] = wordlist [ 1 ]
+                    ent [ 'shortname' ] = ''
+                    logging.debug ( "HiToText ==2 %s: Row back is %s -> %s" % ( self.req [ 'gamename' ], wordlist [ 0 ], wordlist [ 1 ] ) )
+                    self.rows.append ( ent )
             elif len ( wordlist ) == 1 and not needpipe and len ( wordlist [ 0 ] ) > 3:
                 ent = dict()
                 ent [ 'score' ] = wordlist [ 0 ]
                 ent [ 'shortname' ] = ''
-                logging.debug ( "HiToText %s: Row back is %s / n/a" % ( self.req [ 'gamename' ], wordlist [ 0 ] ) )
+                logging.debug ( "HiToText ==1 %s: Row back is %s / n/a" % ( self.req [ 'gamename' ], wordlist [ 0 ] ) )
                 self.rows.append ( ent )
             else:
-                logging.debug ( "HiToText %s: Ignored line (too short) %s" % ( self.req [ 'gamename' ], line ) )
+                logging.debug ( "HiToText %s: Ignored line (too short, or confused) %s" % ( self.req [ 'gamename' ], line ) )
                 continue
 
         self.rowcount = len ( self.rows )
@@ -136,6 +152,9 @@ class HiToText:
         return self.rowcount
 
 if __name__ == '__main__':
+
+    logging.basicConfig ( filename = '/dev/stdout', level=logging.DEBUG,
+                          format='%(asctime)s\t%(levelname)s\t%(message)s', datefmt='%m/%d/%Y %I:%M:%S %p' )
 
     if len ( sys.argv ) < 2:
         print "%s: shortname" % ( sys.argv [ 0 ] )
