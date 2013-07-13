@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PXML xmlns="http://openpandora.org/namespaces/PXML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PXML_schema.xsd">
+<!-- please see http://pandorawiki.org/PXML_specification for more information before editing, and remember the order does matter -->
+
+<package id="compo4all-mgr-skeezix-0001">
+<version major="1" minor="0" release="1" build="1" type="release"/>
+<author name="skeezix"/>
+
+<titles>
+<title lang="en_US">Compo4All Manager</title>
+</titles>
+
+<descriptions>
+<description lang="en_US">Compo4All (C4A) is a multiplayer system supporting online high score tables and in the future.. achivements, game lobbies, game to game messaging; C4A Manager is a standalone tool so you can create or update your C4A Profile or player account; once your have a profile, any C4A supporting game will be able to register your scores!</description>
+</descriptions>
+<icon src="icon.png"/>
+</package>
+
+  <application id="c4a-mgr-skeezix-0001" appdata="c4a-mame">
+    <exec command="scripts/start.sh"/>
+    <title lang="en_US">C4A Manager</title>
+
+    <author name="Jeff Mitchell" website="http://www.codejedi.com/"/>
+    <version major="1" minor="0" release="1" build="1"/>	      <!--This programs version-->
+    <osversion major="1" minor="0" release="0" build="0"/>		<!--The minimum OS version required-->
+
+    <description lang="en_US">C4A Manager</description>
+
+    <icon src="icon.png"/>
+
+    <categories>
+      <!-- http://standards.freedesktop.org/menu-spec/latest/apa.html -->
+      <category name="Game">
+      </category>
+      <category name="System">
+      </category>
+    </categories>
+
+    <previewpics>
+      <pic src="previews/c4a-mgr-1.png"/>
+    </previewpics>
+
+    <licenses>
+      <license name="MAME/AdvanceMAME license" url="http://advancemame.sourceforge.net/doc-license.html" sourcecodeurl="http://advancemame.sourceforge.net/download.html"/>
+    </licenses>
+
+  </application>
+
+</PXML>
