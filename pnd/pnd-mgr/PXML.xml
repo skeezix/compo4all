@@ -31,6 +31,7 @@
     <categories>
       <!-- http://standards.freedesktop.org/menu-spec/latest/apa.html -->
       <category name="Game">
+	<subcategory name="Emulator"/>
       </category>
       <category name="System">
       </category>
@@ -39,10 +40,6 @@
     <previewpics>
       <pic src="previews/c4a-mgr-1.png"/>
     </previewpics>
-
-    <licenses>
-      <license name="MAME/AdvanceMAME license" url="http://advancemame.sourceforge.net/doc-license.html" sourcecodeurl="http://advancemame.sourceforge.net/download.html"/>
-    </licenses>
 
   </application>
 
