@@ -1,0 +1,31 @@
+
+[Logging]
+# fullpath may be /dev/stdout or a full path to a textfile to write out
+level: DEBUG		; DEBUG INFO WARNING ERROR CRITICAL
+fullpath: /dev/stdout
+
+[PyPath]
+# each of these entries is added to python module path on client launch
+#   "./depends" so can bring in some not-written-here modules
+./depends: 1
+
+[Display]
+fullscreen: 1
+width: 800
+height: 480
+banner_image: ./artwork/rot_banner2.png
+#banner_image: ./artwork/retro_offline_tournament.png
+
+[Sources]
+banner: /usr/bin/wget -qO- http://10.0.0.141:13001/banner_1
+curgamelist: /usr/bin/wget -qO- http://10.0.0.141:13001/curgamelist_1
+getprofile_base: /usr/bin/wget -qO- http://10.0.0.141:13001/profile_1/
+setprofile: http://10.0.0.141:13001/setprofile_1
+delprofile: http://10.0.0.141:13001/delprofile_1
+ohai: /usr/bin/wget -qO- http://10.0.0.141:13001/ohai_1
+highscore_base: /usr/bin/wget -qO- http://10.0.0.141:13001/json_1/
+
+[Exec]
+mamebase: ./bin/advmame %%(gamename)s
+curl: /usr/bin/curl
+spaghetti: ./sc
