@@ -3,7 +3,7 @@
 <!-- please see http://pandorawiki.org/PXML_specification for more information before editing, and remember the order does matter -->
 
 <package id="compo4all-mgr-skeezix-0001">
-<version major="1" minor="0" release="1" build="1" type="release"/>
+<version major="1" minor="0" release="1" build="2" type="release"/>
 <author name="skeezix"/>
 
 <titles>
@@ -21,7 +21,7 @@
     <title lang="en_US">C4A Manager</title>
 
     <author name="Jeff Mitchell" website="http://www.codejedi.com/"/>
-    <version major="1" minor="0" release="1" build="1"/>	      <!--This programs version-->
+    <version major="1" minor="0" release="1" build="2"/>	      <!--This programs version-->
     <osversion major="1" minor="0" release="0" build="0"/>		<!--The minimum OS version required-->
 
     <description lang="en_US">C4A Manager</description>
