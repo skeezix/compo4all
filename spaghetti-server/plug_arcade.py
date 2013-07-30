@@ -88,6 +88,14 @@ def init():
     register ( 'gyruss',   "Gyruss",          hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup', cx ( general, 'gyruss' ) )
     register ( 'mappy',    "Mappy",           hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'mappy' ) )
     register ( 'timeplt',  "Time Pilot",      hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup', cx ( general, 'timeplt' ) )
+    #
+    # HiToText 2013 July additions (tested by b_o_b)
+    register ( 'terracre',  "Terra Cresta",   hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup', cx ( general, 'terracre' ) )
+    register ( 'pbaction',  "Pinball Action", hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'pinball', cx ( general, 'pbaction' ) )
+    register ( 'digdug',    "Dig Dug",        hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'digdug' ) )
+    register ( 'baddudes',  "Bad Dudes",      hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'beatemup', cx ( general, 'baddudes' ) )
+    register ( 'amidar',  "Amidar",           hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'amidar' ) )
+    register ( '1942',  "Amidar",           hitotext_handler,    g_ms_hi_stub,      'active', 'arcade', 'shmup', cx ( general, '1942' ) )
 
 def cx ( d, gamename ): # customize and return dupe
 
