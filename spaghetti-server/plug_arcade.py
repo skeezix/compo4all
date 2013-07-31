@@ -94,8 +94,8 @@ def init():
     register ( 'pbaction',  "Pinball Action", hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'pinball', cx ( general, 'pbaction' ) )
     register ( 'digdug',    "Dig Dug",        hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'digdug' ) )
     register ( 'baddudes',  "Bad Dudes",      hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'beatemup', cx ( general, 'baddudes' ) )
-    register ( 'amidar',  "Amidar",           hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'amidar' ) )
-    register ( '1942',  "Amidar",           hitotext_handler,    g_ms_hi_stub,      'active', 'arcade', 'shmup', cx ( general, '1942' ) )
+    register ( 'amidar',    "Amidar",         hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'amidar' ) )
+    register ( '1942',      "1942",           hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup', cx ( general, '1942' ) )
 
 def cx ( d, gamename ): # customize and return dupe
 
