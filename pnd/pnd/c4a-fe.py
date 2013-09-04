@@ -10,10 +10,12 @@ import subprocess
 import json
 import sys
 import os
+import os.path
 import string
 import uuid
 import urllib2
 import tempfile
+import datetime
 
 # monkey patch py2.7's check_output() into py2.6's missing one :)
 if "check_output" not in dir( subprocess ): # duck punch it in!
@@ -340,7 +342,7 @@ class Frontend:
 
         # sync scores - pull
         # we pull them all, since they can switch games in-emu..
-        self.sync_gamelist_with_ui ( push = False ) # pull
+        self.sync_gamelist_with_ui ( push = False, current = gamename ) # pull
 
         # run the emu
         emubase = config.get ( 'Exec', 'mamebase' )
@@ -349,7 +351,7 @@ class Frontend:
         subprocess.call ( emu, shell=True )
 
         # sync scores - push
-        self.sync_gamelist_with_ui ( push = True ) # push
+        self.sync_gamelist_with_ui ( push = True, current = gamename ) # push
 
     def update_grayed_out ( self ):
 
@@ -538,38 +540,66 @@ class Frontend:
 
         self.finish_log()
 
-    def sync_gamelist_with_ui ( self, push = True ):
+    def sync_gamelist_with_ui ( self, push = True, current = None ):
         scpath = config.get ( 'Exec', 'spaghetti' )
 
         self.append_log ( "Syncing scores for current season .." )
 
-        if push:
+        if push: # push
             for gn in self.gamelist:
 
                 if gn [ 'field' ] != 'arcade':
                     continue
 
-                self.append_log ( "Syncing scores for current season .. " + gn [ 'gamename' ] )
-                scrun = scpath + " push -d " + gn [ 'gamename' ]
-                try:
-                    subprocess.call ( scrun, shell = True )
-                except:
-                    print "sync push: Unexpected error:", sys.exc_info()
-                    print scrun
+                # strategy options: see below...
+                # - but in essence, let us look for modified 'recently' (today?) and existance
+                #   --> if file _exists_, and if modified recently, sync it
 
-        else:
+                # check existance
+                scorepath = './hi/' + gn [ 'gamename' ] + '.hi'
+                if os.path.exists ( scorepath ):
+                    # check today-ness
+                    timestamp = os.path.getmtime ( scorepath )
+                    if datetime.date.fromtimestamp ( timestamp ) == datetime.date.today():
+
+                        scrun = scpath + " push -d " + gn [ 'gamename' ]
+                        self.append_log ( "Syncing scores for current season .. " + gn [ 'gamename' ] )
+
+                        try:
+                            print "sync push: scrun", scrun
+                            subprocess.call ( scrun, shell = True )
+                        except:
+                            print "sync push: Unexpected error:", sys.exc_info()
+                            print scrun
+
+        else: # pull
             for gn in self.gamelist:
 
                 if gn [ 'field' ] != 'arcade':
                     continue
 
-                self.append_log ( "Syncing scores for current season .. " + gn [ 'gamename' ] )
-                scrun = scpath + " pull " + gn [ 'gamename' ]
-                try:
-                    subprocess.call ( scrun, shell = True )
-                except:
-                    print "sync pull: Unexpected error:", sys.exc_info()
-                    print scrun
+                # strategy options..
+                # - pull them all (in case of game switching in the emu, and to get fresh default scores from server)
+                # - pull only the one (ignore game switching case, runs fast, and get from server)
+                # - rm them all (let emu generate fresh scores of its own, no server pull at all); we basicly trust the user
+                #   all the time anyway (cheating avoidance etc), so this is not so bad..
+                # - combined: rm them all, but pull the target game from server
+                self.append_log ( "Pulling scores for current season .. " + gn [ 'gamename' ] )
+
+                if gn [ 'gamename' ] == current:
+                    scrun = scpath + " pull " + gn [ 'gamename' ]
+                    try:
+                        print "sync pull: scrun", scrun
+                        subprocess.call ( scrun, shell = True )
+                    except:
+                        print "sync pull: Unexpected error:", sys.exc_info()
+                        print scrun
+                else:
+                    try:
+                        print "sync pull: rm", gn [ 'gamename' ]
+                        os.remove ( './hi/' + gn [ 'gamename' ] + '.hi' )
+                    except:
+                        pass
 
         self.finish_log()
 
