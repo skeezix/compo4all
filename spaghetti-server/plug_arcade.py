@@ -57,7 +57,7 @@ def init():
     register ( 'mrdo',     'Mr. Do!',         multiscore_handler,  g_ms_mrdo,       'available', 'arcade', 'maze', cx ( general, 'mrdo' ) )
     register ( 'mspacman', 'Ms. Pacman',      singlescore_handler, g_ss_mspacman,   'available', 'arcade', 'maze', cx ( general, 'mspacman' ) )
     register ( 'pulstar',  'Pulstar',         multiscore_handler,  g_ms_pulstar,    'available', 'arcade', 'shmup', cx ( general, 'pulstar' ) )
-    register ( 'rthunder', 'Rolling Thunder', multiscore_handler,  g_ms_rthunder,   'unavailable', 'arcade', 'platform', cx ( general, 'rthunder' ) ) # coded, emu sucks
+    #register ( 'rthunder', 'Rolling Thunder', multiscore_handler,  g_ms_rthunder,   'unavailable', 'arcade', 'platform', cx ( general, 'rthunder' ) ) # coded, emu sucks
     register ( 'rygar',    'Rygar',           multiscore_handler,  g_ms_rygar,      'available', 'arcade', 'runngun', cx ( general, 'rygar' ) )
     # HiToText based ones
     register ( 'ladybug',  'Ladybug',         hitotext_handler,    g_ms_hi_stub,    'available', 'arcade', 'maze', cx ( general, 'ladybug' ) )
@@ -96,6 +96,23 @@ def init():
     register ( 'baddudes',  "Bad Dudes",      hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'beatemup', cx ( general, 'baddudes' ) )
     register ( 'amidar',    "Amidar",         hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'amidar' ) )
     register ( '1942',      "1942",           hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup', cx ( general, '1942' ) )
+    #
+    # HiToText 2013 August additions (tested by b_o_b)
+    register ( 'aliens',    "Aliens",          hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'runngun', cx ( general, 'aliens' ) )
+    register ( 'circusc',   "Circus Charlie",  hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'platform', cx ( general, 'circusc' ) )
+    register ( 'gberet',    "Green Beret",     hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'runngun', cx ( general, 'gberet' ) )
+    register ( 'popeye',    "Popeye",          hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'platform', cx ( general, 'popeye' ) )
+    register ( 'rthunder',  "Rolling Thunder", hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'platform', cx ( general, 'rthunder' ) )
+    register ( 'yiear',     "Yie Ar Kung-Fu",  hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'fighting', cx ( general, 'yiear' ) )
+    #
+    # HiToText 2013 Sept additions  (tested by b_o_b)
+    register ( 'armorcar',  "Armored Car",     hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'armorcar' ) )
+    register ( 'bzone',     "Battlezone",      hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup', cx ( general, 'bzone' ) )
+    register ( 'commando',  "Commando",        hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'runngun', cx ( general, 'commando' ) )
+    register ( 'dkong3',    "Donkey Kong 3",   hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'platform', cx ( general, 'dkong3' ) )
+    register ( 'missile',   "Missile Command", hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup', cx ( general, 'missile' ) )
+    register ( 'pengo',     "Pengo",           hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'pengo' ) )
+
 
 def cx ( d, gamename ): # customize and return dupe
 
