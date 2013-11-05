@@ -112,6 +112,13 @@ def init():
     register ( 'dkong3',    "Donkey Kong 3",   hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'platform', cx ( general, 'dkong3' ) )
     register ( 'missile',   "Missile Command", hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'shmup', cx ( general, 'missile' ) )
     register ( 'pengo',     "Pengo",           hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'pengo' ) )
+    #
+    # HiToText 2013 Oct addictions (tested by b_o_b)
+    register ( 'anteater',  "Anteater",        hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'anteater' ) )
+    register ( 'bagman',    "Bagman",          hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'bagman' ) )
+    register ( 'fnkyfish',  "Funky Fish",      hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'fnkyfish' ) )
+    register ( 'pooyan',    "Pooyan",          hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'pooyan' ) )
+    register ( 'rastan',    "Rastan Saga",     hitotext_handler,    g_ms_hi_stub,    'active', 'arcade', 'maze', cx ( general, 'rastan' ) )
 
 
 def cx ( d, gamename ): # customize and return dupe
