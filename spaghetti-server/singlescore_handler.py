@@ -134,7 +134,7 @@ def get_hi ( req ):
 
     return
 
-def get_json_tally ( req ):
+def get_json_tally ( req, raw=False ):
     tally = _read_tally ( req )
 
     for ent in tally [ 'scoreboard' ]:
@@ -150,7 +150,10 @@ def get_json_tally ( req ):
 
         del ent [ 'prid' ]
 
-    req [ '_bindata' ] = json.dumps ( tally )
+    if raw:
+        req [ '_bindata' ] = tally
+    else:
+        req [ '_bindata' ] = json.dumps ( tally )
     req [ '_binlen' ] = len ( req [ '_bindata' ] )
     return
 

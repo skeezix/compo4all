@@ -68,8 +68,8 @@ def get_hi ( req ):
 
     return bindata
 
-def get_json_tally ( req ):
-    return singlescore_handler.get_json_tally ( req )
+def get_json_tally ( req, raw=False ):
+    return singlescore_handler.get_json_tally ( req, raw=raw )
 
 def get_html_tally ( req ):
     return singlescore_handler.get_html_tally ( req )

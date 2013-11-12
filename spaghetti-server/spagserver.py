@@ -291,23 +291,31 @@ class RequestHandler(SimpleHTTPRequestHandler):
                     req [ '_backdate' ] = 'ALLTIM'
                     logging.info ( "Request is for all-time; now looks like %s" % ( req ) )
 
-            if not self.is_valid_game ( req ):
+            if req [ 'gamename' ] != 'ALL' and not self.is_valid_game ( req ):
                 self.send_response ( 406 ) # not acceptible
                 return
 
-            if req [ 'gamename' ] in modulemap.gamemap:
-                self.send_response ( 200 ) # okay; the following is the right header sequence
-                self.send_header ( 'Access-Control-Allow-Origin', '*' ) # milkshake: http://enable-cors.org/
-                self.send_header ( 'Content-type', 'application/json; charset=utf-8' )
-                self.end_headers()
+            self.send_response ( 200 ) # okay; the following is the right header sequence
+            self.send_header ( 'Access-Control-Allow-Origin', '*' ) # milkshake: http://enable-cors.org/
+            self.send_header ( 'Content-type', 'application/json; charset=utf-8' )
+            self.end_headers()
 
-                modulemap.gamemap [ req [ 'gamename' ] ][ 'handler' ].get_json_tally ( req )
-                self.wfile.write ( jsonp_pre + req [ '_bindata' ] + jsonp_post )
+            if req [ 'gamename' ] == 'ALL':
+                # iterate them all
+                aggregate = dict()
+
+                for aname in modulemap.gamemap:
+                    req [ 'gamename' ] = aname
+                    modulemap.gamemap [ req [ 'gamename' ] ][ 'handler' ].get_json_tally ( req, raw=True )
+                    aggregate [ aname ] = req [ '_bindata' ]
+
+                req [ '_bindata' ] = json.dumps ( aggregate )
+                req [ '_binlen' ] = len ( req [ '_bindata' ] )
 
             else:
-                self.send_response ( 406 ) # not acceptible
-                logging.error ( "No module found for game %s" % ( gamename ) )
-                return
+                modulemap.gamemap [ req [ 'gamename' ] ][ 'handler' ].get_json_tally ( req )
+
+            self.wfile.write ( jsonp_pre + req [ '_bindata' ] + jsonp_post )
 
         elif req [ 'basepage' ] == 'execinfo':
             # /execinfo/GAMENAME/PLATFORM
@@ -603,6 +611,9 @@ class RequestHandler(SimpleHTTPRequestHandler):
 
     def is_valid_request ( self, req ):
 
+        # TODO: Code below checks 'if X is present, and looks reasonably valid', but does not ensure
+        # the presence of any set of fields; really needs a mini grammar so it knows what fields go together..
+
         if 'prid' in req:
             if not all(c in string.ascii_letters+'-'+string.digits for c in req [ 'prid' ]):
                 logging.warning ( "illegal prid from request %s" % ( req ) )
@@ -639,9 +650,10 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 return False
 
         if 'gamename' in req:
-            if not self.is_valid_game ( req ):
-                logging.warning ( "illegal gamename from request %s" % ( req ) )
-                return False
+            if req [ 'gamename' ] != 'ALL':
+                if not self.is_valid_game ( req ):
+                    logging.warning ( "illegal gamename from request %s" % ( req ) )
+                    return False
 
         if 'basepage' in req:
             if not all(c in string.ascii_letters for c in req [ 'basepage' ]):

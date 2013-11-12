@@ -69,8 +69,8 @@ def update_hi ( req ):
 def get_hi ( req ):
     return multiscore_handler.get_hi ( req )
 
-def get_json_tally ( req ):
-    return multiscore_handler.get_json_tally ( req )
+def get_json_tally ( req, raw=False ):
+    return multiscore_handler.get_json_tally ( req, raw=raw )
 
 def get_html_tally ( req ):
     return multiscore_handler.get_html_tally ( req )
