@@ -119,6 +119,13 @@ def update_hi ( req, score_int=None ):
     if True:
         sb.insert ( 0, d )
 
+    # update activity log.. try to find the entry match and publish it
+    if True:
+        for i in range ( SCOREBOARD_MAX ):
+            if d [ 'prid' ] == sb [ i ] [ 'prid' ] and d [ 'score' ] == sb [ i ] [ 'score' ] and d [ 'time' ] == sb [ i ] [ 'time' ]:
+                activity_log.log_entry ( req, d, i )
+                break
+
     # post-sort to games desired sort order
     # reverse=False  ->  ascending (lowest first), lowest is best
     # reverse=True   ->  descending (highest first), highest is best -> most typical case
