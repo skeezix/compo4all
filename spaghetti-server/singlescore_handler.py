@@ -11,6 +11,7 @@ import array
 import os
 import pprint
 import time
+import traceback
 
 import profile
 from paths import _basepath
@@ -58,40 +59,94 @@ def update_hi ( req, score_int=None ):
     # -------
 
     # does this score factor into the high score table, or too low to count?
-    if hi < sb [ SCOREBOARD_MAX - 1 ][ 'score' ]:
+    if False and hi < sb [ SCOREBOARD_MAX - 1 ][ 'score' ]:
         logging.info ( "hidb - %s - submitter score of %d is NOT sufficient to enter scoreboard (lowest %d, highest %d)" % ( req [ 'gamename' ], hi, sb [ SCOREBOARD_MAX - 1 ][ 'score' ], sb [ 0 ][ 'score' ] ) )
         return
 
     # is score same as existing top .. if so, its just resubmitting the score they pulled down, likely, so.. discard
-    if hi == sb [ 0 ][ 'score' ]:
+    if False and hi == sb [ 0 ][ 'score' ]:
         logging.info ( "hidb - %s - submitter score of %d is same as highest score .. probably just looping. (lowest %d, highest %d)" % ( req [ 'gamename' ], hi, sb [ SCOREBOARD_MAX - 1 ][ 'score' ], sb [ 0 ][ 'score' ] ) )
         return
 
     # okay, so the guys score is at least better than one of them.. start at top, pushing the way down
-    logging.info ( "hidb - %s - submitter score of %d IS sufficient to enter scoreboard (lowest %d, highest %d)" % ( req [ 'gamename' ], hi, sb [ SCOREBOARD_MAX - 1 ][ 'score' ], sb [ 0 ][ 'score' ] ) )
+    if False:
+        logging.info ( "hidb - %s - submitter score of %d IS sufficient to enter scoreboard (lowest %d, highest %d)" % ( req [ 'gamename' ], hi, sb [ SCOREBOARD_MAX - 1 ][ 'score' ], sb [ 0 ][ 'score' ] ) )
 
-    for i in range ( SCOREBOARD_MAX ):
-        if hi > sb [ i ][ 'score' ]:
-            # insert new score entry
-            d = dict()
-            d [ 'prid' ] = req [ 'prid' ]
-            d [ 'score' ] = hi
-            d [ 'time' ] = int ( time.time() )
-            # log the activity
-            activity_log.log_entry ( req, d, i )
-            # insert
-            sb.insert ( i, d )
-            # drop off last guy
-            sb.pop()
-            # if we updated the first entry, the very highest score, spit out a new .hi file
-            # (mspacman only has a single high score, so we only update it for the highest score.. not a whole table)
-            if i == 0 and score_int == None:
-                f = open ( writepath + req [ 'gamename' ] + ".hi", "w" )
-                f.write ( build_hi_bin ( req, sb [ 0 ][ 'score' ] ) )
-                f.close()
-            break
+    # determine desired sort order
+    order = 'highest-first'
+    try:
+        _order = modulemap.gamemap [ req [ 'gamename' ] ] [ '_general'] [ 'ordering' ]
+        logging.info ( 'hidb - %s - ordering from conf is %s' % ( req [ 'gamename' ], _order ) )
+        if _order in ( 'highest-first' ,'lowest-first' ):
+            order = _order
+        else:
+            order = 'highest-first'
+    except:
+        pp = pprint.PrettyPrinter(indent=4)
+        pp.pprint ( modulemap.gamemap [ req [ 'gamename' ] ] )
+        print modulemap.gamemap [ req [ 'gamename' ] ]
+        traceback.print_exc()
+        logging.info ( 'hidb - %s - ordering -> exception .. assuming highest-first' % ( req [ 'gamename' ] ) )
+        order = 'highest-first'
 
-    # write out the updated tally file
+    logging.info ( 'hidb - %s - ordering to use is %s' % ( req [ 'gamename' ], order ) )
+
+    # create new score entry
+    d = dict()
+    d [ 'prid' ] = req [ 'prid' ]
+    d [ 'score' ] = hi
+    d [ 'time' ] = int ( time.time() )
+
+    # old: insert with manual assumed-ascending sort order
+    if False:
+        for i in range ( SCOREBOARD_MAX ):
+            if hi > sb [ i ][ 'score' ]:
+                # log the activity
+                activity_log.log_entry ( req, d, i )
+                # insert
+                sb.insert ( i, d )
+                # drop off last guy
+                sb.pop()
+                # if we updated the first entry, the very highest score, spit out a new .hi file
+                # (mspacman only has a single high score, so we only update it for the highest score.. not a whole table)
+                if i == 0 and score_int == None:
+                    f = open ( writepath + req [ 'gamename' ] + ".hi", "w" )
+                    f.write ( build_hi_bin ( req, sb [ 0 ][ 'score' ] ) )
+                    f.close()
+                break
+
+    # insert at first, assuming a post-sort; we can drop the 'worst' entry after sort
+    if True:
+        sb.insert ( 0, d )
+
+    # post-sort to games desired sort order
+    # reverse=False  ->  ascending (lowest first), lowest is best
+    # reverse=True   ->  descending (highest first), highest is best -> most typical case
+    def _sortvalue ( entry ):
+        if entry [ 'score' ] == 0:
+            if order == 'lowest-first':
+                return 999999999999
+            else:
+                return -1
+        else:
+            return entry [ 'score' ]
+
+    if True:
+        reversify = True
+        if order == 'lowest-first':
+            reversify = False
+        try:
+            sb.sort ( key=_sortvalue, reverse=reversify )
+        except:
+            traceback.print_exc()
+
+    # drop 'worst' (last, since we sorted) entry
+    if True:
+        sb.pop()
+
+    #logging.info ( 'hidb - %s - sorted ' % ( req [ 'gamename' ] ) )
+
+    # update stats and write out the updated tally file
     tally [ 'hi' ] = sb [ 0 ][ 'score' ]
     tally [ 'prid' ] = sb [ 0 ][ 'prid' ]
 
@@ -208,6 +263,9 @@ def get_html_tally ( req ):
                 unit = ' ' + str ( modulemap.gamemap [ req [ 'gamename' ] ][ '_general' ][ 'dispunit' ] )
 
         showrow = 1 # 0 no, 1 yes, 2 ellipses
+
+        if False: # True -> force to full length display
+            lastprident = None # if uncommented, forces full display .. no ellipses hidden entries
 
         if lastprident == prident:
             showrow = 0

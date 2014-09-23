@@ -15,3 +15,6 @@ deployserver:
 deployutil:
 	ssh skeezix@skeewalled "cd compo4all/util && rm -f *.py*"
 	cd util && scp *.py* skeezix@skeewalled:./compo4all/util
+
+pullserver:
+	cd spaghetti-server; scp -r skeezix@skeewalled:./compo4all/runtime .
